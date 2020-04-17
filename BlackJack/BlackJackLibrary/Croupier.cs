@@ -4,7 +4,8 @@ using System.Text;
 
 namespace BlackJackLibrary
 {
-    class Croupier
+    class Croupier : IEtatActuel
     {
+        public bool ABust => throw new NotImplementedException();
     }
 }

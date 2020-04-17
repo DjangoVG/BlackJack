@@ -6,5 +6,6 @@ namespace BlackJackLibrary
 {
     interface IEtatActuel
     {
+        Boolean ABust { get; }
     }
 }

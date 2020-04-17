@@ -1,0 +1,70 @@
+﻿<Window x:Class="BlackJack.FenetreBlackJack"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BlackJack"
+        mc:Ignorable="d"
+        Title="FenetreBlackJack" Height="930" Width="1400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.Background>
+            <ImageBrush ImageSource="FondVert.jpeg"/>
+        </Grid.Background>
+        <Menu Height="20" Margin="0,0,0,10" Background="DarkGray" VerticalAlignment="Top">
+            <MenuItem x:Name="MenuFile" Header="Profil">
+                <MenuItem x:Name="ConnectBouton" Header="Se connecter" />
+                <MenuItem x:Name="DisconnectBouton" Header="Se deconnecter" />
+                <Separator />
+                <MenuItem x:Name="MenuArgent" Header="Argent">
+                    <MenuItem x:Name="BoutonRetirer" Header="Retirer" Click="ClickBoutonRetirer" />
+                    <MenuItem x:Name="BoutonDeposer" Header="Déposer" Click="ClickBoutonDeposer" />
+                </MenuItem>
+                <Separator />
+                <MenuItem x:Name="MenuExit" Header="Quitter l'application" Click="MenuExitClick" />
+            </MenuItem>
+            <MenuItem x:Name="MenuOption" Header="Options">
+            </MenuItem>
+        </Menu>
+        <DockPanel>
+            <GroupBox x:Name="BoxCroupier" Header="{Binding Path=DealerBoxHeader, UpdateSourceTrigger=PropertyChanged}" Margin="30,50,30,30" DockPanel.Dock="Top" MinHeight="250">
+                <UniformGrid>
+                    <Label Content="Croupier" Margin="0,0,-660,-121" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Copperplate Gothic Bold" FontSize="150" Foreground="DarkGray" Opacity="0.3"/>
+                    <ItemsControl Name="dealerCardsItemControl" ItemsSource="{Binding Path=DealerCardsList}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border>
+                                    <Image />
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </UniformGrid>
+            </GroupBox>
+
+            <GroupBox x:Name="BoxJoueur" Header="{Binding Path=PlayerBoxHeader, UpdateSourceTrigger=PropertyChanged}" Margin="30,30,30,30" DockPanel.Dock="Top" MinHeight="250" Height="208">
+                <UniformGrid>
+                    <Label Content="{Binding Path=NomJoueur}" Margin="0,0,-660,-121" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Copperplate Gothic Bold" FontSize="150" Foreground="DarkGray" Opacity="0.3"/>
+                    <ItemsControl x:Name="playerCardsItemControl" ItemsSource="{Binding PlayerCardsList}" Margin="0,0,0,10">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border >
+                                    <Image/>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </UniformGrid>
+            </GroupBox>
+
+        </DockPanel>
+    </Grid>
+</Window>
