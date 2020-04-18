@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\Boutons\BoutonDouble.png" />
+    <None Remove="Images\Boutons\BoutonRester.png" />
+    <None Remove="Images\Boutons\BoutonSplit.png" />
+    <None Remove="Images\Boutons\BoutonTirer.png" />
     <None Remove="Images\Cartes\10CarreauRouge.png" />
     <None Remove="Images\Cartes\10CoeurRouge.png" />
     <None Remove="Images\Cartes\10PiqueNoir.png" />
@@ -66,6 +70,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\Boutons\BoutonDouble.png" />
+    <Resource Include="Images\Boutons\BoutonRester.png" />
+    <Resource Include="Images\Boutons\BoutonSplit.png" />
+    <Resource Include="Images\Boutons\BoutonTirer.png" />
     <Resource Include="Images\Cartes\10CarreauRouge.png" />
     <Resource Include="Images\Cartes\10CoeurRouge.png" />
     <Resource Include="Images\Cartes\10PiqueNoir.png" />

@@ -65,25 +65,64 @@
                 </UniformGrid>
             </GroupBox>
 
-            <Grid Height="100" VerticalAlignment="Top" Width="1066" Margin="0,10,0,0">
-                <Button Content="Button" Height="100" Margin="140,0,826,0" Background="AliceBlue">
-                    <Button.Template>
-                        <ControlTemplate>
-                            <Border CornerRadius="10" BorderThickness="3" BorderBrush="Black">
-                                <ContentPresenter/>
-                            </Border>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-                <Button Height="100" Margin="0,0,966,0">
+            <Grid Height="100" VerticalAlignment="Top" Margin="50,10,0,0" Width="459" Grid.Row="1" HorizontalAlignment="Left">
+                <Button Height="100" Width="100" Margin="0,0,359,0" BorderBrush="{x:Null}" Foreground="{x:Null}">
                     <Button.Background>
-                        <ImageBrush ImageSource="Login.jpeg"/>
+                        <ImageBrush ImageSource="BoutonTirer.png"/>
                     </Button.Background>
+                </Button>
+                <Button Height="100" Width="100" Margin="116,0,243,0" BorderBrush="{x:Null}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="BoutonRester.png"/>
+                    </Button.Background>
+                </Button>
+                <Button Height="100" Width="100" Margin="234,0,125,0" BorderBrush="{x:Null}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="BoutonSplit.png"/>
+                    </Button.Background>
+                </Button>
+                <Button Height="100" Width="100" Margin="349,0,10,0" BorderBrush="{x:Null}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="BoutonDouble.png"/>
+                    </Button.Background>
+                </Button>
 
+            </Grid>
+
+            <Grid Height="100" VerticalAlignment="Top" Margin="0,10,50,0" Width="580" Grid.Row="1" HorizontalAlignment="Right">
+                <Button Height="100" Width="100" Margin="0,0,480,0" BorderBrush="{x:Null}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Jeton5.png"/>
+                    </Button.Background>
+                </Button>
+                <Button Height="100" Width="100" Margin="118,0,362,0" BorderBrush="{x:Null}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Jeton10.png"/>
+                    </Button.Background>
+                </Button>
+                <Button Height="100" Width="100" Margin="234,0,246,0" BorderBrush="{x:Null}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Jeton50.png"/>
+                    </Button.Background>
+                </Button>
+                <Button Height="100" Width="100" Margin="352,0,128,0" BorderBrush="{x:Null}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Jeton100.png"/>
+                    </Button.Background>
+                </Button>
+                <Button Height="100" Width="100" Margin="470,0,10,0" BorderBrush="{x:Null}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Jeton200.png"/>
+                    </Button.Background>
                 </Button>
             </Grid>
 
         </DockPanel>
         <Rectangle HorizontalAlignment="Left" Height="56" Margin="0,93,0,0" Grid.Row="1" VerticalAlignment="Top" Width="1392" Fill="#FF424242" Opacity="0.7"/>
+        <Label Content="Solde :"  Margin="11,101,1289,0" Grid.Row="1" VerticalAlignment="Top" Height="46" FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa"/>
+        <Label x:Name="LabelSolde" Height="46" Margin="103,101,1145,2" Grid.Row="1" FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa"></Label>
+        <Label Content="Mise actuelle :"  Margin="247,101,977,0" Grid.Row="1" VerticalAlignment="Top" Height="46" FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa"/>
+        <Label x:Name="LabelMiseActuelle" Height="46" Margin="415,101,833,2" Grid.Row="1" FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa"/>
+        <Label x:Name="LabelDate" Margin="1060,101,10,10" Grid.Row="1" FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa"/>
     </Grid>
 </Window>

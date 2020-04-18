@@ -112,5 +112,32 @@
   <ItemGroup>
     <Resource Include="Login.jpeg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="BoutonTirer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="BoutonRester.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="BoutonDouble.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="BoutonSplit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Jeton5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Jeton10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Jeton50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Jeton100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Jeton200.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
