@@ -52,7 +52,7 @@
 
             <GroupBox x:Name="BoxJoueur" Header="{Binding Path=PlayerBoxHeader, UpdateSourceTrigger=PropertyChanged}" Margin="30,30,30,30" DockPanel.Dock="Top" MinHeight="250" Height="208">
                 <UniformGrid>
-                    <Label Content="{Binding Path=NomJoueur}" Margin="0,0,-660,-121" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Copperplate Gothic Bold" FontSize="150" Foreground="DarkGray" Opacity="0.3"/>
+                    <Label x:Name="LabelPseudoJoueur" Content="{Binding Path=NomJoueur}" Margin="0,0,-660,-121" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Copperplate Gothic Bold" FontSize="150" Foreground="DarkGray" Opacity="0.3"/>
                     <ItemsControl x:Name="playerCardsItemControl" ItemsSource="{Binding PlayerCardsList}" Margin="0,0,0,10">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
@@ -65,6 +65,25 @@
                 </UniformGrid>
             </GroupBox>
 
+            <Grid Height="100" VerticalAlignment="Top" Width="1066" Margin="0,10,0,0">
+                <Button Content="Button" Height="100" Margin="140,0,826,0" Background="AliceBlue">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Border CornerRadius="10" BorderThickness="3" BorderBrush="Black">
+                                <ContentPresenter/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button Height="100" Margin="0,0,966,0">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Login.jpeg"/>
+                    </Button.Background>
+
+                </Button>
+            </Grid>
+
         </DockPanel>
+        <Rectangle HorizontalAlignment="Left" Height="56" Margin="0,93,0,0" Grid.Row="1" VerticalAlignment="Top" Width="1392" Fill="#FF424242" Opacity="0.7"/>
     </Grid>
 </Window>
