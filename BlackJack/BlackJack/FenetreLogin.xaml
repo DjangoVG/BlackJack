@@ -8,7 +8,7 @@
         Title="FenetreLogin" Height="295" Width="674" MinHeight="295" MinWidth="674">
     <StackPanel>
         <StackPanel.Background>
-            <ImageBrush ImageSource="Login.jpeg"/>
+            <ImageBrush ImageSource="/Images/Autres/Login.jpeg"/>
         </StackPanel.Background>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Right" Margin="0,25,25,0">
             <Label HorizontalAlignment="Center" FontSize="27" Foreground="White" FontWeight="Bold" FontFamily="Eras ITC" Margin="0,10,0,0">

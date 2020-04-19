@@ -12,7 +12,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.Background>
-            <ImageBrush ImageSource="FondVert.jpeg"/>
+            <ImageBrush ImageSource="/Images/Autres/FondVert.jpeg"/>
         </Grid.Background>
         <Menu Height="20" Margin="0,0,0,10" Background="DarkGray" VerticalAlignment="Top">
             <MenuItem x:Name="MenuFile" Header="Profil">
@@ -30,9 +30,9 @@
             </MenuItem>
         </Menu>
         <DockPanel>
-            <GroupBox x:Name="BoxCroupier" Header="{Binding Path=DealerBoxHeader, UpdateSourceTrigger=PropertyChanged}" Margin="30,50,30,30" DockPanel.Dock="Top" MinHeight="250">
+            <GroupBox x:Name="BoxCroupier" Header="{Binding Path=DealerBoxHeader, UpdateSourceTrigger=PropertyChanged}" Margin="30,50,30,30" DockPanel.Dock="Top" MaxHeight="250">
                 <UniformGrid>
-                    <Label Content="Croupier" Margin="0,0,-660,-121" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Copperplate Gothic Bold" FontSize="150" Foreground="DarkGray" Opacity="0.3"/>
+                    <Label Content="Croupier" Margin="0,0,-660,-121" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Copperplate Gothic Bold" FontSize="150" Foreground="DarkGray" Opacity="0.3" IsEnabled="False" IsHitTestVisible="False"/>
                     <ItemsControl Name="dealerCardsItemControl" ItemsSource="{Binding Path=DealerCardsList}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
@@ -47,6 +47,7 @@
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
+                    <Image Margin="0,-112,476,0" Source="Images/Cartes/1CarreauRouge.png"/>
                 </UniformGrid>
             </GroupBox>
 
@@ -62,28 +63,29 @@
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
+                    <Image Margin="0,-112,0,0" Source="Images/Cartes/RoiCoeurRouge.png" HorizontalAlignment="Left" Width="175"/>
                 </UniformGrid>
             </GroupBox>
 
             <Grid Height="100" VerticalAlignment="Top" Margin="50,10,0,0" Width="459" Grid.Row="1" HorizontalAlignment="Left">
                 <Button Height="100" Width="100" Margin="0,0,359,0" BorderBrush="{x:Null}" Foreground="{x:Null}">
                     <Button.Background>
-                        <ImageBrush ImageSource="BoutonTirer.png"/>
+                        <ImageBrush ImageSource="/Images/Boutons/BoutonTirer.png"/>
                     </Button.Background>
                 </Button>
                 <Button Height="100" Width="100" Margin="116,0,243,0" BorderBrush="{x:Null}">
                     <Button.Background>
-                        <ImageBrush ImageSource="BoutonRester.png"/>
+                        <ImageBrush ImageSource="/Images/Boutons/BoutonRester.png"/>
                     </Button.Background>
                 </Button>
                 <Button Height="100" Width="100" Margin="234,0,125,0" BorderBrush="{x:Null}">
                     <Button.Background>
-                        <ImageBrush ImageSource="BoutonSplit.png"/>
+                        <ImageBrush ImageSource="/Images/Boutons/BoutonSplit.png"/>
                     </Button.Background>
                 </Button>
                 <Button Height="100" Width="100" Margin="349,0,10,0" BorderBrush="{x:Null}">
                     <Button.Background>
-                        <ImageBrush ImageSource="BoutonDouble.png"/>
+                        <ImageBrush ImageSource="/Images/Boutons/BoutonDouble.png"/>
                     </Button.Background>
                 </Button>
 
@@ -92,27 +94,27 @@
             <Grid Height="100" VerticalAlignment="Top" Margin="0,10,50,0" Width="580" Grid.Row="1" HorizontalAlignment="Right">
                 <Button Height="100" Width="100" Margin="0,0,480,0" BorderBrush="{x:Null}">
                     <Button.Background>
-                        <ImageBrush ImageSource="Jeton5.png"/>
+                        <ImageBrush ImageSource="/Images/Jetons/Jeton5.png"/>
                     </Button.Background>
                 </Button>
                 <Button Height="100" Width="100" Margin="118,0,362,0" BorderBrush="{x:Null}">
                     <Button.Background>
-                        <ImageBrush ImageSource="Jeton10.png"/>
+                        <ImageBrush ImageSource="/Images/Jetons/Jeton10.png"/>
                     </Button.Background>
                 </Button>
                 <Button Height="100" Width="100" Margin="234,0,246,0" BorderBrush="{x:Null}">
                     <Button.Background>
-                        <ImageBrush ImageSource="Jeton50.png"/>
+                        <ImageBrush ImageSource="/Images/Jetons/Jeton50.png"/>
                     </Button.Background>
                 </Button>
                 <Button Height="100" Width="100" Margin="352,0,128,0" BorderBrush="{x:Null}">
                     <Button.Background>
-                        <ImageBrush ImageSource="Jeton100.png"/>
+                        <ImageBrush ImageSource="/Images/Jetons/Jeton100.png"/>
                     </Button.Background>
                 </Button>
                 <Button Height="100" Width="100" Margin="470,0,10,0" BorderBrush="{x:Null}">
                     <Button.Background>
-                        <ImageBrush ImageSource="Jeton200.png"/>
+                        <ImageBrush ImageSource="/Images/Jetons/Jeton200.png"/>
                     </Button.Background>
                 </Button>
             </Grid>
@@ -124,5 +126,7 @@
         <Label Content="Mise actuelle :"  Margin="247,101,977,0" Grid.Row="1" VerticalAlignment="Top" Height="46" FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa"/>
         <Label x:Name="LabelMiseActuelle" Height="46" Margin="415,101,833,2" Grid.Row="1" FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa"/>
         <Label x:Name="LabelDate" Margin="1060,101,10,10" Grid.Row="1" FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa"/>
+        <Button Content="Miser" HorizontalAlignment="Left" Margin="1060,24,0,0" Grid.Row="1" VerticalAlignment="Top" Width="144" Height="48"/>
+        <Button Content="ResetMise" HorizontalAlignment="Left" Margin="1221,24,0,0" Grid.Row="1" VerticalAlignment="Top" Width="144" Height="48"/>
     </Grid>
 </Window>

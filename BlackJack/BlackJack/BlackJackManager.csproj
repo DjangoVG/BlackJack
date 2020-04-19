@@ -107,37 +107,194 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="FondVert.jpeg" />
+    <Resource Include="Images\Autres\FondVert.jpeg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Login.jpeg" />
+    <Resource Include="Images\Autres\Login.jpeg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="BoutonTirer.png" />
+    <Resource Include="Images\Boutons\BoutonTirer.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="BoutonRester.png" />
+    <Resource Include="Images\Boutons\BoutonRester.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="BoutonDouble.png" />
+    <Resource Include="Images\Boutons\BoutonDouble.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="BoutonSplit.png" />
+    <Resource Include="Images\Boutons\BoutonSplit.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Jeton5.png" />
+    <Resource Include="Images\Jetons\Jeton5.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Jeton10.png" />
+    <Resource Include="Images\Jetons\Jeton10.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Jeton50.png" />
+    <Resource Include="Images\Jetons\Jeton50.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Jeton100.png" />
+    <Resource Include="Images\Jetons\Jeton100.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Jeton200.png" />
+    <Resource Include="Images\Jetons\Jeton200.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\10CarreauRouge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\10CoeurRouge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\10PiqueNoir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\10TrefleNoir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\1CarreauRouge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\1CoeurRouge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\1PiqueNoir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\1TrefleNoir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\2CarreauRouge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\2CoeurRouge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\2PiqueNoir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\2TrefleNoir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\3CarreauRouge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\3CoeurRouge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\3PiqueNoir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\3TrefleNoir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\4CarreauRouge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\4CoeurRouge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\4PiqueNoir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\4TrefleNoir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\5CarreauRouge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\5CoeurRouge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\5PiqueNoir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\5TrefleNoir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\6CarreauRouge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\6CoeurRouge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\6PiqueNoir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\6TrefleNoir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\7CarreauRouge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\7CoeurRouge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\7PiqueNoir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\7TrefleNoir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\8CarreauRouge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\8CoeurRouge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\8PiqueNoir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\8TrefleNoir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\9CarreauRouge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\9CoeurRouge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\9PiqueNoir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\9TrefleNoir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\DameCarreauRouge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\DameCoeurRouge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\DamePiqueNoir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\DameTrefleNoir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\RoiCarreauRouge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\RoiCoeurRouge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\RoiPiqueNoir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\RoiTrefleNoir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\ValetCarreauRouge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\ValetCoeurRouge.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\ValetPiqueNoir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cartes\ValetTrefleNoir.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
