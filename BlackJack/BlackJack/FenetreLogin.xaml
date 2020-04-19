@@ -5,20 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BlackJack"
         mc:Ignorable="d"
-        Title="FenetreLogin" Height="295" Width="674">
-    <Grid>
-        <Grid.Background>
+        Title="FenetreLogin" Height="295" Width="674" MinHeight="295" MinWidth="674">
+    <StackPanel>
+        <StackPanel.Background>
             <ImageBrush ImageSource="Login.jpeg"/>
-        </Grid.Background>
-
-        <TextBlock Margin="265,54,32,0" Text="Bienvenue sur le BlackJack" HorizontalAlignment="Center"  VerticalAlignment="Top" FontSize="27" Foreground="White" FontWeight="Bold" Width="369" FontFamily="Eras ITC"/>
-
-        <TextBlock Height="25" Margin="286,116,277,0" Name="TBlock_Nom" Text="Adresse email" VerticalAlignment="Top" Foreground="White" FontSize="15" RenderTransformOrigin="0.672,0.479" FontFamily="Eras ITC"/>
-        <TextBlock Height="25" Margin="285,163,277,0" Name="TBlock_Prenom" Text="Mot de passe" VerticalAlignment="Top" Foreground="White" FontSize="15" FontFamily="Eras ITC"/>
-
-        <TextBox Height="25" Margin="394,112,64,0" Name="TBox_Nom" VerticalAlignment="Top" />
-        <TextBox Height="25" Margin="394,163,64,0" Name="TBox_Prenom" VerticalAlignment="Top" />
-
-        <Button Content="Connexion" Height="25" Margin="394,207,168,0" Name="button1" VerticalAlignment="Top" Width="104" Click="Connexion_Click" />
-    </Grid>
+        </StackPanel.Background>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Right" Margin="0,25,25,0">
+            <Label HorizontalAlignment="Center" FontSize="27" Foreground="White" FontWeight="Bold" FontFamily="Eras ITC" Margin="0,10,0,0">
+                Bienvenue sur le BlackJack
+            </Label>
+            <StackPanel x:Name="StackPanelLogin" HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal" Margin="5,25,5,5">
+                    <Label Foreground="White" FontSize="15" FontFamily="Eras ITC" Width="110">
+                        Adresse email
+                    </Label>
+                    <TextBox Text="{Binding Email}" Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="5,25,5,5">
+                    <Label Foreground="White" FontSize="15" FontFamily="Eras ITC" Width="110">
+                        Mot de passe
+                    </Label>
+                    <TextBox Text="{Binding Password}" Width="200"/>
+                </StackPanel>
+                <Button Margin="0,15,0,0" Height="25" Width="100" Click="Connexion_Click">
+                    Connexion
+                </Button>
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
 </Window>

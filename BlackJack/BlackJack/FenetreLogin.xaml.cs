@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace BlackJack
 {
@@ -19,9 +7,12 @@ namespace BlackJack
     /// </summary>
     public partial class FenetreLogin : Window
     {
+        public string Email { get; set; } = "";
+        public string Password { get; set; } = "";
         public FenetreLogin()
         {
             InitializeComponent();
+            StackPanelLogin.DataContext = this;
         }
 
         private void Connexion_Click(object sender, RoutedEventArgs e)
