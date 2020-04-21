@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BlackJackLibrary
+namespace BlackJackLibrairie
 {
     public class Sabot
     {

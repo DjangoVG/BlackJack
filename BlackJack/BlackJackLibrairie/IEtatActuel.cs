@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BlackJackLibrary
+namespace BlackJackLibrairie
 {
-    class Lobby
+    interface IEtatActuel
     {
+        Boolean ABust { get; }
     }
 }

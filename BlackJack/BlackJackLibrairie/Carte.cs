@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BlackJackLibrary
+namespace BlackJackLibrairie
 {
     // Le numéro associé est la valeu
     public enum ValeurCarte

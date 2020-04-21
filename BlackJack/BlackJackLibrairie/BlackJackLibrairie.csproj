@@ -4,19 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FAADB728-33CB-4559-9BC6-D5232F5C9DE8}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
-    <RootNamespace>BlackJack</RootNamespace>
-    <AssemblyName>BlackJack</AssemblyName>
+    <ProjectGuid>{40C3AFF0-075B-4ED6-9328-B26E3CE191E1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BlackJackLibrairie</RootNamespace>
+    <AssemblyName>BlackJackLibrairie</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <WarningLevel>4</WarningLevel>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -26,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -36,102 +32,37 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xaml">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="WindowsBase" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Page Include="FenetreBlackJack.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="FenetreLogin.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="FenetreBlackJack.xaml.cs">
-      <DependentUpon>FenetreBlackJack.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="FenetreLogin.xaml.cs">
-      <DependentUpon>FenetreLogin.xaml</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Autres\FondVert.jpeg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Autres\Login.jpeg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Boutons\BoutonTirer.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Boutons\BoutonRester.png" />
+    <Compile Include="Carte.cs" />
+    <Compile Include="Croupier.cs" />
+    <Compile Include="IEtatActuel.cs" />
+    <Compile Include="Joueur.cs" />
+    <Compile Include="JoueurManager.cs" />
+    <Compile Include="Lobby.cs" />
+    <Compile Include="LoginException.cs" />
+    <Compile Include="Profil.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sabot.cs" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Boutons\BoutonDouble.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\Boutons\BoutonRester.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Images\Boutons\BoutonSplit.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Jetons\Jeton5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Jetons\Jeton10.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Jetons\Jeton50.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Jetons\Jeton100.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Jetons\Jeton200.png" />
+    <Resource Include="Images\Boutons\BoutonTirer.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Cartes\10CarreauRouge.png" />
@@ -290,10 +221,22 @@
     <Resource Include="Images\Cartes\ValetTrefleNoir.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BlackJackLibrairie\BlackJackLibrairie.csproj">
-      <Project>{40c3aff0-075b-4ed6-9328-b26e3ce191e1}</Project>
-      <Name>BlackJackLibrairie</Name>
-    </ProjectReference>
+    <Resource Include="Images\Jetons\Jeton.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Jetons\Jeton10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Jetons\Jeton100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Jetons\Jeton200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Jetons\Jeton5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Jetons\Jeton50.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

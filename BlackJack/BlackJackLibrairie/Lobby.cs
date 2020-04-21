@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BlackJackLibrary
+namespace BlackJackLibrairie
 {
-    class Profil
+    class Lobby
     {
     }
 }
