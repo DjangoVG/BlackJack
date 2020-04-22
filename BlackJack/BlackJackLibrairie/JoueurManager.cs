@@ -22,13 +22,13 @@ namespace BlackJackLibrairie
         #endregion
 
         #region METHODES
-        public void LoadRegistryParameter(string email, string motdepasse, string pseudo)
+        public void LoadRegistryParameter(Joueur joueur)
         {
-            if (VerifSubkey(BlackJack, email))
+            if (VerifSubkey(BlackJack, joueur.Email))
             {
-                RegistryKey rk = BlackJack.CreateSubKey(email);
+                RegistryKey rk = BlackJack.CreateSubKey(joueur.Email);
                 string mdp;
-                if ((mdp = rk.GetValue(email) as string) != motdepasse)
+                if ((mdp = rk.GetValue(joueur.Email) as string) != joueur.MotDePasse)
                 {
                     throw new LoginException("Mot de passe incorrect", CodeException.MdpIncorrect);
                 }
@@ -38,6 +38,12 @@ namespace BlackJackLibrairie
                     {
                         throw new LoginException("", CodeException.PseudoInexistant);
                     }
+                    if (Convert.ToInt32(rk.GetValue("solde")) < 5)
+                    {
+                        //throw new LoginException("", CodeException.SoldeInsuffisant); A MODIFIER
+                    }
+                    joueur.Pseudo = rk.GetValue("pseudo") as string;
+                    joueur.Solde = Convert.ToInt32(rk.GetValue("solde"));
                     return;
                 }
                 
@@ -45,7 +51,7 @@ namespace BlackJackLibrairie
             throw new LoginException("Le joueur entré n'existe pas.", CodeException.JoueurNonTrouve);
         }
 
-        public void SaveRegistryPseudo(string email, string password, string pseudo)
+        public void SaveRegistryPseudo(string email, string pseudo)
         {
             Console.WriteLine("J'ajoute un pseudo");
             BlackJack.CreateSubKey(email).SetValue("pseudo", pseudo);
@@ -58,14 +64,11 @@ namespace BlackJackLibrairie
             rk.SetValue(email, password);
         }
 
-        public void SaveRegistryParameter(string email, string motdepasse)
+        public void SaveRegistryParameter(string email, string motdepasse, int solde)
         {
-            BlackJack.CreateSubKey(email).SetValue(email, motdepasse);
-        }
-
-        public void SaveRegistryParameter(string email)
-        {
-            BlackJack.CreateSubKey(email);
+            RegistryKey rk = BlackJack.CreateSubKey(email);
+            rk.SetValue(email, motdepasse);
+            rk.SetValue("solde", solde);
         }
 
         private bool VerifSubkey(RegistryKey rk, string subname)

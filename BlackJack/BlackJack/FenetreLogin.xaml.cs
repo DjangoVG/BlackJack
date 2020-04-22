@@ -32,8 +32,7 @@ namespace BlackJack
 
         private void Connexion_Click(object sender, RoutedEventArgs e)
         {
-            LoginJoueur.Email = BoxUsername.Text;
-            LoginJoueur.MotDePasse = BoxMDP.Password;
+            LoginJoueur.MotDePasse = BoxMotDePasse.Password;
             if (LoginJoueur.Email.Length == 0 || LoginJoueur.MotDePasse.Length == 0)
             {
                 MessageBox.Show("Veuillez completer tous les champs", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -41,8 +40,8 @@ namespace BlackJack
             }
             try
             {
-                JoueurManager.LoadRegistryParameter(LoginJoueur.Email, LoginJoueur.MotDePasse, "pseudo");
-                var fen = new FenetreBlackJack();
+                JoueurManager.LoadRegistryParameter(LoginJoueur);
+                var fen = new FenetreBlackJack(LoginJoueur);
                 fen.Show();
                 this.Close();
             }
@@ -60,7 +59,7 @@ namespace BlackJack
                     case CodeException.JoueurNonTrouve:
                         if (MessageBox.Show(ex.Message + ". Souhaitez vous l'ajouter ?", "Ajout joueur", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                         {
-                            JoueurManager.SaveRegistryParameter(LoginJoueur.Email, LoginJoueur.MotDePasse);
+                            JoueurManager.SaveRegistryParameter(LoginJoueur.Email, LoginJoueur.MotDePasse, LoginJoueur.Solde);
                             MessageBox.Show("Vous êtes bien inscrit !", "Excellent !", MessageBoxButton.OK, MessageBoxImage.Hand);
                         }
                         break;
@@ -71,11 +70,14 @@ namespace BlackJack
                         var fenetrePseudo = new FenetrePseudo();
                         fenetrePseudo.ShowDialog();
                         LoginJoueur.Pseudo = fenetrePseudo.Pseudo;
-                        JoueurManager.SaveRegistryPseudo(LoginJoueur.Email, LoginJoueur.MotDePasse, LoginJoueur.Pseudo);
-                        JoueurManager.LoadRegistryParameter(LoginJoueur.Email, LoginJoueur.MotDePasse, LoginJoueur.Pseudo);
-                        var fen = new FenetreBlackJack();
+                        JoueurManager.SaveRegistryPseudo(LoginJoueur.Email, LoginJoueur.Pseudo);
+                        JoueurManager.LoadRegistryParameter(LoginJoueur);
+                        var fen = new FenetreBlackJack(LoginJoueur);
                         fen.Show();
                         this.Close();
+                        break;
+                    case CodeException.SoldeInsuffisant:
+                        // Rediriger vers le dépot d'argent
                         break;
                 }
             }

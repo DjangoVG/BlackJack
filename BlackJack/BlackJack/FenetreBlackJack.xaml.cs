@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Windows;
+using BlackJackLibrairie;
 
 namespace BlackJack
 {
     public partial class FenetreBlackJack : Window
     {
-        private String EmailJoueur;
-        private String PseudoJoueur;
 
-        public FenetreBlackJack()
+        public FenetreBlackJack(Joueur joueur)
         {
             InitializeComponent();
-            LoadJoueur("");
+            LoadJoueur(joueur.Pseudo, joueur.Solde);
         }
 
         private void ClickBoutonRetirer(object sender, EventArgs e)
@@ -29,11 +28,10 @@ namespace BlackJack
             this.Close();
         }
 
-        private void LoadJoueur(String email)
+        private void LoadJoueur(String Pseudo, int SoldeActuel)
         {
-            // Initialise les données du joueur (pseudo, solde actuel, etc)
-            this.PseudoJoueur = "Django";
-            this.LabelPseudoJoueur.Content = PseudoJoueur;
+            this.LabelPseudoJoueur.Content = Pseudo;
+            this.LabelSolde.Content = SoldeActuel;
         }
     }
 }

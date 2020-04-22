@@ -7,7 +7,8 @@ namespace BlackJackLibrairie
         MdpIncorrect,
         EmailIncorrect,
         JoueurNonTrouve,
-        PseudoInexistant
+        PseudoInexistant,
+        SoldeInsuffisant
     }
 
     public class LoginException : Exception

@@ -8,16 +8,12 @@ namespace BlackJackLibrairie
 {
     public class Joueur : IEtatActuel
     {
-        [XmlAttribute]
         private string _email;
-        [XmlAttribute]
         private string _nom;
-        [XmlAttribute]
         private string _prenom;
-        [XmlAttribute]
         private string _pseudo;
-        [XmlAttribute]
         private string _motdepasse;
+        private int _solde;
 
         #region PROPRIETES
         public string Nom
@@ -43,6 +39,12 @@ namespace BlackJackLibrairie
             get { return _email; }
             set { _email = value; }
         }
+
+        public int Solde
+        {
+            get { return _solde; }
+            set { _solde = value; }
+        }
         #endregion
 
         #region CONSTRUCTEURS
@@ -51,17 +53,19 @@ namespace BlackJackLibrairie
             Nom = "";
             MotDePasse = "";
             Pseudo = "";
+            Solde = 0;
         }
 
-        public Joueur(string email, string mdp, string pseudo)
+        public Joueur(string email, string mdp, string pseudo, int solde)
         {
             Email = email;
             MotDePasse = mdp;
             Pseudo = pseudo;
+            Solde = solde;
         }
         #endregion
 
-        #region METHODES
+        #region METHODES 
         public void SaveXML(string path)
         {
             XmlSerializer xmlformat = new XmlSerializer(typeof(Joueur));
