@@ -22,7 +22,7 @@ namespace BlackJackLibrairie
         #endregion
 
         #region METHODES
-        public void LoadRegistryParameter(string email, string motdepasse)
+        public void LoadRegistryParameter(string email, string motdepasse, string pseudo)
         {
             if (VerifSubkey(BlackJack, email))
             {
@@ -32,9 +32,24 @@ namespace BlackJackLibrairie
                 {
                     throw new LoginException("Mot de passe incorrect", CodeException.MdpIncorrect);
                 }
-                return;
+                else
+                {
+                    if (rk.GetValue("pseudo") == null || rk.GetValue("pseudo").Equals(""))
+                    {
+                        throw new LoginException("", CodeException.PseudoInexistant);
+                    }
+                    return;
+                }
+                
             }
             throw new LoginException("Le joueur entré n'existe pas.", CodeException.JoueurNonTrouve);
+        }
+
+        public void SaveRegistryPseudo(string email, string password, string pseudo)
+        {
+            Console.WriteLine("J'ajoute un pseudo");
+            BlackJack.CreateSubKey(email).SetValue("pseudo", pseudo);
+            return;
         }
 
         public void FirstRegistry(string email, string password)
@@ -45,11 +60,7 @@ namespace BlackJackLibrairie
 
         public void SaveRegistryParameter(string email, string motdepasse)
         {
-            if (VerifSubkey(BlackJack, email))
-            {
-                BlackJack.SetValue(email, motdepasse);
-            }
-            throw new LoginException("", CodeException.EmailIncorrect);
+            BlackJack.CreateSubKey(email).SetValue(email, motdepasse);
         }
 
         public void SaveRegistryParameter(string email)

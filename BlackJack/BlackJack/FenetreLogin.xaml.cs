@@ -41,9 +41,7 @@ namespace BlackJack
             }
             try
             {
-                Console.WriteLine("MAIL : " + LoginJoueur.Email);
-                Console.WriteLine("MDP : " + LoginJoueur.MotDePasse);
-                JoueurManager.LoadRegistryParameter(LoginJoueur.Email, LoginJoueur.MotDePasse);
+                JoueurManager.LoadRegistryParameter(LoginJoueur.Email, LoginJoueur.MotDePasse, "pseudo");
                 var fen = new FenetreBlackJack();
                 fen.Show();
                 this.Close();
@@ -62,11 +60,22 @@ namespace BlackJack
                     case CodeException.JoueurNonTrouve:
                         if (MessageBox.Show(ex.Message + ". Souhaitez vous l'ajouter ?", "Ajout joueur", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                         {
-                            JoueurManager.SaveRegistryParameter(LoginJoueur.Nom, LoginJoueur.MotDePasse);
+                            JoueurManager.SaveRegistryParameter(LoginJoueur.Email, LoginJoueur.MotDePasse);
+                            MessageBox.Show("Vous êtes bien inscrit !", "Excellent !", MessageBoxButton.OK, MessageBoxImage.Hand);
                         }
                         break;
                     case CodeException.EmailIncorrect:
                         MessageBox.Show(ex.Message, "Erreur email", MessageBoxButton.OK, MessageBoxImage.Error);
+                        break;
+                    case CodeException.PseudoInexistant:
+                        var fenetrePseudo = new FenetrePseudo();
+                        fenetrePseudo.ShowDialog();
+                        LoginJoueur.Pseudo = fenetrePseudo.Pseudo;
+                        JoueurManager.SaveRegistryPseudo(LoginJoueur.Email, LoginJoueur.MotDePasse, LoginJoueur.Pseudo);
+                        JoueurManager.LoadRegistryParameter(LoginJoueur.Email, LoginJoueur.MotDePasse, LoginJoueur.Pseudo);
+                        var fen = new FenetreBlackJack();
+                        fen.Show();
+                        this.Close();
                         break;
                 }
             }
