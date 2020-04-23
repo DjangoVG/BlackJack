@@ -6,11 +6,16 @@ namespace BlackJack
 {
     public partial class FenetreBlackJack : Window
     {
-
+        public Joueur Joueur { get; set; }
+        public int MiseActuelle { get; set; } = 0;
+        public string Date { get; } = DateTime.Now.ToString("dd/MM/yyyy");
         public FenetreBlackJack(Joueur joueur)
         {
             InitializeComponent();
-            LoadJoueur(joueur.Pseudo, joueur.Solde);
+            Joueur = joueur;
+            SPInformation.DataContext = Joueur;
+            BoxJoueur.DataContext = Joueur;
+            SPDate.DataContext = this;
         }
 
         private void ClickBoutonRetirer(object sender, EventArgs e)
@@ -26,12 +31,6 @@ namespace BlackJack
         private void MenuExitClick(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void LoadJoueur(String Pseudo, int SoldeActuel)
-        {
-            this.LabelPseudoJoueur.Content = Pseudo;
-            this.LabelSolde.Content = SoldeActuel;
         }
     }
 }

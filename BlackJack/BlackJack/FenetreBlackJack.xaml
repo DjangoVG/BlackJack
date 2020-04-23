@@ -5,34 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BlackJack"
         mc:Ignorable="d"
-        Title="FenetreBlackJack" Height="930" Width="1400">
+        Title="FenetreBlackJack" Height="950" Width="1400" MinHeight="900" MinWidth="1300">
+
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <Grid.Background>
-            <ImageBrush ImageSource="/Images/Autres/FondVert.jpeg"/>
-        </Grid.Background>
-        <Menu Height="20" Margin="0,0,0,10" Background="DarkGray" VerticalAlignment="Top">
-            <MenuItem x:Name="MenuFile" Header="Profil">
-                <MenuItem x:Name="ConnectBouton" Header="Se connecter" />
-                <MenuItem x:Name="DisconnectBouton" Header="Se deconnecter" />
-                <Separator />
-                <MenuItem x:Name="MenuArgent" Header="Argent">
-                    <MenuItem x:Name="BoutonRetirer" Header="Retirer" Click="ClickBoutonRetirer" />
-                    <MenuItem x:Name="BoutonDeposer" Header="Déposer" Click="ClickBoutonDeposer" />
+        <StackPanel>
+            <StackPanel.Background>
+                <ImageBrush ImageSource="/Images/Autres/FondVert.jpeg"/>
+            </StackPanel.Background>
+            <Menu Height="20" Background="DarkGray">
+                <MenuItem Header="Profil">
+                    <MenuItem Header="Se connecter" />
+                    <MenuItem Header="Se deconnecter" />
+                    <Separator />
+                    <MenuItem Header="Argent">
+                        <MenuItem Header="Retirer" Click="ClickBoutonRetirer" />
+                        <MenuItem Header="Déposer" Click="ClickBoutonDeposer" />
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Header="Quitter l'application" Click="MenuExitClick" />
                 </MenuItem>
-                <Separator />
-                <MenuItem x:Name="MenuExit" Header="Quitter l'application" Click="MenuExitClick" />
-            </MenuItem>
-            <MenuItem x:Name="MenuOption" Header="Options">
-            </MenuItem>
-        </Menu>
-        <DockPanel>
-            <GroupBox x:Name="BoxCroupier" Header="{Binding Path=DealerBoxHeader, UpdateSourceTrigger=PropertyChanged}" Margin="30,50,30,30" DockPanel.Dock="Top" MaxHeight="250">
+                <MenuItem Header="Options">
+                </MenuItem>
+            </Menu>
+
+            <GroupBox Header="{Binding Path=DealerBoxHeader, UpdateSourceTrigger=PropertyChanged}" MinHeight="250" Height="250" Margin="5">
                 <UniformGrid>
-                    <Label Content="Croupier" Margin="0,0,-660,-121" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Copperplate Gothic Bold" FontSize="150" Foreground="DarkGray" Opacity="0.3" IsEnabled="False" IsHitTestVisible="False"/>
+                    <Label Content="Croupier" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Copperplate Gothic Bold" FontSize="150" Foreground="DarkGray" Opacity="0.3" IsEnabled="False" IsHitTestVisible="False"/>
                     <ItemsControl Name="dealerCardsItemControl" ItemsSource="{Binding Path=DealerCardsList}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
@@ -47,13 +45,13 @@
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
-                    <Image Margin="0,-112,476,0" Source="Images/Cartes/1CarreauRouge.png"/>
+                    <Image Source="Images/Cartes/1CarreauRouge.png" Width="175" VerticalAlignment="Top"/>
                 </UniformGrid>
             </GroupBox>
 
-            <GroupBox x:Name="BoxJoueur" Header="{Binding Path=PlayerBoxHeader, UpdateSourceTrigger=PropertyChanged}" Margin="30,30,30,30" DockPanel.Dock="Top" MinHeight="250" Height="208">
+            <GroupBox x:Name="BoxJoueur" Header="{Binding Path=PlayerBoxHeader, UpdateSourceTrigger=PropertyChanged}" MinHeight="250" Height="250" Margin="5">
                 <UniformGrid>
-                    <Label x:Name="LabelPseudoJoueur" Content="{Binding Path=NomJoueur}" Margin="0,0,-660,-121" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Copperplate Gothic Bold" FontSize="150" Foreground="DarkGray" Opacity="0.3"/>
+                    <Label Content="{Binding Pseudo}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Copperplate Gothic Bold" FontSize="150" Foreground="DarkGray" Opacity="0.3"/>
                     <ItemsControl x:Name="playerCardsItemControl" ItemsSource="{Binding PlayerCardsList}" Margin="0,0,0,10">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
@@ -63,70 +61,91 @@
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
-                    <Image Margin="0,-112,0,0" Source="Images/Cartes/RoiCoeurRouge.png" HorizontalAlignment="Left" Width="175"/>
+                    <Image Source="Images/Cartes/RoiCoeurRouge.png" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 </UniformGrid>
             </GroupBox>
+        </StackPanel>
 
-            <Grid Height="100" VerticalAlignment="Top" Margin="50,10,0,0" Width="459" Grid.Row="1" HorizontalAlignment="Left">
-                <Button Height="100" Width="100" Margin="0,0,359,0" BorderBrush="{x:Null}" Foreground="{x:Null}">
-                    <Button.Background>
-                        <ImageBrush ImageSource="/Images/Boutons/BoutonTirer.png"/>
-                    </Button.Background>
-                </Button>
-                <Button Height="100" Width="100" Margin="116,0,243,0" BorderBrush="{x:Null}">
-                    <Button.Background>
-                        <ImageBrush ImageSource="/Images/Boutons/BoutonRester.png"/>
-                    </Button.Background>
-                </Button>
-                <Button Height="100" Width="100" Margin="234,0,125,0" BorderBrush="{x:Null}">
-                    <Button.Background>
-                        <ImageBrush ImageSource="/Images/Boutons/BoutonSplit.png"/>
-                    </Button.Background>
-                </Button>
-                <Button Height="100" Width="100" Margin="349,0,10,0" BorderBrush="{x:Null}">
-                    <Button.Background>
-                        <ImageBrush ImageSource="/Images/Boutons/BoutonDouble.png"/>
-                    </Button.Background>
-                </Button>
+        <StackPanel VerticalAlignment="Bottom">
+            <Grid>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Button Height="100" Width="100" BorderBrush="{x:Null}" Foreground="{x:Null}">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/Images/Boutons/BoutonTirer.png"/>
+                        </Button.Background>
+                    </Button>
+                    <Button Height="100" Width="100" BorderBrush="{x:Null}">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/Images/Boutons/BoutonRester.png"/>
+                        </Button.Background>
+                    </Button>
+                    <Button Height="100" Width="100" BorderBrush="{x:Null}">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/Images/Boutons/BoutonSplit.png"/>
+                        </Button.Background>
+                    </Button>
+                    <Button Height="100" Width="100" BorderBrush="{x:Null}">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/Images/Boutons/BoutonDouble.png"/>
+                        </Button.Background>
+                    </Button>
+                </StackPanel>
 
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Height="100" Width="100" BorderBrush="{x:Null}">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/Images/Jetons/Jeton5.png"/>
+                        </Button.Background>
+                    </Button>
+                    <Button Height="100" Width="100" BorderBrush="{x:Null}">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/Images/Jetons/Jeton10.png"/>
+                        </Button.Background>
+                    </Button>
+                    <Button Height="100" Width="100" BorderBrush="{x:Null}">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/Images/Jetons/Jeton50.png"/>
+                        </Button.Background>
+                    </Button>
+                    <Button Height="100" Width="100" BorderBrush="{x:Null}">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/Images/Jetons/Jeton100.png"/>
+                        </Button.Background>
+                    </Button>
+                    <Button Height="100" Width="100" BorderBrush="{x:Null}">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/Images/Jetons/Jeton200.png"/>
+                        </Button.Background>
+                    </Button>
+                </StackPanel>
             </Grid>
-
-            <Grid Height="100" VerticalAlignment="Top" Margin="0,10,50,0" Width="580" Grid.Row="1" HorizontalAlignment="Right">
-                <Button Height="100" Width="100" Margin="0,0,480,0" BorderBrush="{x:Null}">
-                    <Button.Background>
-                        <ImageBrush ImageSource="/Images/Jetons/Jeton5.png"/>
-                    </Button.Background>
+            <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" Margin="5">
+                <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Height="50" Margin="0,0,5,0">
+                    Miser
                 </Button>
-                <Button Height="100" Width="100" Margin="118,0,362,0" BorderBrush="{x:Null}">
-                    <Button.Background>
-                        <ImageBrush ImageSource="/Images/Jetons/Jeton10.png"/>
-                    </Button.Background>
+                <Button HorizontalAlignment="Left"  VerticalAlignment="Top" Width="150" Height="50">
+                    Réinitialiser mise
                 </Button>
-                <Button Height="100" Width="100" Margin="234,0,246,0" BorderBrush="{x:Null}">
-                    <Button.Background>
-                        <ImageBrush ImageSource="/Images/Jetons/Jeton50.png"/>
-                    </Button.Background>
-                </Button>
-                <Button Height="100" Width="100" Margin="352,0,128,0" BorderBrush="{x:Null}">
-                    <Button.Background>
-                        <ImageBrush ImageSource="/Images/Jetons/Jeton100.png"/>
-                    </Button.Background>
-                </Button>
-                <Button Height="100" Width="100" Margin="470,0,10,0" BorderBrush="{x:Null}">
-                    <Button.Background>
-                        <ImageBrush ImageSource="/Images/Jetons/Jeton200.png"/>
-                    </Button.Background>
-                </Button>
+            </StackPanel>
+            <Grid>
+                <Grid.Background>
+                    <SolidColorBrush Color="#FF424242" Opacity="0.7"/>
+                </Grid.Background>
+                <StackPanel x:Name="SPInformation" HorizontalAlignment="Left" Orientation="Horizontal">
+                    <Label VerticalAlignment="Top" FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa">
+                        Solde :
+                    </Label>
+                    <Label Content="{Binding Solde}" Height="46"  FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa"/>
+                    <Label  VerticalAlignment="Top" Height="46" FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa">
+                        Mise actuelle :
+                    </Label>
+                    <Label Content="0" Height="46"  FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa"/>
+                    <!--Content="{Binding MiseActuelle}"-->
+                </StackPanel>
+                <StackPanel x:Name="SPDate" HorizontalAlignment="Right" Orientation="Horizontal">
+                    <Label Content="{Binding Date}" FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa"/>
+                </StackPanel>
             </Grid>
-
-        </DockPanel>
-        <Rectangle HorizontalAlignment="Left" Height="56" Margin="0,93,0,0" Grid.Row="1" VerticalAlignment="Top" Width="1392" Fill="#FF424242" Opacity="0.7"/>
-        <Label Content="Solde :"  Margin="11,101,1289,0" Grid.Row="1" VerticalAlignment="Top" Height="46" FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa"/>
-        <Label x:Name="LabelSolde" Height="46" Margin="103,101,1145,2" Grid.Row="1" FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa"></Label>
-        <Label Content="Mise actuelle :"  Margin="247,101,977,0" Grid.Row="1" VerticalAlignment="Top" Height="46" FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa"/>
-        <Label x:Name="LabelMiseActuelle" Height="46" Margin="415,101,833,2" Grid.Row="1" FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa"/>
-        <Label x:Name="LabelDate" Margin="1060,101,10,10" Grid.Row="1" FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa"/>
-        <Button Content="Miser" HorizontalAlignment="Left" Margin="1060,24,0,0" Grid.Row="1" VerticalAlignment="Top" Width="144" Height="48"/>
-        <Button Content="ResetMise" HorizontalAlignment="Left" Margin="1221,24,0,0" Grid.Row="1" VerticalAlignment="Top" Width="144" Height="48"/>
+        </StackPanel>
     </Grid>
 </Window>
