@@ -51,6 +51,7 @@
     <Compile Include="Profil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sabot.cs" />
+    <Compile Include="ThreadDate.cs" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Boutons\BoutonDouble.png" />
