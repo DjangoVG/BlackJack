@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading;
@@ -46,14 +45,17 @@ namespace BlackJack
         public FenetreBlackJack(Joueur joueur)
         {
             InitializeComponent();
+            Application.Current.MainWindow.WindowState = WindowState.Maximized;
             SPInformation.DataContext = Lobby.Joueur;
             SPDate.DataContext = this;
             SPCroupier.DataContext = Lobby;
             SPJoueur.DataContext = Lobby;
+            SPInformation.DataContext = Lobby.Joueur;
             BoutonMiser.DataContext = this;
             BoutonReset.DataContext = this;
             IsResetEnable = true;
             IsMiseEnable = true;
+
             
             // DATE
             Date = DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss");
@@ -75,23 +77,40 @@ namespace BlackJack
                 this.RectangleCroupier.BorderBrush = new SolidColorBrush(Colors.White);
                 this.RectangleJoueur.BorderBrush = new SolidColorBrush(Colors.White);
                 Lobby.StartGame();
+                IsResetEnable = false;
+                IsMiseEnable = false;
+                GetValeur(); // Affichage de la valeur de la main du croupier/joueur
             }
-                
-
-            IsResetEnable = false;
-            IsMiseEnable = false;
+            if (Lobby.ValeurDeckJoueur() == 21)
+            {
+                Lobby.DonneCarteCroupier();
+                GetValeur();
+                if (Lobby.ValeurDeckCroupier() == 21)
+                {
+                    this.RectangleCroupier.BorderBrush = new SolidColorBrush(Colors.Orange);
+                    this.RectangleJoueur.BorderBrush = new SolidColorBrush(Colors.Orange);
+                }
+                else
+                {
+                    this.RectangleCroupier.BorderBrush = new SolidColorBrush(Colors.Red);
+                    this.RectangleJoueur.BorderBrush = new SolidColorBrush(Colors.Green);
+                }
+                IsResetEnable = true;
+                IsMiseEnable = true;
+            }
         }
 
         private void BoutonTirer (object sender, EventArgs e)
         {
             Lobby.DonneCarteJoueur();
-
-
-
-
-
-
-
+            GetValeur();
+            if (Lobby.ValeurDeckJoueur() > 21)
+            {
+                this.RectangleCroupier.BorderBrush = new SolidColorBrush(Colors.Green);
+                this.RectangleJoueur.BorderBrush = new SolidColorBrush(Colors.Red);
+            }
+            IsMiseEnable = true;
+            IsResetEnable = true;
         }
 
         private void BoutonStand(object sender, EventArgs e)
@@ -99,18 +118,12 @@ namespace BlackJack
             while (Lobby.ValeurDeckCroupier() < 17)
             {
                 Lobby.DonneCarteCroupier();
-
-
-
+                GetValeur();
             }
             if (Lobby.ValeurDeckCroupier() > 21)
                 Lobby.Croupier.ABust = true;
             else
                 Lobby.Croupier.ABust = false;
-
-            Console.WriteLine(Lobby.ValeurDeckCroupier());
-            Console.WriteLine(Lobby.ValeurDeckJoueur());
-            Console.WriteLine(Lobby.Croupier.ABust);
 
             if (Lobby.ValeurDeckCroupier() > Lobby.ValeurDeckJoueur() && !Lobby.Croupier.ABust) // CROUPIER WIN
             {
@@ -148,6 +161,12 @@ namespace BlackJack
             {
                 handler(this, new PropertyChangedEventArgs(propertyName));
             }
+        }
+
+        private void GetValeur()
+        {
+            ValeurCroupier.Content = Lobby.ValeurDeckCroupier();
+            ValeurJoueur.Content = Lobby.ValeurDeckJoueur();
         }
 
         private void MenuExitClick(object sender, EventArgs e)

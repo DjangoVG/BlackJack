@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BlackJack"
         mc:Ignorable="d"
-        Title="FenetreBlackJack" Height="990" Width="1400" MinHeight="975" MinWidth="1300">
+        WindowState="Maximized" 
+        Title="FenetreBlackJack" Height="990" Width="1400">
     <Window.Resources>
 
         <!-- Ajout des images pour le mouse hover -->
@@ -540,12 +541,15 @@
             </Menu>
             
             <StackPanel x:Name="SPCroupier" Margin="10">
-                <Label Content="{Binding Croupier.Pseudo}" FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa"></Label>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Croupier" FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa"></Label>
+                    <Label x:Name="ValeurCroupier" FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa" Margin="5,0,0,0"></Label>
+                </StackPanel>
                 <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
-                    <ItemsControl x:Name="RectangleCroupier" ItemsSource="{Binding CartesCroupier}" BorderBrush="White" BorderThickness="2.5" MinHeight="250">
+                    <ItemsControl x:Name="RectangleCroupier" ItemsSource="{Binding CartesCroupier}" BorderBrush="White" BorderThickness="2.5" Height="175">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Image Source="{Binding ImageCarte}" Height="240" Margin="5" VerticalAlignment="Center"/>
+                                <Image Source="{Binding ImageCarte}" Height="Auto" Margin="5"/>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                         <ItemsControl.ItemsPanel>
@@ -558,12 +562,16 @@
             </StackPanel>
             
             <StackPanel x:Name="SPJoueur"  Margin="10">
-                <Label Content="{Binding Joueur.Pseudo}" FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa"></Label>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{Binding Joueur.Pseudo}" FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa"></Label>
+                    <Label x:Name="ValeurJoueur" FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa" Margin="5,0,0,0"></Label>                    
+                </StackPanel>
+
                 <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
-                    <ItemsControl x:Name="RectangleJoueur" ItemsSource="{Binding CartesJoueur}" BorderBrush="White" BorderThickness="2.5" MinHeight="250">
+                    <ItemsControl x:Name="RectangleJoueur" ItemsSource="{Binding CartesJoueur}" BorderBrush="White" BorderThickness="2.5" Height="175">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Image Source="{Binding ImageCarte}" Height="240" Margin="5"/>
+                                <Image Source="{Binding ImageCarte}" Height="Auto" Margin="5"/>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                         <ItemsControl.ItemsPanel>
@@ -649,7 +657,7 @@
                     <Label VerticalAlignment="Top" FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa">
                         Solde :
                     </Label>
-                    <Label Content="{Binding Solde}" Height="46"  FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa"/>
+                    <Label Content="{Binding Joueur.Solde}" Height="46"  FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa"/>
                     <Label  VerticalAlignment="Top" Height="46" FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa">
                         Mise actuelle :
                     </Label>
