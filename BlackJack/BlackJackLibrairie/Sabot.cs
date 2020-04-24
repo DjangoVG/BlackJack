@@ -25,7 +25,7 @@ namespace BlackJackLibrairie
                 _sabot.Add(new Carte(TypeCarte.Coeur, ValeurCarte.Trois, "/Images/Cartes/3CoeurRouge.png"));
                 _sabot.Add(new Carte(TypeCarte.Coeur, ValeurCarte.Quatre, "/Images/Cartes/4CoeurRouge.png"));
                 _sabot.Add(new Carte(TypeCarte.Coeur, ValeurCarte.Cinq, "/Images/Cartes/5CoeurRouge.png"));
-                _sabot.Add(new Carte(TypeCarte.Coeur, ValeurCarte.Six, "/Images/Cartes/Cartes/6CoeurRouge.png"));
+                _sabot.Add(new Carte(TypeCarte.Coeur, ValeurCarte.Six, "/Images/Cartes/6CoeurRouge.png"));
                 _sabot.Add(new Carte(TypeCarte.Coeur, ValeurCarte.Sept, "/Images/Cartes/7CoeurRouge.png"));
                 _sabot.Add(new Carte(TypeCarte.Coeur, ValeurCarte.Huit, "/Images/Cartes/8CoeurRouge.png"));
                 _sabot.Add(new Carte(TypeCarte.Coeur, ValeurCarte.Neuf, "/Images/Cartes/9CoeurRouge.png"));

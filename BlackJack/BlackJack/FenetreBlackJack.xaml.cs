@@ -99,10 +99,14 @@ namespace BlackJack
             while (Lobby.ValeurDeckCroupier() < 17)
             {
                 Lobby.DonneCarteCroupier();
-                Thread.Sleep(1000);
+
+
+
             }
             if (Lobby.ValeurDeckCroupier() > 21)
                 Lobby.Croupier.ABust = true;
+            else
+                Lobby.Croupier.ABust = false;
 
             Console.WriteLine(Lobby.ValeurDeckCroupier());
             Console.WriteLine(Lobby.ValeurDeckJoueur());
