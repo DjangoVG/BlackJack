@@ -19,13 +19,13 @@
                     <Label Foreground="White" FontSize="15" FontFamily="Eras ITC" Width="110">
                         Adresse email
                     </Label>
-                    <TextBox Text="{Binding Email}" Width="200"/>
+                    <TextBox Text="{Binding Email}" Width="200" VerticalContentAlignment="Center"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="5,25,5,5">
                     <Label Foreground="White" FontSize="15" FontFamily="Eras ITC" Width="110">
                         Mot de passe
                     </Label>
-                    <PasswordBox x:Name="BoxMotDePasse" Width="200"/>
+                    <PasswordBox x:Name="BoxMotDePasse" Width="200" VerticalContentAlignment="Center"/>
                 </StackPanel>
                 <Button Margin="0,15,0,0" Height="25" Width="100" Click="Connexion_Click">
                     Connexion

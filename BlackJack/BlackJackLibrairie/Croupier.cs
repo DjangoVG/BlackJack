@@ -4,8 +4,26 @@ using System.Text;
 
 namespace BlackJackLibrairie
 {
-    class Croupier : IEtatActuel
+    public class Croupier
     {
-        public bool ABust => throw new NotImplementedException();
+        public string Pseudo { get; } = "Croupier";
+        private Boolean _abust;
+
+        public bool ABust
+        {
+            get
+            {
+                return _abust;
+            }
+            set
+            {
+                _abust = value;
+            }
+        }
+
+        public Croupier()
+        {
+            ABust = false;
+        }
     }
 }

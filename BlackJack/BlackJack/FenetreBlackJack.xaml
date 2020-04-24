@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BlackJack"
         mc:Ignorable="d"
-        Title="FenetreBlackJack" Height="950" Width="1400" MinHeight="900" MinWidth="1300">
+        Title="FenetreBlackJack" Height="990" Width="1400" MinHeight="975" MinWidth="1300">
     <Window.Resources>
 
         <!-- Ajout des images pour le mouse hover -->
@@ -462,8 +462,9 @@
                                 <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="false">
-                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource miser_bouton}"/>
                                 <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="Opacity" TargetName="border" Value="0.5"/>
                                 <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -505,8 +506,9 @@
                                 <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="false">
-                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource reset_bouton}"/>
                                 <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="Opacity" TargetName="border" Value="0.5"/>
                                 <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -536,54 +538,53 @@
                 <MenuItem Header="Options">
                 </MenuItem>
             </Menu>
-
-            <GroupBox Header="{Binding Path=DealerBoxHeader, UpdateSourceTrigger=PropertyChanged}" MinHeight="250" Height="250" Margin="30">
-                <UniformGrid>
-                    <Label Content="Croupier" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Copperplate Gothic Bold" FontSize="150" Foreground="DarkGray" Opacity="0.3" IsEnabled="False" IsHitTestVisible="False"/>
-                    <ItemsControl Name="dealerCardsItemControl" ItemsSource="{Binding Path=DealerCardsList}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
+            
+            <StackPanel x:Name="SPCroupier" Margin="10">
+                <Label Content="{Binding Croupier.Pseudo}" FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa"></Label>
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
+                    <ItemsControl x:Name="RectangleCroupier" ItemsSource="{Binding CartesCroupier}" BorderBrush="White" BorderThickness="2.5" MinHeight="250">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding ImageCarte}" Height="240" Margin="5" VerticalAlignment="Center"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel/>
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </ScrollViewer>
+            </StackPanel>
+            
+            <StackPanel x:Name="SPJoueur"  Margin="10">
+                <Label Content="{Binding Joueur.Pseudo}" FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa"></Label>
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
+                    <ItemsControl x:Name="RectangleJoueur" ItemsSource="{Binding CartesJoueur}" BorderBrush="White" BorderThickness="2.5" MinHeight="250">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Border>
-                                    <Image />
-                                </Border>
+                                <Image Source="{Binding ImageCarte}" Height="240" Margin="5"/>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
                     </ItemsControl>
-                    <Image Source="Images/Cartes/1CarreauRouge.png" Width="175" VerticalAlignment="Top"/>
-                </UniformGrid>
-            </GroupBox>
-
-            <GroupBox x:Name="BoxJoueur" Header="{Binding Path=PlayerBoxHeader, UpdateSourceTrigger=PropertyChanged}" MinHeight="250" Height="250" Margin="30">
-                <UniformGrid>
-                    <Label Content="{Binding Pseudo}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Copperplate Gothic Bold" FontSize="150" Foreground="DarkGray" Opacity="0.3"/>
-                    <ItemsControl x:Name="playerCardsItemControl" ItemsSource="{Binding PlayerCardsList}" Height="Auto" Width="Auto" MinHeight="250">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <Border >
-                                    <Image/>
-                                </Border>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                    <Image Source="Images/Cartes/RoiCoeurRouge.png" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                </UniformGrid>
-            </GroupBox>
+                </ScrollViewer>
+            </StackPanel>
         </StackPanel>
 
         <StackPanel VerticalAlignment="Bottom">
             <Grid>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="30,0,0,0">
-                    <Button Height="100" Width="100" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="15,0,5,0" Style="{DynamicResource BoutonHit}" >
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="30,15,0,0">
+                    <Button Height="100" Width="100" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="15,0,5,0" Style="{DynamicResource BoutonHit}" Click="BoutonTirer" >
                         <Button.Background>
                             <ImageBrush ImageSource="/Images/Boutons/BoutonTirer.png"/>
                         </Button.Background>
                     </Button>
-                    <Button Height="100" Width="100" BorderBrush="{x:Null}" Margin="15,0,5,0" Style="{DynamicResource BoutonStand}">
+                    <Button Height="100" Width="100" BorderBrush="{x:Null}" Margin="15,0,5,0" Style="{DynamicResource BoutonStand}" Click="BoutonStand">
                         <Button.Background>
                             <ImageBrush ImageSource="/Images/Boutons/BoutonRester.png"/>
                         </Button.Background>
@@ -600,7 +601,7 @@
                     </Button>
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,30,0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,15,30,0">
                     <Button Height="100" Width="100" BorderBrush="{x:Null}" Margin="5,0,15,0" Style="{DynamicResource Bouton5}">
                         <Button.Background>
                             <ImageBrush ImageSource="/Images/Jetons/Jeton5.png"/>
@@ -629,12 +630,12 @@
                 </StackPanel>
             </Grid>
             <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" Margin="30">
-                <Button Height="83" Width="208" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="15,0,15,0" Style="{DynamicResource BoutonMiser}" >
+                <Button x:Name="BoutonMiser" Height="83" Width="208" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="15,0,15,0" Style="{DynamicResource BoutonMiser}" Click="BoutonPlayGame" IsEnabled="{Binding IsMiseEnable}" >
                     <Button.Background>
                         <ImageBrush ImageSource="/Images/Autres/BoutonMiser.png"/>
                     </Button.Background>
                 </Button>
-                <Button Height="83" Width="208" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="30,0,15,0" Style="{DynamicResource BoutonReset}" >
+                <Button x:Name="BoutonReset" Height="83" Width="208" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="30,0,15,0" Style="{DynamicResource BoutonReset}" IsEnabled="{Binding IsResetEnable}">
                     <Button.Background>
                         <ImageBrush ImageSource="/Images/Autres/BoutonReset.png"/>
                     </Button.Background>

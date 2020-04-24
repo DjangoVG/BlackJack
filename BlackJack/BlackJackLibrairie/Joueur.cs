@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 
 namespace BlackJackLibrairie
 {
-    public class Joueur : IEtatActuel
+    public class Joueur
     {
         private string _email;
         private string _nom;
@@ -14,12 +14,31 @@ namespace BlackJackLibrairie
         private string _pseudo;
         private string _motdepasse;
         private int _solde;
+        private Boolean _abust;
 
         #region PROPRIETES
+        public bool ABust
+        {
+            get
+            {
+                return _abust;
+            }
+            set
+            {
+                _abust = value;
+            }
+        }
+
+        
         public string Nom
         {
             get { return _nom; }
             set { _nom = value; }
+        }
+        public string Prenom
+        {
+            get { return _prenom; }
+            set { _prenom = value; }
         }
 
         public string MotDePasse
@@ -62,6 +81,7 @@ namespace BlackJackLibrairie
             MotDePasse = mdp;
             Pseudo = pseudo;
             Solde = solde;
+            ABust = false;
         }
         #endregion
 
@@ -80,7 +100,5 @@ namespace BlackJackLibrairie
             return xmlFormat.Deserialize(fStream) as Joueur;
         }
         #endregion
-
-        public bool ABust => throw new NotImplementedException();
     }
 }

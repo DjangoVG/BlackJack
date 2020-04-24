@@ -29,20 +29,20 @@ namespace BlackJackLibrairie
     }
     public class Carte
     {
-        private TypeCarte _typeCarte;
-        private ValeurCarte _valeurCarte;
-        private String _imageCarte;
+        public TypeCarte TypeCarte { get; }
+        public ValeurCarte ValeurCarte { get; }
+        public String ImageCarte { get; }
 
         public Carte(TypeCarte NomCarte, ValeurCarte ValeurCarte, String CheminImage)
         {
-            this._typeCarte = NomCarte;
-            this._valeurCarte = ValeurCarte;
-            this._imageCarte = CheminImage;
+            this.TypeCarte = NomCarte;
+            this.ValeurCarte = ValeurCarte;
+            this.ImageCarte = CheminImage;
         }
          
         public override string ToString()
         {
-            return "TypeCarte : " + this._typeCarte + " | Valeur de la carte : " + this._valeurCarte + " | Image : " + this._imageCarte;
+            return "TypeCarte : " + this.TypeCarte + " | Valeur de la carte : " + this.ValeurCarte + " | Image : " + this.ImageCarte;
         }
     }
 }

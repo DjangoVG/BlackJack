@@ -4,8 +4,8 @@ using System.Text;
 
 namespace BlackJackLibrairie
 {
-    interface IEtatActuel
+    internal interface IEtatActuel
     {
-        Boolean ABust { get; }
+        Boolean ABust();
     }
 }
