@@ -1,6 +1,6 @@
 # Jeu de casino (BlackJack) réalisé par Régis Evrard (2201)
 
-![FenêtreBlackJack](https://i.imgur.com/w3ndM93.png)
+![FenêtreBlackJack](https://i.imgur.com/XBCETKg.png)
 
 ### Quelles sont les règles ?
 
