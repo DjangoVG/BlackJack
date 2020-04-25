@@ -1,5 +1,6 @@
 ﻿using BlackJackLibrairie;
 using System;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading;
@@ -251,7 +252,6 @@ namespace BlackJack
 
         private void CheckJetonSolde()
         {
-            Console.WriteLine("Solde du joueur : " + Lobby.Joueur.Solde);
             if (Lobby.Joueur.Solde >= 200)
             {
                 Is5Enable = true;
@@ -306,6 +306,11 @@ namespace BlackJack
         {
             if (MiseActuelle != 0)
             {
+                if (MiseActuelle > Lobby.Joueur.Solde)
+                    IsDoubleEnable = false;
+                else
+                    IsDoubleEnable = true;
+
                 Is5Enable = false;
                 Is10Enable = false;
                 Is50Enable = false;
@@ -341,16 +346,8 @@ namespace BlackJack
                     IsTirerEnable = true;
                     IsResterEnable = true;
                     IsSplitEnable = true;
-                    IsDoubleEnable = true;
                 }
             }
-        }
-
-        private void BoutonResetJeton(object sender, EventArgs e)
-        {
-            Lobby.Joueur.Solde += MiseActuelle;
-            MiseActuelle = 0;
-            CheckJetonSolde();
         }
 
         private void BoutonTirer(object sender, EventArgs e)
@@ -370,8 +367,10 @@ namespace BlackJack
         {
             while (Lobby.ValeurDeckCroupier() < 17)
             {
+                
                 Lobby.DonneCarteCroupier();
                 GetValeur();
+                /* PAUSE */
             }
             if (Lobby.ValeurDeckCroupier() > 21)
                 Lobby.Croupier.ABust = true;
@@ -399,6 +398,54 @@ namespace BlackJack
             FinDuGame();
         }
 
+        private void BoutonDouble(object sender, EventArgs e)
+        {
+            Lobby.Joueur.Solde -= MiseActuelle;
+            MiseActuelle += MiseActuelle;
+            Lobby.DonneCarteJoueur();
+            GetValeur();
+
+            if (Lobby.ValeurDeckJoueur() <= 21)
+            {
+                while (Lobby.ValeurDeckCroupier() < 17)
+                {
+                    Lobby.DonneCarteCroupier();
+                    GetValeur();
+                    /* PAUSE */
+                }
+                if (Lobby.ValeurDeckCroupier() > 21)
+                    Lobby.Croupier.ABust = true;
+                else
+                    Lobby.Croupier.ABust = false;
+
+                if (Lobby.ValeurDeckCroupier() > Lobby.ValeurDeckJoueur() && !Lobby.Croupier.ABust) // CROUPIER WIN
+                {
+                    this.RectangleCroupier.BorderBrush = new SolidColorBrush(Colors.Green);
+                    this.RectangleJoueur.BorderBrush = new SolidColorBrush(Colors.Red);
+                    Lose();
+                }
+                else if (Lobby.ValeurDeckJoueur() == Lobby.ValeurDeckCroupier()) // PUSH
+                {
+                    this.RectangleCroupier.BorderBrush = new SolidColorBrush(Colors.Orange);
+                    this.RectangleJoueur.BorderBrush = new SolidColorBrush(Colors.Orange);
+                    Push();
+                }
+                else // JOUEUR WIN
+                {
+                    this.RectangleJoueur.BorderBrush = new SolidColorBrush(Colors.Green);
+                    this.RectangleCroupier.BorderBrush = new SolidColorBrush(Colors.Red);
+                    Win();
+                }
+            }
+            else
+            {
+                this.RectangleCroupier.BorderBrush = new SolidColorBrush(Colors.Green);
+                this.RectangleJoueur.BorderBrush = new SolidColorBrush(Colors.Red);
+                Lose();
+            }
+            FinDuGame();
+        }
+
         private void ClickBoutonRetirer(object sender, EventArgs e)
         {
         }
@@ -407,6 +454,14 @@ namespace BlackJack
         {
         }
 
+        private void BoutonResetJeton(object sender, EventArgs e)
+        {
+            Lobby.Joueur.Solde += MiseActuelle;
+            MiseActuelle = 0;
+            CheckJetonSolde();
+        }
+
+        #region BOUTONS JETONS
         private void Ajout5euros(object sender, EventArgs e)
         {
             MiseActuelle += 5;
@@ -452,14 +507,7 @@ namespace BlackJack
             IsResetEnable = true;
         }
 
-        private void NotifyPropertyChanged([CallerMemberName] String propertyName = null)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged; //Appel d'un délégué
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
+        #endregion
 
         private void GetValeur()
         {
@@ -496,6 +544,15 @@ namespace BlackJack
             Lobby.Joueur.Solde += MiseActuelle;
             MiseActuelle = 0;
             CheckJetonSolde();
+        }
+
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = null)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged; //Appel d'un délégué
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
 
         private void MenuExitClick(object sender, EventArgs e)

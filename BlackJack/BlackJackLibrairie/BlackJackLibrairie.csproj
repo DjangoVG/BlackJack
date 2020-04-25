@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Carte.cs" />
+    <Compile Include="CartesComparer.cs" />
     <Compile Include="Croupier.cs" />
     <Compile Include="IEtatActuel.cs" />
     <Compile Include="Joueur.cs" />

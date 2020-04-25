@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -92,34 +93,28 @@ namespace BlackJackLibrairie
         public int ValeurDeckCroupier()
         {
             int ValeurDeck = 0;
-            Boolean As = false;
 
+            List<Carte> listCroupier = new List<Carte>();
             foreach (Carte c in CartesCroupier)
-                if (c.ValeurCarte == ValeurCarte.As)
-                    As = true;
+                listCroupier.Add(c);
 
-            foreach (Carte c in CartesCroupier)
+            CartesComparer cc = new CartesComparer();
+            listCroupier.Sort(cc);
+
+
+            foreach (Carte c in listCroupier)
             {
                 if (c.ValeurCarte == ValeurCarte.Valet || c.ValeurCarte == ValeurCarte.Dame || c.ValeurCarte == ValeurCarte.Roi)
                     ValeurDeck += 10;
                 else if (c.ValeurCarte == ValeurCarte.As)
-                    ValeurDeck += 11;
+                {
+                    if (ValeurDeck + 11 <= 21)
+                        ValeurDeck += 11;
+                    else
+                        ValeurDeck += 1;
+                }
                 else
                     ValeurDeck += Convert.ToInt32(c.ValeurCarte);
-            }
-
-            if (ValeurDeck > 21 && As)
-            {
-                ValeurDeck = 0;
-                foreach (Carte c in CartesCroupier)
-                {
-                    if (c.ValeurCarte == ValeurCarte.Valet || c.ValeurCarte == ValeurCarte.Dame || c.ValeurCarte == ValeurCarte.Roi)
-                        ValeurDeck += 10;
-                    else if (c.ValeurCarte == ValeurCarte.As)
-                        ValeurDeck += 1;
-                    else
-                        ValeurDeck += Convert.ToInt32(c.ValeurCarte);
-                }
             }
             return ValeurDeck;
         }
@@ -127,34 +122,28 @@ namespace BlackJackLibrairie
         public int ValeurDeckJoueur()
         {
             int ValeurDeck = 0;
-            Boolean As = false;
 
+            List<Carte> listJoueur = new List<Carte>();
             foreach (Carte c in CartesJoueur)
-                if (c.ValeurCarte == ValeurCarte.As)
-                    As = true;
+                listJoueur.Add(c);
 
-            foreach (Carte c in CartesJoueur)
+            CartesComparer cc = new CartesComparer();
+            listJoueur.Sort(cc);
+
+            foreach (Carte c in listJoueur)
             {
+                Console.WriteLine("Carte : " + c.ValeurCarte);
                 if (c.ValeurCarte == ValeurCarte.Valet || c.ValeurCarte == ValeurCarte.Dame || c.ValeurCarte == ValeurCarte.Roi)
                     ValeurDeck += 10;
                 else if (c.ValeurCarte == ValeurCarte.As)
-                    ValeurDeck += 11;
+                {
+                    if (ValeurDeck + 11 <= 21)
+                        ValeurDeck += 11;
+                    else
+                        ValeurDeck += 1;
+                }
                 else
                     ValeurDeck += Convert.ToInt32(c.ValeurCarte);
-            }
-
-            if (ValeurDeck > 21 && As)
-            {
-                ValeurDeck = 0;
-                foreach (Carte c in CartesJoueur)
-                {
-                    if (c.ValeurCarte == ValeurCarte.Valet || c.ValeurCarte == ValeurCarte.Dame || c.ValeurCarte == ValeurCarte.Roi)
-                        ValeurDeck += 10;
-                    else if (c.ValeurCarte == ValeurCarte.As)
-                        ValeurDeck += 1;
-                    else
-                        ValeurDeck += Convert.ToInt32(c.ValeurCarte);
-                }
             }
             return ValeurDeck;
         }
