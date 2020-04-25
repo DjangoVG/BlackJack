@@ -84,6 +84,12 @@ namespace BlackJackLibrairie
             Sabot.SabotJeu.RemoveAt(0);
         }
 
+        public void DonneCarteJoueurDeck2(ObservableCollection<Carte> Carte2)
+        {
+            Carte2.Add(Sabot.SabotJeu[0]);
+            Sabot.SabotJeu.RemoveAt(0);
+        }
+
         public void DonneCarteCroupier()
         {
             CartesCroupier.Add(Sabot.SabotJeu[0]);
@@ -125,6 +131,35 @@ namespace BlackJackLibrairie
 
             List<Carte> listJoueur = new List<Carte>();
             foreach (Carte c in CartesJoueur)
+                listJoueur.Add(c);
+
+            CartesComparer cc = new CartesComparer();
+            listJoueur.Sort(cc);
+
+            foreach (Carte c in listJoueur)
+            {
+                Console.WriteLine("Carte : " + c.ValeurCarte);
+                if (c.ValeurCarte == ValeurCarte.Valet || c.ValeurCarte == ValeurCarte.Dame || c.ValeurCarte == ValeurCarte.Roi)
+                    ValeurDeck += 10;
+                else if (c.ValeurCarte == ValeurCarte.As)
+                {
+                    if (ValeurDeck + 11 <= 21)
+                        ValeurDeck += 11;
+                    else
+                        ValeurDeck += 1;
+                }
+                else
+                    ValeurDeck += Convert.ToInt32(c.ValeurCarte);
+            }
+            return ValeurDeck;
+        }
+
+        public int ValeurDeckJoueur2(ObservableCollection<Carte> DeckJoueur2)
+        {
+            int ValeurDeck = 0;
+
+            List<Carte> listJoueur = new List<Carte>();
+            foreach (Carte c in DeckJoueur2)
                 listJoueur.Add(c);
 
             CartesComparer cc = new CartesComparer();

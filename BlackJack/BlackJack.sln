@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackJackManager", "BlackJack\BlackJackManager.csproj", "{FAADB728-33CB-4559-9BC6-D5232F5C9DE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsole", "TestConsole\TestConsole.csproj", "{971460CA-8E07-4F91-8E16-168D7FFA7E06}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackJackLibrairie", "BlackJackLibrairie\BlackJackLibrairie.csproj", "{40C3AFF0-075B-4ED6-9328-B26E3CE191E1}"
 EndProject
 Global
@@ -19,10 +17,6 @@ Global
 		{FAADB728-33CB-4559-9BC6-D5232F5C9DE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FAADB728-33CB-4559-9BC6-D5232F5C9DE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FAADB728-33CB-4559-9BC6-D5232F5C9DE8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{971460CA-8E07-4F91-8E16-168D7FFA7E06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{971460CA-8E07-4F91-8E16-168D7FFA7E06}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{971460CA-8E07-4F91-8E16-168D7FFA7E06}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{971460CA-8E07-4F91-8E16-168D7FFA7E06}.Release|Any CPU.Build.0 = Release|Any CPU
 		{40C3AFF0-075B-4ED6-9328-B26E3CE191E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{40C3AFF0-075B-4ED6-9328-B26E3CE191E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40C3AFF0-075B-4ED6-9328-B26E3CE191E1}.Release|Any CPU.ActiveCfg = Release|Any CPU

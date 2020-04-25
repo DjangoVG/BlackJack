@@ -1,0 +1,35 @@
+<ScrollViewer x:Name="Scroll" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden" >
+    <Grid x:Name="GridJoueur">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <ItemsControl x:Name="RectangleJoueur" ItemsSource="{Binding CartesJoueur}" BorderBrush="White" BorderThickness="2.5" MinHeight="175" Height="275" MinWidth="675" Grid.Column="0" Margin="0,0,10,0">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Image Source="{Binding ImageCarte}" Height="Auto" Margin="5" />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+        <!-- <ItemsControl x:Name="RectangleJoueur2" ItemsSource="{Binding CartesJoueur}" BorderBrush="White" BorderThickness="2.5" MinHeight="175" Height="275" MinWidth="675" Grid.Column="1" Margin="10,0,0,0">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Image Source="{Binding ImageCarte}" Height="Auto" Margin="5" />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl> -->
+    </Grid>
+</ScrollViewer>
