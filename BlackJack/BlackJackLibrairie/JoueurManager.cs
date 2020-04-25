@@ -6,10 +6,13 @@ namespace BlackJackLibrairie
     public class JoueurManager
     {
         #region VARIABLES MEMBRES
+
         private RegistryKey BlackJack;
-        #endregion
+
+        #endregion VARIABLES MEMBRES
 
         #region CONSTRUCTEURS
+
         public JoueurManager()
         {
             BlackJack = Registry.CurrentUser.CreateSubKey("Software").CreateSubKey("BlackJack");
@@ -19,9 +22,11 @@ namespace BlackJackLibrairie
                 Console.WriteLine("\t" + tmp);
             }
         }
-        #endregion
+
+        #endregion CONSTRUCTEURS
 
         #region METHODES
+
         public void LoadRegistryParameter(Joueur joueur)
         {
             if (VerifSubkey(BlackJack, joueur.Email))
@@ -46,7 +51,6 @@ namespace BlackJackLibrairie
                     joueur.Solde = Convert.ToInt32(rk.GetValue("solde"));
                     return;
                 }
-                
             }
             throw new LoginException("Le joueur entré n'existe pas.", CodeException.JoueurNonTrouve);
         }
@@ -87,6 +91,7 @@ namespace BlackJackLibrairie
         {
             BlackJack.SetValue(email, value);
         }
-        #endregion
+
+        #endregion METHODES
     }
 }

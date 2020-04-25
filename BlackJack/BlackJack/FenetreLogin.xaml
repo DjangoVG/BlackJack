@@ -8,7 +8,7 @@
         Title="FenetreLogin" Height="295" Width="674" MinHeight="295" MinWidth="674">
     <StackPanel>
         <StackPanel.Background>
-            <ImageBrush ImageSource="/Images/Autres/Login.jpeg"/>
+            <ImageBrush ImageSource="/Images/Autres/Login.jpeg" />
         </StackPanel.Background>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Right" Margin="0,25,25,0">
             <Label HorizontalAlignment="Center" FontSize="27" Foreground="White" FontWeight="Bold" FontFamily="Eras ITC" Margin="0,10,0,0">
@@ -19,13 +19,13 @@
                     <Label Foreground="White" FontSize="15" FontFamily="Eras ITC" Width="110">
                         Adresse email
                     </Label>
-                    <TextBox Text="{Binding Email}" Width="200" VerticalContentAlignment="Center"/>
+                    <TextBox Text="{Binding Email}" Width="200" VerticalContentAlignment="Center" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="5,25,5,5">
                     <Label Foreground="White" FontSize="15" FontFamily="Eras ITC" Width="110">
                         Mot de passe
                     </Label>
-                    <PasswordBox x:Name="BoxMotDePasse" Width="200" VerticalContentAlignment="Center"/>
+                    <PasswordBox x:Name="BoxMotDePasse" Width="200" VerticalContentAlignment="Center" />
                 </StackPanel>
                 <Button Margin="0,15,0,0" Height="25" Width="100" Click="Connexion_Click">
                     Connexion

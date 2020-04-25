@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace BlackJackLibrairie
 {
     public enum CodeException
@@ -14,6 +15,7 @@ namespace BlackJackLibrairie
     public class LoginException : Exception
     {
         private CodeException _code;
+
         public CodeException Code
         {
             get { return _code; }

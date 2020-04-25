@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BlackJackLibrairie
+﻿namespace BlackJackLibrairie
 {
-    class Profil
+    internal class Profil
     {
     }
 }

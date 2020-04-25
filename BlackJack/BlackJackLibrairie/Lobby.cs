@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
 
 namespace BlackJackLibrairie
 {
@@ -12,8 +10,9 @@ namespace BlackJackLibrairie
         public Joueur Joueur { get; set; }
         public Croupier Croupier { get; set; }
         private ObservableCollection<Carte> _carteJoueur;
+
         public ObservableCollection<Carte> CartesJoueur
-        { 
+        {
             get
             {
                 return _carteJoueur;
@@ -26,7 +25,8 @@ namespace BlackJackLibrairie
         }
 
         private ObservableCollection<Carte> _carteCroupier;
-        public ObservableCollection<Carte> CartesCroupier 
+
+        public ObservableCollection<Carte> CartesCroupier
         {
             get
             {
@@ -37,7 +37,7 @@ namespace BlackJackLibrairie
                 _carteCroupier = value;
                 NotifyPropertyChanged();
             }
-        } 
+        }
 
         public Sabot Sabot { get; set; } = new Sabot();
 
@@ -75,8 +75,6 @@ namespace BlackJackLibrairie
                     Sabot.SabotJeu.RemoveAt(0);
                 }
             }
-
-            
         }
 
         public void DonneCarteJoueur()
@@ -99,8 +97,6 @@ namespace BlackJackLibrairie
             foreach (Carte c in CartesCroupier)
                 if (c.ValeurCarte == ValeurCarte.As)
                     As = true;
-
-
 
             foreach (Carte c in CartesCroupier)
             {
@@ -136,8 +132,6 @@ namespace BlackJackLibrairie
             foreach (Carte c in CartesJoueur)
                 if (c.ValeurCarte == ValeurCarte.As)
                     As = true;
-
-
 
             foreach (Carte c in CartesJoueur)
             {

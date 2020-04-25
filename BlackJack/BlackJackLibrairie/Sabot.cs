@@ -12,11 +12,12 @@ namespace BlackJackLibrairie
             get { return _sabot; }
             set { this._sabot = value; }
         }
+
         public Sabot()
         {
             _sabot = new List<Carte>();
 
-            #region  J'ajoute au sabot 4 paquets de cartes
+            #region J'ajoute au sabot 4 paquets de cartes
 
             for (int j = 0; j < 4; j++) // Carte de coeur
             {
@@ -85,7 +86,9 @@ namespace BlackJackLibrairie
                 _sabot.Add(new Carte(TypeCarte.Trefle, ValeurCarte.Dame, "/Images/Cartes/DameTrefleNoir.png"));
                 _sabot.Add(new Carte(TypeCarte.Trefle, ValeurCarte.Roi, "/Images/Cartes/RoiTrefleNoir.png"));
             }
-            #endregion
+
+            #endregion J'ajoute au sabot 4 paquets de cartes
+
             Shuffle(this._sabot); // Je mélange le sabot
         }
 
@@ -103,6 +106,5 @@ namespace BlackJackLibrairie
                 }
             }
         }
-
     }
 }

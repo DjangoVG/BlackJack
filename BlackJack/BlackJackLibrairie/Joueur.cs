@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
-using System.Text;
+using System.Runtime.CompilerServices;
 using System.Xml.Serialization;
 
 namespace BlackJackLibrairie
 {
-    public class Joueur
+    public class Joueur : INotifyPropertyChanged
     {
         private string _email;
         private string _nom;
@@ -17,6 +17,7 @@ namespace BlackJackLibrairie
         private Boolean _abust;
 
         #region PROPRIETES
+
         public bool ABust
         {
             get
@@ -29,12 +30,12 @@ namespace BlackJackLibrairie
             }
         }
 
-        
         public string Nom
         {
             get { return _nom; }
             set { _nom = value; }
         }
+
         public string Prenom
         {
             get { return _prenom; }
@@ -62,11 +63,19 @@ namespace BlackJackLibrairie
         public int Solde
         {
             get { return _solde; }
-            set { _solde = value; }
+            set
+            {
+                _solde = value;
+                NotifyPropertyChanged();
+            }
         }
-        #endregion
+
+        #endregion PROPRIETES
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         #region CONSTRUCTEURS
+
         public Joueur()
         {
             Nom = "";
@@ -83,9 +92,11 @@ namespace BlackJackLibrairie
             Solde = solde;
             ABust = false;
         }
-        #endregion
 
-        #region METHODES 
+        #endregion CONSTRUCTEURS
+
+        #region METHODES
+
         public void SaveXML(string path)
         {
             XmlSerializer xmlformat = new XmlSerializer(typeof(Joueur));
@@ -99,6 +110,16 @@ namespace BlackJackLibrairie
             Stream fStream = File.OpenRead(path);
             return xmlFormat.Deserialize(fStream) as Joueur;
         }
-        #endregion
+
+        #endregion METHODES
+
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = null)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged; //Appel d'un délégué
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
     }
 }

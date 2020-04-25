@@ -27,6 +27,7 @@ namespace BlackJackLibrairie
         Pique,
         Trefle
     }
+
     public class Carte
     {
         public TypeCarte TypeCarte { get; }
@@ -39,7 +40,7 @@ namespace BlackJackLibrairie
             this.ValeurCarte = ValeurCarte;
             this.ImageCarte = CheminImage;
         }
-         
+
         public override string ToString()
         {
             return "TypeCarte : " + this.TypeCarte + " | Valeur de la carte : " + this.ValeurCarte + " | Image : " + this.ImageCarte;

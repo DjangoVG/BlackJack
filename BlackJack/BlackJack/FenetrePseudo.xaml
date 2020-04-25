@@ -7,18 +7,16 @@
         mc:Ignorable="d"
         Title="Ajouter un pseudo à mon compte !" Height="145" Width="290">
 
-
     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Height="114" VerticalAlignment="Top" Width="280">
         <StackPanel Orientation="Horizontal" Margin="20,25,5,5">
             <Label Foreground="Black" FontSize="15" FontFamily="Eras ITC" Width="67" Margin="0,0,15,0">
                 Pseudo :
             </Label>
-            <TextBox x:Name="BoxPseudo" Width="156"/>
+            <TextBox x:Name="BoxPseudo" Width="156" />
         </StackPanel>
         <StackPanel Orientation="Horizontal">
-            <Button Content="Valider mon pseudo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="123" Margin="20,10,10,5" Height="25" Click="Click_ValiderPseudo"/>
-            <Button Content="Annuler" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Margin="10,10,20,5" Height="25" Click="Click_Annuler"/>
+            <Button Content="Valider mon pseudo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="123" Margin="20,10,10,5" Height="25" Click="Click_ValiderPseudo" />
+            <Button Content="Annuler" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Margin="10,10,20,5" Height="25" Click="Click_Annuler" />
         </StackPanel>
     </StackPanel>
-
 </Window>
