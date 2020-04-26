@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BlackJack"
         mc:Ignorable="d"
         WindowState="Maximized"
-        Title="FenetreBlackJack" Height="990" Width="1400">
+        Title="FenetreBlackJack" Height="990" Width="1400" Closing="BoutonClosing">
     <Window.Resources>
 
         <!-- Ajout des images pour le mouse hover -->
@@ -533,10 +533,9 @@
             <StackPanel.Background>
                 <ImageBrush ImageSource="/Images/Autres/FondVert.jpeg" />
             </StackPanel.Background>
-            <Menu Height="20" Background="DarkGray">
+            <Menu x:Name="MenuJoueur" Height="20" Background="DarkGray">
                 <MenuItem Header="Profil">
-                    <MenuItem Header="Se connecter" />
-                    <MenuItem Header="Se deconnecter" />
+                    <MenuItem Header="Se deconnecter" IsEnabled="{Binding IsEnableDeconnecter}" Click="ClickBoutonSeDeco" />
                     <Separator />
                     <MenuItem Header="Argent">
                         <MenuItem Header="Retirer" Click="ClickBoutonRetirer" />
@@ -546,6 +545,10 @@
                     <MenuItem Header="Quitter l'application" Click="MenuExitClick" />
                 </MenuItem>
                 <MenuItem Header="Options">
+                    <MenuItem Header="Historique"/>
+                    <MenuItem Header="Format de la date"/>
+                </MenuItem>
+                <MenuItem Header="Probabilités">
                 </MenuItem>
             </Menu>
 

@@ -230,6 +230,36 @@ namespace BlackJack
             }
         }
 
+        private Boolean _isCoEnable;
+
+        public Boolean IsEnableConnecter
+        {
+            get
+            {
+                return _isCoEnable;
+            }
+            set
+            {
+                _isCoEnable = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        private Boolean _isDecoEnable;
+
+        public Boolean IsEnableDeconnecter
+        {
+            get
+            {
+                return _isDecoEnable;
+            }
+            set
+            {
+                _isDecoEnable = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         #endregion Boolean ENABLE
 
         public FenetreBlackJack(Joueur joueur)
@@ -251,6 +281,7 @@ namespace BlackJack
             BoutonSplitN.DataContext = this;
             BoutonDoubleN.DataContext = this;
             RectangleJoueur2.DataContext = this;
+            MenuJoueur.DataContext = this;
             Jeton5N.DataContext = this;
             Jeton10N.DataContext = this;
             Jeton50N.DataContext = this;
@@ -265,6 +296,9 @@ namespace BlackJack
             IsResterEnable = false;
             IsSplitEnable = false;
             IsDoubleEnable = false;
+            IsEnableConnecter = false;
+            IsEnableConnecter = false;
+            IsEnableDeconnecter = true;
 
             Is5Enable = true;
             Is10Enable = true;
@@ -519,6 +553,16 @@ namespace BlackJack
         {
         }
 
+        private void ClickBoutonSeDeco(object sender, EventArgs e)
+        {
+            JoueurManager jm = new JoueurManager();
+            jm.SaveRegistrySolde(Lobby.Joueur.Email, Lobby.Joueur.Solde);
+
+            var Fen = new FenetreLogin();
+            Fen.Show();
+            this.Close();
+        }
+
         private void ResetFrontEnd()
         {
             GridJoueur.ColumnDefinitions.RemoveAt(1);
@@ -640,11 +684,6 @@ namespace BlackJack
             ValeurJoueur.Content = Lobby.ValeurDeckJoueur();
         }
         private void GetValeurDeck2()
-        {
-            ValeurJoueur.Content = Lobby.ValeurDeckJoueur2(Carte2);
-        }
-
-        private void GetValeurJeu2(ObservableCollection<Carte> Carte2)
         {
             ValeurJoueur.Content = Lobby.ValeurDeckJoueur2(Carte2);
         }
@@ -801,6 +840,13 @@ namespace BlackJack
         private void MenuExitClick(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void BoutonClosing(object sender, CancelEventArgs e)
+        {
+            JoueurManager jm = new JoueurManager();
+            jm.SaveRegistrySolde(Lobby.Joueur.Email, Lobby.Joueur.Solde);
+            Environment.Exit(0);
         }
     }
 }

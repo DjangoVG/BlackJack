@@ -75,6 +75,12 @@ namespace BlackJackLibrairie
             rk.SetValue("solde", solde);
         }
 
+        public void SaveRegistrySolde (string email, int solde)
+        {
+            RegistryKey rk = BlackJack.CreateSubKey(email);
+            rk.SetValue("solde", solde);
+        }
+
         private bool VerifSubkey(RegistryKey rk, string subname)
         {
             foreach (string tmp in rk.GetSubKeyNames())

@@ -24,6 +24,12 @@ namespace BlackJack
             set { _joueurmanager = value; }
         }
 
+        public FenetreLogin(Joueur joueur)
+        {
+            InitializeComponent();
+            StackPanelLogin.DataContext = joueur;
+        }
+
         public FenetreLogin()
         {
             InitializeComponent();
@@ -61,7 +67,7 @@ namespace BlackJack
                         if (MessageBox.Show(ex.Message + ". Souhaitez vous l'ajouter ?", "Ajout joueur", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                         {
                             JoueurManager.SaveRegistryParameter(LoginJoueur.Email, LoginJoueur.MotDePasse, LoginJoueur.Solde);
-                            MessageBox.Show("Vous êtes bien inscrit !", "Excellent !", MessageBoxButton.OK, MessageBoxImage.Hand);
+                            MessageBox.Show("Vous êtes bien inscrit !", "Excellent !", MessageBoxButton.OK, MessageBoxImage.Information);
                         }
                         break;
 
