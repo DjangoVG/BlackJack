@@ -289,15 +289,23 @@ namespace BlackJack
 
         private void BoutonPlayGame(object sender, EventArgs e)
         {
+            FinishDeck1 = false;
             if (MiseActuelle != 0)
             {
                 if (RectangleJoueur2.Visibility == Visibility.Visible)
                     ResetFrontEnd();
 
                 if (MiseActuelle > Lobby.Joueur.Solde)
+                {
                     IsDoubleEnable = false;
+                    IsSplitEnable = false;
+                }
                 else
+                {
                     IsDoubleEnable = true;
+                    IsSplitEnable = true;
+                }
+                    
 
                 Is5Enable = false;
                 Is10Enable = false;
@@ -308,6 +316,8 @@ namespace BlackJack
                 this.RectangleJoueur.BorderBrush = new SolidColorBrush(Colors.White);
                 Lobby.StartGame();
                 GetValeur(); // Affichage de la valeur de la main du croupier/joueur
+
+                // CHECKER ICI SI MEME CARTE POUR SPLIT
 
                 if (Lobby.ValeurDeckJoueur() == 21)
                 {
@@ -323,7 +333,7 @@ namespace BlackJack
                     {
                         this.RectangleCroupier.BorderBrush = new SolidColorBrush(Colors.Red);
                         this.RectangleJoueur.BorderBrush = new SolidColorBrush(Colors.Green);
-                        Win();
+                        WinBJ();
                     }
                     FinDuGame();
                 }
@@ -333,7 +343,6 @@ namespace BlackJack
                     IsMiseEnable = false;
                     IsTirerEnable = true;
                     IsResterEnable = true;
-                    IsSplitEnable = true;
                 }
             }
         }
@@ -348,11 +357,11 @@ namespace BlackJack
                     GetValeur();
                     if (Lobby.ValeurDeckJoueur() > 21)
                     {
-                        this.RectangleJoueur.BorderBrush = new SolidColorBrush(Colors.Red);
+                        RectangleJoueur.BorderBrush = new SolidColorBrush(Colors.Red);
+                        RectangleJoueur2.BorderBrush = new SolidColorBrush(Colors.Blue);
                         FinishDeck1 = true;
                         GetValeurDeck2();
-                    }
-                        
+                    }  
                 }
                 else // Je suis sur le deck 2
                 {
@@ -360,10 +369,21 @@ namespace BlackJack
                     GetValeurDeck2();
                     if (Lobby.ValeurDeckJoueur2(Carte2) > 21)
                     {
-                        this.RectangleJoueur2.BorderBrush = new SolidColorBrush(Colors.Red);
+                        RectangleJoueur2.BorderBrush = new SolidColorBrush(Colors.Red);
+
+                        if (Lobby.ValeurDeckJoueur() > 21)
+                            RectangleCroupier.BorderBrush = new SolidColorBrush(Colors.Green);
+                        else
+                        {
+                            while (Lobby.ValeurDeckCroupier() < 17)
+                            {
+                                Lobby.DonneCarteCroupier();
+                                GetValeur();
+                                /* PAUSE */
+                            }
+                        }
                         VerifGagnant();
                     }
-
                 }
 
             }
@@ -388,6 +408,23 @@ namespace BlackJack
                 if (!FinishDeck1) // Je suis sur le deck 1
                 {
                     FinishDeck1 = true;
+
+                    if (Lobby.ValeurDeckJoueur2(Carte2) == 21)
+                    {
+                        GetValeurDeck2();
+                        while (Lobby.ValeurDeckCroupier() < 17)
+                        {
+                            Lobby.DonneCarteCroupier();
+                            GetValeur();
+                            /* PAUSE */
+                        }
+                        VerifGagnant();
+                    }
+                    else
+                    {
+                        RectangleJoueur2.BorderBrush = new SolidColorBrush(Colors.Blue);
+                        RectangleJoueur.BorderBrush = new SolidColorBrush(Colors.White);
+                    }
                     GetValeurDeck2();
                 }
                 else // Je suis sur le deck 2
@@ -398,7 +435,7 @@ namespace BlackJack
                         GetValeur();
                         /* PAUSE */
                     }
-                    FinDuGame();
+                    VerifGagnant();
                 }
             }
             else
@@ -411,7 +448,6 @@ namespace BlackJack
                     /* PAUSE */
                 }
                 VerifGagnant();
-                FinDuGame();
             }
            
         }
@@ -444,6 +480,10 @@ namespace BlackJack
 
         private void BoutonSplit(object sender, EventArgs e)
         {
+            IsSplitEnable = false;
+            IsDoubleEnable = false;
+            Lobby.Joueur.Solde -= MiseActuelle;
+            MiseActuelle += MiseActuelle;
             System.Windows.Controls.ColumnDefinition newColumn = new System.Windows.Controls.ColumnDefinition();
             GridJoueur.ColumnDefinitions.Add(newColumn);
 
@@ -456,7 +496,19 @@ namespace BlackJack
             Lobby.CartesJoueur.RemoveAt(1);
             Lobby.DonneCarteJoueur();
             Lobby.DonneCarteJoueurDeck2(Carte2);
-            GetValeur();
+
+            if (Lobby.ValeurDeckJoueur() == 21)
+            {
+                FinishDeck1 = true;
+                RectangleJoueur.BorderBrush = new SolidColorBrush(Colors.Green);
+                RectangleJoueur2.BorderBrush = new SolidColorBrush(Colors.Blue);
+                GetValeurDeck2();
+            }
+            else
+            {
+                RectangleJoueur.BorderBrush = new SolidColorBrush(Colors.Blue);
+                GetValeur();
+            }
         }
 
         private void ClickBoutonRetirer(object sender, EventArgs e)
@@ -472,6 +524,7 @@ namespace BlackJack
             GridJoueur.ColumnDefinitions.RemoveAt(1);
             RectangleJoueur2.Visibility = Visibility.Hidden;
             RectangleJoueur.Margin = new Thickness(0, 0, 0, 0);
+            RectangleJoueur2.BorderBrush = new SolidColorBrush(Colors.White);
         }
 
         private void CheckJetonSolde()
@@ -605,38 +658,43 @@ namespace BlackJack
 
             if (RectangleJoueur2.Visibility == Visibility.Visible)
             {
-                if (Lobby.ValeurDeckCroupier() > Lobby.ValeurDeckJoueur() && !Lobby.Croupier.ABust) // CROUPIER WIN DECK 1
+                if (Lobby.ValeurDeckJoueur2(Carte2) > 21)
                 {
-                    this.RectangleCroupier.BorderBrush = new SolidColorBrush(Colors.Green);
-                    this.RectangleJoueur.BorderBrush = new SolidColorBrush(Colors.Red);
-                }
-                if (Lobby.ValeurDeckCroupier() > Lobby.ValeurDeckJoueur2(Carte2) && !Lobby.Croupier.ABust) // CROUPIER WIN DECK 2
-                {
-                    this.RectangleCroupier.BorderBrush = new SolidColorBrush(Colors.Green);
                     this.RectangleJoueur2.BorderBrush = new SolidColorBrush(Colors.Red);
                 }
-
-                if (Lobby.ValeurDeckJoueur() == Lobby.ValeurDeckCroupier()) // PUSH DECK 1
+                else
                 {
-                    this.RectangleCroupier.BorderBrush = new SolidColorBrush(Colors.Orange);
-                    this.RectangleJoueur.BorderBrush = new SolidColorBrush(Colors.Orange);
-                }
-                if (Lobby.ValeurDeckJoueur2(Carte2) == Lobby.ValeurDeckCroupier()) // PUSH DECK 2
-                {
-                    this.RectangleCroupier.BorderBrush = new SolidColorBrush(Colors.Orange);
-                    this.RectangleJoueur2.BorderBrush = new SolidColorBrush(Colors.Orange);
+                    if (Lobby.ValeurDeckCroupier() > Lobby.ValeurDeckJoueur2(Carte2) && !Lobby.Croupier.ABust) // CROUPIER WIN DECK 2
+                        this.RectangleJoueur2.BorderBrush = new SolidColorBrush(Colors.Red);
+                    else if (Lobby.ValeurDeckJoueur2(Carte2) == Lobby.ValeurDeckCroupier()) // PUSH DECK 2
+                        this.RectangleJoueur2.BorderBrush = new SolidColorBrush(Colors.Orange);
+                    else
+                        this.RectangleJoueur2.BorderBrush = new SolidColorBrush(Colors.Green);
                 }
 
-                if (Lobby.ValeurDeckCroupier() < Lobby.ValeurDeckJoueur()) // WIN DECK 1
+                if (Lobby.ValeurDeckJoueur() > 21)
                 {
-                    this.RectangleJoueur.BorderBrush = new SolidColorBrush(Colors.Green);
-                    this.RectangleCroupier.BorderBrush = new SolidColorBrush(Colors.Red);
+                    this.RectangleJoueur.BorderBrush = new SolidColorBrush(Colors.Red);
                 }
-                if (Lobby.ValeurDeckCroupier() < Lobby.ValeurDeckJoueur2(Carte2)) // WIN DECK 2
+                else
                 {
-                    this.RectangleJoueur2.BorderBrush = new SolidColorBrush(Colors.Green);
-                    this.RectangleCroupier.BorderBrush = new SolidColorBrush(Colors.Red);
+                    if (Lobby.ValeurDeckCroupier() > Lobby.ValeurDeckJoueur() && !Lobby.Croupier.ABust) // CROUPIER WIN DECK 1
+                        this.RectangleJoueur.BorderBrush = new SolidColorBrush(Colors.Red);
+                    else if (Lobby.ValeurDeckJoueur() == Lobby.ValeurDeckCroupier()) // PUSH DECK 1
+                        this.RectangleJoueur.BorderBrush = new SolidColorBrush(Colors.Orange);
+                    else
+                        this.RectangleJoueur.BorderBrush = new SolidColorBrush(Colors.Green);
                 }
+
+                if (RectangleJoueur.BorderBrush.ToString() == new SolidColorBrush(Colors.Green).ToString() && RectangleJoueur2.BorderBrush.ToString() == new SolidColorBrush(Colors.Green).ToString()) // SI 2 VERTS -> CROUPIER A PERDU
+                    this.RectangleCroupier.BorderBrush = new SolidColorBrush(Colors.Red);
+                else if ((RectangleJoueur.BorderBrush.ToString() == new SolidColorBrush(Colors.Red).ToString() && RectangleJoueur2.BorderBrush.ToString() == new SolidColorBrush(Colors.Green).ToString()) || (RectangleJoueur2.BorderBrush.ToString() == new SolidColorBrush(Colors.Red).ToString() && RectangleJoueur.BorderBrush.ToString() == new SolidColorBrush(Colors.Green).ToString())) // SI 1 ROUGE 1 VERT -> CROUPIER PUSH
+                    this.RectangleCroupier.BorderBrush = new SolidColorBrush(Colors.Orange);
+                else // 2 ROUGES OU 1 ORANGE/ 1 ROUGE -> CROUPIER GAGNE
+                    this.RectangleCroupier.BorderBrush = new SolidColorBrush(Colors.Green);
+
+
+                CheckDoubleWin();
             }
             else
             {
@@ -664,6 +722,31 @@ namespace BlackJack
                     Win();
                 }
             }
+            FinDuGame();
+        }
+
+        private void CheckDoubleWin()
+        {
+            if (RectangleJoueur.BorderBrush.ToString() == new SolidColorBrush(Colors.Green).ToString())
+            {
+                Lobby.Joueur.Solde += MiseActuelle;
+            }
+            if (RectangleJoueur2.BorderBrush.ToString() == new SolidColorBrush(Colors.Green).ToString())
+            {
+                Lobby.Joueur.Solde += MiseActuelle;
+            }
+            if (RectangleJoueur.BorderBrush.ToString() == new SolidColorBrush(Colors.Orange).ToString())
+            {
+                int Push = MiseActuelle / 2;
+                Lobby.Joueur.Solde += Push;
+            }
+            if (RectangleJoueur2.BorderBrush.ToString() == new SolidColorBrush(Colors.Orange).ToString())
+            {
+                int Push = MiseActuelle / 2;
+                Lobby.Joueur.Solde += Push;
+            }
+            MiseActuelle = 0;
+            FinDuGame();
         }
 
         private void FinDuGame()
@@ -674,11 +757,20 @@ namespace BlackJack
             IsResterEnable = false;
             IsSplitEnable = false;
             IsDoubleEnable = false;
+            CheckJetonSolde();
         }
 
         private void Win()
         {
             int Win = MiseActuelle * 2;
+            Lobby.Joueur.Solde += Win;
+            MiseActuelle = 0;
+            CheckJetonSolde();
+        }
+
+        private void WinBJ()
+        {
+            int Win = (MiseActuelle*2) + (MiseActuelle / 2);
             Lobby.Joueur.Solde += Win;
             MiseActuelle = 0;
             CheckJetonSolde();
