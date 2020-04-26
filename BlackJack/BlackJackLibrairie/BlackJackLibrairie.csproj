@@ -55,18 +55,6 @@
     <Compile Include="ThreadDate.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Boutons\BoutonDouble.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Boutons\BoutonRester.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Boutons\BoutonSplit.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Boutons\BoutonTirer.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\Cartes\10CarreauRouge.png" />
   </ItemGroup>
   <ItemGroup>
@@ -221,24 +209,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Cartes\ValetTrefleNoir.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Jetons\Jeton.jpeg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Jetons\Jeton10.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Jetons\Jeton100.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Jetons\Jeton200.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Jetons\Jeton5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Jetons\Jeton50.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

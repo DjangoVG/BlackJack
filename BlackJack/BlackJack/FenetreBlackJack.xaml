@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:BlackJack"
         mc:Ignorable="d"
         WindowState="Maximized"
+        WindowStyle="None"
         Title="FenetreBlackJack" Height="990" Width="1400" Closing="BoutonClosing">
     <Window.Resources>
 

@@ -27,9 +27,15 @@
                     </Label>
                     <PasswordBox x:Name="BoxMotDePasse" Width="200" VerticalContentAlignment="Center" />
                 </StackPanel>
-                <Button Margin="0,15,0,0" Height="25" Width="100" Click="Connexion_Click">
-                    Connexion
-                </Button>
+                <StackPanel Orientation="Horizontal">
+                    <Button Margin="60,15,10,0" Height="25" Width="100" Click="Connexion_Click">
+                        Connexion
+                    </Button>
+                    <Button Margin="10,15,0,0" Height="25" Width="100" Click="BoutonQuitterJeu">
+                        Quitter le jeu
+                    </Button>
+                </StackPanel>
+
             </StackPanel>
         </StackPanel>
     </StackPanel>

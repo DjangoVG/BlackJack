@@ -1,11 +1,9 @@
 ﻿using BlackJackLibrairie;
+using System;
 using System.Windows;
 
 namespace BlackJack
 {
-    /// <summary>
-    /// Logique d'interaction pour FenetreLogin.xaml
-    /// </summary>
     public partial class FenetreLogin : Window
     {
         private Joueur _loginJoueur = new Joueur();
@@ -91,6 +89,11 @@ namespace BlackJack
                         break;
                 }
             }
+        }
+
+        private void BoutonQuitterJeu (object sender, RoutedEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

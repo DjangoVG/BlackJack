@@ -297,7 +297,6 @@ namespace BlackJack
             IsSplitEnable = false;
             IsDoubleEnable = false;
             IsEnableConnecter = false;
-            IsEnableConnecter = false;
             IsEnableDeconnecter = true;
 
             Is5Enable = true;
@@ -396,6 +395,12 @@ namespace BlackJack
                         FinishDeck1 = true;
                         GetValeurDeck2();
                     }  
+                    else if (Lobby.ValeurDeckJoueur() == 21)
+                    {
+                        FinishDeck1 = true;
+                        RectangleJoueur2.BorderBrush = new SolidColorBrush(Colors.Blue);
+                        GetValeurDeck2();
+                    }
                 }
                 else // Je suis sur le deck 2
                 {
@@ -418,8 +423,17 @@ namespace BlackJack
                         }
                         VerifGagnant();
                     }
+                    else if (Lobby.ValeurDeckJoueur2(Carte2) == 21)
+                    {
+                        while (Lobby.ValeurDeckCroupier() < 17)
+                        {
+                            Lobby.DonneCarteCroupier();
+                            GetValeur();
+                            /* PAUSE */
+                        }
+                        VerifGagnant();
+                    }
                 }
-
             }
             else // Game normal sans SPLIT
             {
@@ -431,6 +445,15 @@ namespace BlackJack
                     this.RectangleJoueur.BorderBrush = new SolidColorBrush(Colors.Red);
                     Lose();
                     FinDuGame();
+                }
+                else if (Lobby.ValeurDeckJoueur() == 21)
+                {
+                    while (Lobby.ValeurDeckCroupier() < 17)
+                    {
+                        Lobby.DonneCarteCroupier();
+                        GetValeur();
+                    }
+                    VerifGagnant();
                 }
             }
         }
@@ -472,7 +495,7 @@ namespace BlackJack
                     VerifGagnant();
                 }
             }
-            else
+            else // Game normal sans SPLIT
             {
                 while (Lobby.ValeurDeckCroupier() < 17)
                 {
@@ -547,10 +570,14 @@ namespace BlackJack
 
         private void ClickBoutonRetirer(object sender, EventArgs e)
         {
+            var fen = new FenetreArgent();
+            fen.ShowDialog();
         }
 
         private void ClickBoutonDeposer(object sender, EventArgs e)
         {
+            var fen = new FenetreArgent();
+            fen.ShowDialog();
         }
 
         private void ClickBoutonSeDeco(object sender, EventArgs e)
@@ -839,14 +866,15 @@ namespace BlackJack
 
         private void MenuExitClick(object sender, EventArgs e)
         {
-            this.Close();
+            JoueurManager jm = new JoueurManager();
+            jm.SaveRegistrySolde(Lobby.Joueur.Email, Lobby.Joueur.Solde);
+            Environment.Exit(0);
         }
 
         private void BoutonClosing(object sender, CancelEventArgs e)
         {
             JoueurManager jm = new JoueurManager();
             jm.SaveRegistrySolde(Lobby.Joueur.Email, Lobby.Joueur.Solde);
-            Environment.Exit(0);
         }
     }
 }
