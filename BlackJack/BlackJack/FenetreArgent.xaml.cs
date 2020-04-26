@@ -80,28 +80,43 @@ namespace BlackJack
             {
                 if (BoxDepot.Length > 0)
                 {
-                    if (Convert.ToInt32(BoxDepot) > 0 && Convert.ToInt32(BoxDepot) < 100000)
+                    try
                     {
-                        joueur.Solde += Convert.ToInt32(BoxDepot);
-                        MessageBox.Show("Depot effectué !", "Validé", MessageBoxButton.OK, MessageBoxImage.Information);
-                        this.Close();
+                        if (Convert.ToInt32(BoxDepot) > 0 && Convert.ToInt32(BoxDepot) < 100000)
+                        {
+                            joueur.Solde += Convert.ToInt32(BoxDepot);
+                            MessageBox.Show("Depot effectué !", "Validé", MessageBoxButton.OK, MessageBoxImage.Information);
+                            this.Close();
+                        }
+                        else
+                            MessageBox.Show("Depot doit être entre 0 et 100.000 euros !", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
-                    else
-                        MessageBox.Show("Depot doit être entre 0 et 100.000 euros !", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                    catch (System.FormatException)
+                    {
+                        MessageBox.Show("Caracteres invalides !", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+
 
                 }
                 else if (BoxRetrait.Length > 0)
                 {
-                    if (joueur.Solde < Convert.ToInt32(BoxRetrait))
+                    try
                     {
-                        MessageBox.Show("Retrait trop élevé !", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                        if (joueur.Solde < Convert.ToInt32(BoxRetrait))
+                        {
+                            MessageBox.Show("Retrait trop élevé !", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                        else
+                        {
+                            // Ajouter à l'historique le retrait
+                            this.joueur.Solde -= Convert.ToInt32(BoxRetrait);
+                            MessageBox.Show("Retrait effectué !", "Validé", MessageBoxButton.OK, MessageBoxImage.Information);
+                            this.Close();
+                        }
                     }
-                    else
+                    catch (System.FormatException)
                     {
-                        // Ajouter à l'historique le retrait
-                        this.joueur.Solde -= Convert.ToInt32(BoxRetrait);
-                        MessageBox.Show("Retrait effectué !", "Validé", MessageBoxButton.OK, MessageBoxImage.Information);
-                        this.Close();
+                        MessageBox.Show("Caracteres invalides !", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
             }

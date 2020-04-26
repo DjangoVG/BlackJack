@@ -539,8 +539,7 @@
                     <MenuItem Header="Se deconnecter" IsEnabled="{Binding IsEnableDeconnecter}" Click="ClickBoutonSeDeco" />
                     <Separator />
                     <MenuItem Header="Argent">
-                        <MenuItem Header="Retirer" Click="ClickBoutonRetirer" />
-                        <MenuItem Header="Déposer" Click="ClickBoutonDeposer" />
+                        <MenuItem Header="Retirer/Déposer" Click="ClickBoutonRetirerDeposer" />
                     </MenuItem>
                     <Separator />
                     <MenuItem Header="Quitter l'application" Click="MenuExitClick" />

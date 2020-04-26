@@ -568,13 +568,7 @@ namespace BlackJack
             }
         }
 
-        private void ClickBoutonRetirer(object sender, EventArgs e)
-        {
-            var fen = new FenetreArgent(Lobby.Joueur);
-            fen.ShowDialog();
-        }
-
-        private void ClickBoutonDeposer(object sender, EventArgs e)
+        private void ClickBoutonRetirerDeposer(object sender, EventArgs e)
         {
             var fen = new FenetreArgent(Lobby.Joueur);
             fen.ShowDialog();
