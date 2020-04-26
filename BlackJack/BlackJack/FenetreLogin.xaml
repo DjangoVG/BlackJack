@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        WindowStyle="None"
         xmlns:local="clr-namespace:BlackJack"
         mc:Ignorable="d"
         Title="FenetreLogin" Height="295" Width="674" MinHeight="295" MinWidth="674">
@@ -27,13 +28,9 @@
                     </Label>
                     <PasswordBox x:Name="BoxMotDePasse" Width="200" VerticalContentAlignment="Center" />
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Button Margin="60,15,10,0" Height="25" Width="100" Click="Connexion_Click">
-                        Connexion
-                    </Button>
-                    <Button Margin="10,15,0,0" Height="25" Width="100" Click="BoutonQuitterJeu">
-                        Quitter le jeu
-                    </Button>
+                <StackPanel Orientation="Horizontal" Width="317" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <Button Margin="92,15,10,0" Height="25" Width="100" Click="Connexion_Click" VerticalAlignment="Center" Content="Connexion"/>
+                    <Button Margin="10,15,0,0" Height="25" Width="100" Click="BoutonQuitterJeu" Content="Quitter le jeu"/>
                 </StackPanel>
 
             </StackPanel>

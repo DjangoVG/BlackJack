@@ -691,11 +691,13 @@
                     <Label VerticalAlignment="Top" FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa">
                         Solde :
                     </Label>
-                    <Label x:Name="SoldeN" Content="{Binding Joueur.Solde}" Height="46"  FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa" Margin="0,0,10,0" />
+                    <Label x:Name="SoldeN" Content="{Binding Joueur.Solde}" Height="46"  FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa" />
+                    <Label Content="€ |" Height="46"  FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa"></Label>
                     <Label  VerticalAlignment="Top" Height="46" FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa">
                         Mise actuelle :
                     </Label>
                     <Label x:Name="MiseN" Content="{Binding MiseActuelle}" Height="46"  FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa" />
+                    <Label Content="€" Height="46"  FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa"></Label>
                 </StackPanel>
                 <StackPanel x:Name="SPDate" HorizontalAlignment="Right" Orientation="Horizontal">
                     <Label Content="{Binding Date}" FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa" />
