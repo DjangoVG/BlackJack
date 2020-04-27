@@ -1,18 +1,26 @@
 ﻿using BlackJackLibrairie;
 using System;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.ComponentModel;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows;
 using System.Windows.Media;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace BlackJack
 {
     public partial class FenetreBlackJack : Window, INotifyPropertyChanged
     {
         #region PROPRIETES
+
+        private static Excel.Application MyApp = null;
+        private static Excel.Workbook MyBook = null;
+        private static Excel.Worksheet MySheet = null;
+        private static Excel.Range MyRange = null;
+        private static int NbLignes { get; set; }
+        private static int NbColonnes { get; set; }
         public Lobby Lobby { get; set; } = new Lobby();
         private int _mise;
 
@@ -267,8 +275,44 @@ namespace BlackJack
             InitializeComponent();
             Application.Current.MainWindow.WindowState = WindowState.Maximized;
 
-            #region DataContext
+            Lobby.Joueur = joueur;
 
+            MyApp = new Excel.Application();
+            MyApp.Visible = false;
+            try
+            {
+                MyBook = MyApp.Workbooks.Open("C:\\Users\\Regis\\Bureau\\RegisServer\\1. Info. de Gestion\\2ème Année\\C#\\Laboratoire\\labo-phase-3-DjangoVG\\BlackJack\\BlackJack\\Historique\\" + Lobby.Joueur.Email + ".xlsx");
+                MySheet = (Excel.Worksheet)MyBook.Sheets[1];
+            }
+            catch (System.Runtime.InteropServices.COMException)
+            {
+                MyBook = MyApp.Workbooks.Add();
+                MySheet = (Excel.Worksheet)MyBook.Sheets[1];
+                MyRange = MySheet.UsedRange;
+
+                NbLignes = MyRange.Rows.Count;
+                NbColonnes = MyRange.Columns.Count;
+
+                MySheet.Cells[1, 1] = "Date du jeu";
+                MySheet.Cells[1, 2] = "Mise du joueur";
+                MySheet.Cells[1, 3] = "Main du croupier";
+                MySheet.Cells[1, 4] = "Main de " + Lobby.Joueur.Pseudo ;
+                MySheet.Cells[1, 5] = "Gain";
+                MySheet.Cells[1, 6] = "Perte";
+
+                try
+                {
+                    MyApp.DisplayAlerts = false;
+                    MyBook.SaveAs("C:\\Users\\Regis\\Bureau\\RegisServer\\1. Info. de Gestion\\2ème Année\\C#\\Laboratoire\\labo-phase-3-DjangoVG\\BlackJack\\BlackJack\\Historique\\" + Lobby.Joueur.Email + ".xlsx");
+                    MyApp.DisplayAlerts = true;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Problème dans le fichier xslt : " + e.Message);
+                }
+            }
+
+            #region DataContext
             SoldeN.DataContext = Lobby;
             SPCroupier.DataContext = Lobby;
             SPJoueur.DataContext = Lobby;
@@ -313,7 +357,6 @@ namespace BlackJack
             Thread LetsgoDate = new Thread(threadDate.DemarrageDate);
             LetsgoDate.Start(); //Démarrage du thread
 
-            Lobby.Joueur = joueur;
             CheckJetonSolde();
             Lobby.Croupier = new Croupier();
         }
@@ -711,6 +754,9 @@ namespace BlackJack
 
         private void VerifGagnant()
         {
+            bool win = false;
+            bool push = false;
+
             if (Lobby.ValeurDeckCroupier() > 21)
                 Lobby.Croupier.ABust = true;
             else
@@ -785,23 +831,60 @@ namespace BlackJack
             FinDuGame();
         }
 
+        private void EnregistrementGame(bool win, bool push, bool carte2, double gainperte)
+        {
+            Console.WriteLine("J'ajoute une ligne");
+            MyRange = MySheet.UsedRange;
+            NbColonnes = MyRange.Columns.Count;
+            NbLignes = MyRange.Rows.Count;
+            MySheet.Cells[1][NbLignes + 1] = DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss");
+            MySheet.Cells[2][NbLignes + 1] = gainperte;
+            MySheet.Cells[3][NbLignes + 1] = Lobby.ValeurDeckCroupier();
+
+            if (carte2)
+                MySheet.Cells[4][NbLignes + 1] = Lobby.ValeurDeckJoueur2(Carte2);
+            else
+                MySheet.Cells[4][NbLignes + 1] = Lobby.ValeurDeckJoueur();
+
+            if (win)
+            {
+                MySheet.Cells[5][NbLignes + 1] = Convert.ToString(gainperte);
+                MySheet.Cells[6][NbLignes + 1] = "";
+            } 
+            else if (!win && !push)
+            {
+
+                MySheet.Cells[5][NbLignes + 1] = "";
+                MySheet.Cells[6][NbLignes + 1] = Convert.ToString(gainperte); 
+            }
+            else
+            {
+                MySheet.Cells[5][NbLignes + 1] = 0;
+                MySheet.Cells[6][NbLignes + 1] = 0;
+            }
+        }
+
         private void CheckDoubleWin()
         {
             if (RectangleJoueur.BorderBrush.ToString() == new SolidColorBrush(Colors.Green).ToString())
             {
+                EnregistrementGame(true, false, false, MiseActuelle/2);
                 Lobby.Joueur.Solde += MiseActuelle;
             }
             if (RectangleJoueur2.BorderBrush.ToString() == new SolidColorBrush(Colors.Green).ToString())
             {
+                EnregistrementGame(true, false, true, MiseActuelle/2);
                 Lobby.Joueur.Solde += MiseActuelle;
             }
             if (RectangleJoueur.BorderBrush.ToString() == new SolidColorBrush(Colors.Orange).ToString())
             {
+                EnregistrementGame(false, true, false, MiseActuelle / 2);
                 int Push = MiseActuelle / 2;
                 Lobby.Joueur.Solde += Push;
             }
             if (RectangleJoueur2.BorderBrush.ToString() == new SolidColorBrush(Colors.Orange).ToString())
             {
+                EnregistrementGame(false, false, true, MiseActuelle / 2);
                 int Push = MiseActuelle / 2;
                 Lobby.Joueur.Solde += Push;
             }
@@ -822,6 +905,7 @@ namespace BlackJack
 
         private void Win()
         {
+            EnregistrementGame(true, false, false, MiseActuelle);
             int Win = MiseActuelle * 2;
             Lobby.Joueur.Solde += Win;
             MiseActuelle = 0;
@@ -831,6 +915,7 @@ namespace BlackJack
         private void WinBJ()
         {
             int Win = (MiseActuelle*2) + (MiseActuelle / 2);
+            EnregistrementGame(true, false, false, Win);
             Lobby.Joueur.Solde += Win;
             MiseActuelle = 0;
             CheckJetonSolde();
@@ -838,12 +923,14 @@ namespace BlackJack
 
         private void Lose()
         {
+            EnregistrementGame(false, false, false, MiseActuelle);
             MiseActuelle = 0;
             CheckJetonSolde();
         }
 
         private void Push()
         {
+            EnregistrementGame(false, true, false, MiseActuelle);
             Lobby.Joueur.Solde += MiseActuelle;
             MiseActuelle = 0;
             CheckJetonSolde();
@@ -862,13 +949,55 @@ namespace BlackJack
         {
             JoueurManager jm = new JoueurManager();
             jm.SaveRegistrySolde(Lobby.Joueur.Email, Lobby.Joueur.Solde);
+            
+
+            Console.WriteLine("Je sauve");
+            MyApp.DisplayAlerts = false;
+            MyBook.Save();
+            MyApp.DisplayAlerts = true;
+
+            MyBook.Close();
+            MyApp.Quit();
+            releaseObject(MySheet);
+            releaseObject(MyBook);
+            releaseObject(MyApp);
+            
             Environment.Exit(0);
+        }
+
+        private void releaseObject(object obj)
+        {
+            try
+            {
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+                obj = null;
+            }
+            catch (Exception e)
+            {
+                obj = null;
+
+            }
+            finally
+            {
+                GC.Collect();
+            }
         }
 
         private void BoutonClosing(object sender, CancelEventArgs e)
         {
             JoueurManager jm = new JoueurManager();
             jm.SaveRegistrySolde(Lobby.Joueur.Email, Lobby.Joueur.Solde);
+
+            Console.WriteLine("Je sauve");
+            MyApp.DisplayAlerts = false;
+            MyBook.Save();
+            MyApp.DisplayAlerts = true;
+
+            MyBook.Close();
+            MyApp.Quit();
+            releaseObject(MySheet);
+            releaseObject(MyBook);
+            releaseObject(MyApp);
         }
     }
 }
