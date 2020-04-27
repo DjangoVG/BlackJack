@@ -44,12 +44,12 @@
     <Compile Include="Carte.cs" />
     <Compile Include="CartesComparer.cs" />
     <Compile Include="Croupier.cs" />
+    <Compile Include="Game.cs" />
     <Compile Include="IEtatActuel.cs" />
     <Compile Include="Joueur.cs" />
     <Compile Include="JoueurManager.cs" />
     <Compile Include="Lobby.cs" />
     <Compile Include="LoginException.cs" />
-    <Compile Include="Profil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sabot.cs" />
     <Compile Include="ThreadDate.cs" />

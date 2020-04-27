@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Game xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <DateNow>2020-04-27T16:14:38.3525804+02:00</DateNow>
+  <MiseActuelle>15</MiseActuelle>
+  <Dated>27-04-2020 04:14:38</Dated>
+  <MainCroupier>19</MainCroupier>
+  <MainJoueur>15</MainJoueur>
+  <Gain>0€</Gain>
+  <Perte>- 15€</Perte>
+</Game><?xml version="1.0" encoding="utf-8"?>
+<Game xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <DateNow>2020-04-27T16:14:43.0031745+02:00</DateNow>
+  <MiseActuelle>60</MiseActuelle>
+  <Dated>27-04-2020 04:14:43</Dated>
+  <MainCroupier>17</MainCroupier>
+  <MainJoueur>14</MainJoueur>
+  <Gain>0€</Gain>
+  <Perte>- 60€</Perte>
+</Game><?xml version="1.0" encoding="utf-8"?>
+<Game xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Dated>27-04-2020 04:17:29</Dated>
+  <MiseActuelle>20</MiseActuelle>
+  <MainCroupier>19</MainCroupier>
+  <MainJoueur>17</MainJoueur>
+  <Gain>0€</Gain>
+  <Perte>- 20€</Perte>
+</Game><?xml version="1.0" encoding="utf-8"?>
+<Game xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Dated>27-04-2020 04:17:33</Dated>
+  <MiseActuelle>110</MiseActuelle>
+  <MainCroupier>20</MainCroupier>
+  <MainJoueur>19</MainJoueur>
+  <Gain>0€</Gain>
+  <Perte>- 110€</Perte>
+</Game><?xml version="1.0" encoding="utf-8"?>
+<Game xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Dated>27-04-2020 04:17:36</Dated>
+  <MiseActuelle>100</MiseActuelle>
+  <MainCroupier>19</MainCroupier>
+  <MainJoueur>19</MainJoueur>
+  <Gain>0€</Gain>
+  <Perte>0€</Perte>
+</Game>

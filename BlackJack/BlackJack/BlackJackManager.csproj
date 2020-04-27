@@ -101,6 +101,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="FenetreHistorique.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FenetreLogin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -114,6 +118,9 @@
     </Compile>
     <Compile Include="FenetreBlackJack.xaml.cs">
       <DependentUpon>FenetreBlackJack.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FenetreHistorique.xaml.cs">
+      <DependentUpon>FenetreHistorique.xaml</DependentUpon>
     </Compile>
     <Compile Include="FenetreLogin.xaml.cs">
       <DependentUpon>FenetreLogin.xaml</DependentUpon>
@@ -400,8 +407,9 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Historique\" />
+    <Resource Include="Historique\1.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

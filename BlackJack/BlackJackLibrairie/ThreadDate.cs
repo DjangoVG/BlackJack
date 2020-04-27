@@ -16,7 +16,7 @@ namespace BlackJackLibrairie
         {
             while (true)
             {
-                Console.WriteLine(datenow.ToString());
+                //Console.WriteLine(datenow.ToString());
                 Thread.Sleep(1000);
                 this.datenow = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss");
             }

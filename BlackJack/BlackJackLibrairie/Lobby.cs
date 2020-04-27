@@ -138,7 +138,7 @@ namespace BlackJackLibrairie
 
             foreach (Carte c in listJoueur)
             {
-                Console.WriteLine("Carte : " + c.ValeurCarte);
+                //Console.WriteLine("Carte : " + c.ValeurCarte);
                 if (c.ValeurCarte == ValeurCarte.Valet || c.ValeurCarte == ValeurCarte.Dame || c.ValeurCarte == ValeurCarte.Roi)
                     ValeurDeck += 10;
                 else if (c.ValeurCarte == ValeurCarte.As)
