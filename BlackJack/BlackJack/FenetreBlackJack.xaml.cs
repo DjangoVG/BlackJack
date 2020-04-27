@@ -327,7 +327,7 @@ namespace BlackJack
             if (!File.Exists(filepath))
             {
                 XmlTextWriter xml = new XmlTextWriter(filepath, System.Text.Encoding.UTF8);
-                xml.WriteStartDocument(); //creation d'un noeud 
+                xml.WriteStartDocument();
                 xml.WriteStartElement("HistoriqueJeux");
                 xml.WriteEndElement();
                 xml.Flush();
@@ -574,7 +574,7 @@ namespace BlackJack
             if (Lobby.ValeurDeckJoueur() == 21)
             {
                 FinishDeck1 = true;
-                RectangleJoueur.BorderBrush = new SolidColorBrush(Colors.Green);
+                RectangleJoueur.BorderBrush = new SolidColorBrush(Colors.White);
                 RectangleJoueur2.BorderBrush = new SolidColorBrush(Colors.Blue);
                 GetValeurDeck2();
             }
@@ -582,6 +582,15 @@ namespace BlackJack
             {
                 RectangleJoueur.BorderBrush = new SolidColorBrush(Colors.Blue);
                 GetValeur();
+                if (Lobby.ValeurDeckJoueur2(Carte2) == 21)
+                {
+                    while (Lobby.ValeurDeckCroupier() < 17)
+                    {
+                        Lobby.DonneCarteCroupier();
+                        GetValeur();
+                    }
+                    VerifGagnant();
+                }
             }
         }
 
@@ -879,7 +888,8 @@ namespace BlackJack
 
         private void WinBJ()
         {
-            int Win = (MiseActuelle*2) + (MiseActuelle / 2);
+            double Mise = Convert.ToDouble(MiseActuelle);
+            double Win = (Mise * 2) + (Mise / 2);
             Game game = new Game(DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss"), Convert.ToString(MiseActuelle), Lobby.ValeurDeckCroupier(), Lobby.ValeurDeckJoueur(), "(BJ) + " + Convert.ToString(Win) + "€", "0€");
             EnregistrementGame(game);
             Lobby.Joueur.Solde += Win;

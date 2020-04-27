@@ -84,7 +84,7 @@ namespace BlackJack
                     {
                         if (Convert.ToInt32(BoxDepot) > 0 && Convert.ToInt32(BoxDepot) < 100000)
                         {
-                            joueur.Solde += Convert.ToInt32(BoxDepot);
+                            joueur.Solde += Convert.ToDouble(BoxDepot);
                             MessageBox.Show("Depot effectué !", "Validé", MessageBoxButton.OK, MessageBoxImage.Information);
                             this.Close();
                         }
@@ -102,14 +102,14 @@ namespace BlackJack
                 {
                     try
                     {
-                        if (joueur.Solde < Convert.ToInt32(BoxRetrait))
+                        if (joueur.Solde < Convert.ToDouble(BoxRetrait))
                         {
                             MessageBox.Show("Retrait trop élevé !", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                         else
                         {
                             // Ajouter à l'historique le retrait
-                            this.joueur.Solde -= Convert.ToInt32(BoxRetrait);
+                            this.joueur.Solde -= Convert.ToDouble(BoxRetrait);
                             MessageBox.Show("Retrait effectué !", "Validé", MessageBoxButton.OK, MessageBoxImage.Information);
                             this.Close();
                         }

@@ -43,12 +43,12 @@ namespace BlackJackLibrairie
                     {
                         throw new LoginException("", CodeException.PseudoInexistant);
                     }
-                    if (Convert.ToInt32(rk.GetValue("solde")) < 5)
+                    if (Convert.ToDouble(rk.GetValue("solde")) < 5)
                     {
                         //throw new LoginException("", CodeException.SoldeInsuffisant); A MODIFIER
                     }
                     joueur.Pseudo = rk.GetValue("pseudo") as string;
-                    joueur.Solde = Convert.ToInt32(rk.GetValue("solde"));
+                    joueur.Solde = Convert.ToDouble(rk.GetValue("solde"));
                     return;
                 }
             }
@@ -68,14 +68,14 @@ namespace BlackJackLibrairie
             rk.SetValue(email, password);
         }
 
-        public void SaveRegistryParameter(string email, string motdepasse, int solde)
+        public void SaveRegistryParameter(string email, string motdepasse, double solde)
         {
             RegistryKey rk = BlackJack.CreateSubKey(email);
             rk.SetValue(email, motdepasse);
             rk.SetValue("solde", solde);
         }
 
-        public void SaveRegistrySolde (string email, int solde)
+        public void SaveRegistrySolde (string email, double solde)
         {
             RegistryKey rk = BlackJack.CreateSubKey(email);
             rk.SetValue("solde", solde);

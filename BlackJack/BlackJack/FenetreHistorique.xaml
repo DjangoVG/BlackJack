@@ -6,16 +6,10 @@
         xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
         mc:Ignorable="d"
         Title="FenetreHistorique" Height="450" Width="800">
-    <Window.Resources>
-        <CollectionViewSource x:Key="FilteredItems" Source="{Binding ElementName=UI, Path=HistoriqueJeux}">
-            <CollectionViewSource.SortDescriptions>
-                <scm:SortDescription PropertyName="DateJeu" Direction="Ascending"/>
-            </CollectionViewSource.SortDescriptions>
-        </CollectionViewSource>
-    </Window.Resources>
-    <Grid>
-        <StackPanel Orientation="Vertical" Height="419" VerticalAlignment="Top" Background="AliceBlue">
-            <DataGrid x:Name="HistoriqueJeux" ItemsSource="{Binding Source={StaticResource FilteredItems}}" Background="Blue"  CanUserAddRows="False" CanUserDeleteRows="False" CanUserSortColumns="False" AutoGenerateColumns="false" CanUserReorderColumns="false">
+
+        <Grid>
+            <ScrollViewer VerticalScrollBarVisibility="Auto" CanContentScroll="True">
+            <DataGrid x:Name="HistoriqueJeuxData" ItemsSource="{Binding ListGame}" Background="WhiteSmoke"  CanUserAddRows="False" CanUserDeleteRows="False" CanUserSortColumns="False" AutoGenerateColumns="false" CanUserReorderColumns="false" >
                 <DataGrid.Resources>
                     <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
                         <Setter Property="Background" Value="DarkBlue"/>
@@ -26,7 +20,7 @@
                     </Style>
                 </DataGrid.Resources>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Date de la game" Binding="{Binding DateNow}" IsReadOnly="True" Width="Auto"/>
+                    <DataGridTextColumn Header="Date de la game" Binding="{Binding DateGame}" IsReadOnly="True" Width="Auto"/>
                     <DataGridTextColumn Header="Mise de la game" Binding="{Binding MiseActuelle}" IsReadOnly="True" Width="Auto"/>
                     <DataGridTextColumn Header="Main du croupier" Binding="{Binding MainCroupier}" IsReadOnly="True" Width="Auto"/>
                     <DataGridTextColumn Header="Main du joueur" Binding="{Binding MainJoueur}" IsReadOnly="True" Width="Auto"/>
@@ -34,7 +28,7 @@
                     <DataGridTextColumn Header="Perte" Binding="{Binding Perte}" IsReadOnly="True" Width="Auto"/>
                 </DataGrid.Columns>
             </DataGrid>
-        </StackPanel>
+        </ScrollViewer>
         <Button VerticalAlignment="Bottom" Content="Quitter" Click="BoutonValider"/>
     </Grid>
 </Window>

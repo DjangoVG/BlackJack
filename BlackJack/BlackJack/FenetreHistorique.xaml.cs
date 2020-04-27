@@ -12,7 +12,6 @@ namespace BlackJack
 {
     public partial class FenetreHistorique : Window, INotifyPropertyChanged
     {
-        private Game game { get; set; }
         private ObservableCollection<Game> _listgames;
         public ObservableCollection<Game> ListGame 
         {
@@ -29,13 +28,39 @@ namespace BlackJack
         public FenetreHistorique(Joueur j)
         {
             InitializeComponent();
-            HistoriqueJeux.DataContext = ListGame;
-            XmlDocument FichierHistorique = new XmlDocument();
-            FichierHistorique.Load(@"C:\Users\Regis\Bureau\RegisServer\1. Info. de Gestion\2ème Année\C#\Laboratoire\labo-phase-3-DjangoVG\BlackJack\BlackJack\Historique\" + j.Email + ".xml");
-            XmlNodeList ListeGame = FichierHistorique.GetElementsByTagName("Game");
-            foreach (XmlNode n in ListeGame)
+            ListGame = new ObservableCollection<Game>();
+            HistoriqueJeuxData.DataContext = this;
+
+            XmlDocument doc = new XmlDocument();
+            doc.Load(@"C:\Users\Regis\Bureau\RegisServer\1. Info. de Gestion\2ème Année\C#\Laboratoire\labo-phase-3-DjangoVG\BlackJack\BlackJack\Historique\" + j.Email + ".xml");
+            XmlNode nodes = doc.DocumentElement.SelectSingleNode("/HistoriqueJeux");
+
+            string dategame = null;
+            string miseactuelle = null;
+            int maincroupier = 0;
+            int mainjoueur = 0;
+            string gain = null;
+            string perte = null;
+
+
+            foreach (XmlNode node in nodes.ChildNodes)
             {
-                Game game = new Game(n.Attributes[0].Value, n.Attributes[1].Value, Convert.ToInt32(n.Attributes[2].Value), Convert.ToInt32(n.Attributes[3].Value), n.Attributes[4].Value, n.Attributes[5].Value);
+                foreach (XmlNode nod in node.ChildNodes)
+                {
+                    if (nod.Name.Equals("DateGame"))
+                        dategame = nod.InnerText;
+                    if (nod.Name.Equals("MiseActuelle"))
+                        miseactuelle = nod.InnerText;
+                    if (nod.Name.Equals("MainCroupier"))
+                        maincroupier = Convert.ToInt32(nod.InnerText);
+                    if (nod.Name.Equals("MainJoueur"))
+                        mainjoueur = Convert.ToInt32(nod.InnerText);
+                    if (nod.Name.Equals("Gain"))
+                        gain = nod.InnerText;
+                    if (nod.Name.Equals("Perte"))
+                        perte = nod.InnerText;
+                }
+                Game game = new Game(dategame, miseactuelle, maincroupier, mainjoueur, gain, perte);
                 ListGame.Add(game);
             }
         }

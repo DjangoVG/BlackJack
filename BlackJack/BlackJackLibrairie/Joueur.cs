@@ -13,7 +13,7 @@ namespace BlackJackLibrairie
         private string _prenom;
         private string _pseudo;
         private string _motdepasse;
-        private int _solde;
+        private double _solde;
         private Boolean _abust;
 
         #region PROPRIETES
@@ -60,7 +60,7 @@ namespace BlackJackLibrairie
             set { _email = value; }
         }
 
-        public int Solde
+        public double Solde
         {
             get { return _solde; }
             set
