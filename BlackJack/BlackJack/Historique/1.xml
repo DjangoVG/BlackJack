@@ -1,9 +1,115 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Game>
-	<DateGame>27-04-2020 04:14:38</DateGame>
-  <MiseActuelle>15</MiseActuelle>
-  <MainCroupier>19</MainCroupier>
-  <MainJoueur>15</MainJoueur>
-  <Gain>0€</Gain>
-  <Perte>- 15€</Perte>
-</Game>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HistoriqueJeux>
+  <Game>
+    <DateGame>27-04-2020 09:07:58</DateGame>
+    <MiseActuelle>15</MiseActuelle>
+    <MainCroupier>18</MainCroupier>
+    <MainJoueur>15</MainJoueur>
+    <Gain>0€</Gain>
+    <Perte>- 15€</Perte>
+  </Game>
+  <Game>
+    <DateGame>27-04-2020 09:08:05</DateGame>
+    <MiseActuelle>10</MiseActuelle>
+    <MainCroupier>20</MainCroupier>
+    <MainJoueur>15</MainJoueur>
+    <Gain>0€</Gain>
+    <Perte>- 10€</Perte>
+  </Game>
+  <Game>
+    <DateGame>27-04-2020 09:08:15</DateGame>
+    <MiseActuelle>5</MiseActuelle>
+    <MainCroupier>22</MainCroupier>
+    <MainJoueur>18</MainJoueur>
+    <Gain>+ 5€</Gain>
+    <Perte>0€</Perte>
+  </Game>
+  <Game>
+    <DateGame>27-04-2020 09:09:23</DateGame>
+    <MiseActuelle>205</MiseActuelle>
+    <MainCroupier>17</MainCroupier>
+    <MainJoueur>20</MainJoueur>
+    <Gain>+ 205€</Gain>
+    <Perte>0€</Perte>
+  </Game>
+  <Game>
+    <DateGame>27-04-2020 09:09:23</DateGame>
+    <MiseActuelle>205</MiseActuelle>
+    <MainCroupier>17</MainCroupier>
+    <MainJoueur>17</MainJoueur>
+    <Gain>0€</Gain>
+    <Perte>0€</Perte>
+  </Game>
+  <Game>
+    <DateGame>27-04-2020 09:09:38</DateGame>
+    <MiseActuelle>5</MiseActuelle>
+    <MainCroupier>17</MainCroupier>
+    <MainJoueur>17</MainJoueur>
+    <Gain>0€</Gain>
+    <Perte>0€</Perte>
+  </Game>
+  <Game>
+    <DateGame>27-04-2020 09:09:52</DateGame>
+    <MiseActuelle>5</MiseActuelle>
+    <MainCroupier>25</MainCroupier>
+    <MainJoueur>19</MainJoueur>
+    <Gain>+ 5€</Gain>
+    <Perte>0€</Perte>
+  </Game>
+  <Game>
+    <DateGame>27-04-2020 09:09:52</DateGame>
+    <MiseActuelle>5</MiseActuelle>
+    <MainCroupier>25</MainCroupier>
+    <MainJoueur>19</MainJoueur>
+    <Gain>+ 5€</Gain>
+    <Perte>0€</Perte>
+  </Game>
+  <Game>
+    <DateGame>27-04-2020 09:09:58</DateGame>
+    <MiseActuelle>10</MiseActuelle>
+    <MainCroupier>23</MainCroupier>
+    <MainJoueur>20</MainJoueur>
+    <Gain>+ 10€</Gain>
+    <Perte>0€</Perte>
+  </Game>
+  <Game>
+    <DateGame>27-04-2020 09:09:58</DateGame>
+    <MiseActuelle>10</MiseActuelle>
+    <MainCroupier>23</MainCroupier>
+    <MainJoueur>13</MainJoueur>
+    <Gain>+ 10€</Gain>
+    <Perte>0€</Perte>
+  </Game>
+  <Game>
+    <DateGame>27-04-2020 09:11:46</DateGame>
+    <MiseActuelle>30</MiseActuelle>
+    <MainCroupier>24</MainCroupier>
+    <MainJoueur>13</MainJoueur>
+    <Gain>+ 30€</Gain>
+    <Perte>0€</Perte>
+  </Game>
+  <Game>
+    <DateGame>27-04-2020 09:11:46</DateGame>
+    <MiseActuelle>30</MiseActuelle>
+    <MainCroupier>24</MainCroupier>
+    <MainJoueur>21</MainJoueur>
+    <Gain>+ 30€</Gain>
+    <Perte>0€</Perte>
+  </Game>
+  <Game>
+    <DateGame>27-04-2020 09:11:58</DateGame>
+    <MiseActuelle>10</MiseActuelle>
+    <MainCroupier>4</MainCroupier>
+    <MainJoueur>24</MainJoueur>
+    <Gain>0€</Gain>
+    <Perte>- 10€</Perte>
+  </Game>
+  <Game>
+    <DateGame>27-04-2020 09:11:58</DateGame>
+    <MiseActuelle>10</MiseActuelle>
+    <MainCroupier>4</MainCroupier>
+    <MainJoueur>24</MainJoueur>
+    <Gain>0€</Gain>
+    <Perte>- 10€</Perte>
+  </Game>
+</HistoriqueJeux>

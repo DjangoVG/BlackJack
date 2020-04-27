@@ -40,4 +40,12 @@
   <MainJoueur>19</MainJoueur>
   <Gain>0€</Gain>
   <Perte>0€</Perte>
+</Game><?xml version="1.0" encoding="utf-8"?>
+<Game xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <DateGame>27-04-2020 07:49:45</DateGame>
+  <MiseActuelle>15</MiseActuelle>
+  <MainCroupier>22</MainCroupier>
+  <MainJoueur>20</MainJoueur>
+  <Gain>+ 15€</Gain>
+  <Perte>0€</Perte>
 </Game>

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace BlackJackLibrairie
@@ -129,10 +130,16 @@ namespace BlackJackLibrairie
 
         public static void SaveInXML(Game g, string path)
         {
-            XmlSerializer xmlformat = new XmlSerializer(typeof(Game));
-            fstream = new StreamWriter(path, true);
-            xmlformat.Serialize(fstream, g);
-            fstream.Close();
+            XDocument doc = XDocument.Load(path);
+            XElement HistoriqueJeux = doc.Element("HistoriqueJeux");
+
+            HistoriqueJeux.Add(new XElement("Game"));
+            IEnumerable<XElement> rows = HistoriqueJeux.Descendants("Game");
+
+            XElement Game = rows.Last();
+
+            Game.Add(new XElement("DateGame", g.DateGame), new XElement("MiseActuelle", g.MiseActuelle), new XElement("MainCroupier", g.MainCroupier), new XElement("MainJoueur", g.MainJoueur), new XElement("Gain", g.Gain), new XElement("Perte", g.Perte));
+            doc.Save(path);
         }
     }
 }

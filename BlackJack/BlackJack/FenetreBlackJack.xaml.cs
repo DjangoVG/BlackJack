@@ -323,11 +323,15 @@ namespace BlackJack
             CheckJetonSolde();
             Lobby.Croupier = new Croupier();
 
-            string filepath = @"C:\Users\Regis\Bureau\RegisServer\1. Info. de Gestion\2ème Année\C#\Laboratoire\labo-phase-3-DjangoVG\Documents\Historique\" + Lobby.Joueur.Email + ".xml";
+            string filepath = @"C:\Users\Regis\Bureau\RegisServer\1. Info. de Gestion\2ème Année\C#\Laboratoire\labo-phase-3-DjangoVG\BlackJack\BlackJack\Historique\" + Lobby.Joueur.Email + ".xml";
             if (!File.Exists(filepath))
             {
-                fstream = new StreamWriter(filepath, false);
-                fstream.Close();
+                XmlTextWriter xml = new XmlTextWriter(filepath, System.Text.Encoding.UTF8);
+                xml.WriteStartDocument(); //creation d'un noeud 
+                xml.WriteStartElement("HistoriqueJeux");
+                xml.WriteEndElement();
+                xml.Flush();
+                xml.Close();
             }
         }
 
@@ -732,7 +736,33 @@ namespace BlackJack
             else
                 Lobby.Croupier.ABust = false;
 
-            if (RectangleJoueur2.Visibility == Visibility.Visible)
+            if (RectangleJoueur2.Visibility == Visibility.Hidden)
+            {
+                if (Lobby.ValeurDeckCroupier() > 21)
+                    Lobby.Croupier.ABust = true;
+                else
+                    Lobby.Croupier.ABust = false;
+
+                if (Lobby.ValeurDeckCroupier() > Lobby.ValeurDeckJoueur() && !Lobby.Croupier.ABust) // CROUPIER WIN
+                {
+                    this.RectangleCroupier.BorderBrush = new SolidColorBrush(Colors.Green);
+                    this.RectangleJoueur.BorderBrush = new SolidColorBrush(Colors.Red);
+                    Lose();
+                }
+                else if (Lobby.ValeurDeckJoueur() == Lobby.ValeurDeckCroupier()) // PUSH
+                {
+                    this.RectangleCroupier.BorderBrush = new SolidColorBrush(Colors.Orange);
+                    this.RectangleJoueur.BorderBrush = new SolidColorBrush(Colors.Orange);
+                    Push();
+                }
+                else // JOUEUR WIN
+                {
+                    this.RectangleJoueur.BorderBrush = new SolidColorBrush(Colors.Green);
+                    this.RectangleCroupier.BorderBrush = new SolidColorBrush(Colors.Red);
+                    Win();
+                }
+            }
+            else
             {
                 if (Lobby.ValeurDeckJoueur2(Carte2) > 21)
                 {
@@ -771,39 +801,16 @@ namespace BlackJack
 
 
                 CheckDoubleWin();
-            }
-            else
-            {
-                if (Lobby.ValeurDeckCroupier() > 21)
-                    Lobby.Croupier.ABust = true;
-                else
-                    Lobby.Croupier.ABust = false;
 
-                if (Lobby.ValeurDeckCroupier() > Lobby.ValeurDeckJoueur() && !Lobby.Croupier.ABust) // CROUPIER WIN
-                {
-                    this.RectangleCroupier.BorderBrush = new SolidColorBrush(Colors.Green);
-                    this.RectangleJoueur.BorderBrush = new SolidColorBrush(Colors.Red);
-                    Lose();
-                }
-                else if (Lobby.ValeurDeckJoueur() == Lobby.ValeurDeckCroupier()) // PUSH
-                {
-                    this.RectangleCroupier.BorderBrush = new SolidColorBrush(Colors.Orange);
-                    this.RectangleJoueur.BorderBrush = new SolidColorBrush(Colors.Orange);
-                    Push();
-                }
-                else // JOUEUR WIN
-                {
-                    this.RectangleJoueur.BorderBrush = new SolidColorBrush(Colors.Green);
-                    this.RectangleCroupier.BorderBrush = new SolidColorBrush(Colors.Red);
-                    Win();
-                }
+
             }
             FinDuGame();
         }
 
         private void EnregistrementGame(Game g)
         {
-            string path = @"C:\Users\Regis\Bureau\RegisServer\1. Info. de Gestion\2ème Année\C#\Laboratoire\labo-phase-3-DjangoVG\Documents\Historique\" + Lobby.Joueur.Email + ".xml";
+            Console.WriteLine("ENREGISTREMENT GAME");
+            string path = @"C:\Users\Regis\Bureau\RegisServer\1. Info. de Gestion\2ème Année\C#\Laboratoire\labo-phase-3-DjangoVG\BlackJack\BlackJack\Historique\" + Lobby.Joueur.Email + ".xml";
             Game.SaveInXML(g, path);
         }
 
@@ -830,10 +837,20 @@ namespace BlackJack
             }
             if (RectangleJoueur2.BorderBrush.ToString() == new SolidColorBrush(Colors.Orange).ToString())
             {
-                Game game = new Game(DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss"), Convert.ToString(MiseActuelle / 2), Lobby.ValeurDeckCroupier(), Lobby.ValeurDeckJoueur2(Carte2), "0€", "- " + Convert.ToString(MiseActuelle / 2) + "€");
+                Game game = new Game(DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss"), Convert.ToString(MiseActuelle / 2), Lobby.ValeurDeckCroupier(), Lobby.ValeurDeckJoueur2(Carte2), "0€", "0€");
                 EnregistrementGame(game);
                 int Push = MiseActuelle / 2;
                 Lobby.Joueur.Solde += Push;
+            }
+            if (RectangleJoueur.BorderBrush.ToString() == new SolidColorBrush(Colors.Red).ToString())
+            {
+                Game game = new Game(DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss"), Convert.ToString(MiseActuelle / 2), Lobby.ValeurDeckCroupier(), Lobby.ValeurDeckJoueur2(Carte2), "0€", "- " + Convert.ToString(MiseActuelle / 2) + "€");
+                EnregistrementGame(game);
+            }
+            if (RectangleJoueur2.BorderBrush.ToString() == new SolidColorBrush(Colors.Red).ToString())
+            {
+                Game game = new Game(DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss"), Convert.ToString(MiseActuelle / 2), Lobby.ValeurDeckCroupier(), Lobby.ValeurDeckJoueur2(Carte2), "0€", "- " + Convert.ToString(MiseActuelle / 2) + "€");
+                EnregistrementGame(game);
             }
             MiseActuelle = 0;
             FinDuGame();

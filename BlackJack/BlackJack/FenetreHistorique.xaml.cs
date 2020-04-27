@@ -1,19 +1,15 @@
 ﻿using BlackJackLibrairie;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Xml;
-using System.Xml.Serialization;
+using System.Xml.Linq;
 
 namespace BlackJack
 {
-    /// <summary>
-    /// Logique d'interaction pour FenetreHistorique.xaml
-    /// </summary>
     public partial class FenetreHistorique : Window, INotifyPropertyChanged
     {
         private Game game { get; set; }
@@ -35,7 +31,7 @@ namespace BlackJack
             InitializeComponent();
             HistoriqueJeux.DataContext = ListGame;
             XmlDocument FichierHistorique = new XmlDocument();
-            FichierHistorique.Load("/Historique/" + j.Email + ".xml");
+            FichierHistorique.Load(@"C:\Users\Regis\Bureau\RegisServer\1. Info. de Gestion\2ème Année\C#\Laboratoire\labo-phase-3-DjangoVG\BlackJack\BlackJack\Historique\" + j.Email + ".xml");
             XmlNodeList ListeGame = FichierHistorique.GetElementsByTagName("Game");
             foreach (XmlNode n in ListeGame)
             {
