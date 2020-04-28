@@ -548,7 +548,7 @@
                     <MenuItem Header="Historique" Click="BoutonHistorique"/>
                     <MenuItem Header="Format de la date"/>
                 </MenuItem>
-                <MenuItem Header="Probabilités">
+                <MenuItem Header="Probabilités" Click="BoutonProbabilités">
                 </MenuItem>
             </Menu>
 

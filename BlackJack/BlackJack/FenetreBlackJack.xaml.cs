@@ -20,6 +20,7 @@ namespace BlackJack
         #region PROPRIETES
         public Lobby Lobby { get; set; } = new Lobby();
         private int _mise;
+        private Probabilités Proba { get; set; }
 
         public int MiseActuelle
         {
@@ -333,6 +334,8 @@ namespace BlackJack
                 xml.Flush();
                 xml.Close();
             }
+
+            Proba = new Probabilités(Lobby, Carte2);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -935,6 +938,28 @@ namespace BlackJack
         {
             FenetreHistorique fen = new FenetreHistorique(Lobby.Joueur);
             fen.ShowDialog();
+        }
+
+        private void BoutonProbabilités(object sender, RoutedEventArgs e)
+        {
+            if (RectangleJoueur2.Visibility == Visibility.Visible)
+            {
+                if (RectangleJoueur2.BorderBrush == new SolidColorBrush(Colors.Blue))
+                {
+                    Console.WriteLine("Probabilité : "+ Proba.GetProbDeck2().ToString());
+                }
+                else if (RectangleJoueur.BorderBrush == new SolidColorBrush(Colors.Blue))
+                {
+                    Console.WriteLine("Probabilité : " + Proba.GetProbDeck2().ToString());
+                }
+            }
+            else
+            {
+                if (Lobby.ValeurDeckJoueur() > 0)
+                {
+                    Console.WriteLine("Probabilité : " + Proba.GetProb().ToString());
+                }
+            }
         }
     }
 }
