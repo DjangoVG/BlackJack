@@ -640,10 +640,25 @@ namespace BlackJack
 
             if (Lobby.ValeurDeckJoueur() == 21)
             {
-                FinishDeck1 = true;
-                RectangleJoueur.BorderBrush = new SolidColorBrush(Colors.White);
-                RectangleJoueur2.BorderBrush = new SolidColorBrush(Colors.Blue);
-                GetValeurDeck2();
+                if (Lobby.ValeurDeckJoueur2(Carte2) == 21)
+                {
+                    FinishDeck1 = true;
+                    RectangleJoueur.BorderBrush = new SolidColorBrush(Colors.White);
+                    RectangleJoueur2.BorderBrush = new SolidColorBrush(Colors.White);
+                    GetValeur();
+                    while (Lobby.ValeurDeckCroupier() < 17)
+                    {
+                        Lobby.DonneCarteCroupier();
+                        GetValeur();
+                    }
+                    VerifGagnant();
+                }
+                else
+                {
+                    RectangleJoueur.BorderBrush = new SolidColorBrush(Colors.White);
+                    RectangleJoueur2.BorderBrush = new SolidColorBrush(Colors.Blue);
+                    GetValeurDeck2();
+                }
             }
             else
             {
