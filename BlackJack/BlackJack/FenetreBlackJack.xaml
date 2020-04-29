@@ -15,6 +15,10 @@
         <ImageBrush x:Key="stand_bouton" ImageSource="/Images/Boutons/BoutonRester.png" />
         <ImageBrush x:Key="split_bouton" ImageSource="/Images/Boutons/BoutonSplit.png" />
         <ImageBrush x:Key="double_bouton" ImageSource="/Images/Boutons/BoutonDouble.png" />
+        <ImageBrush x:Key="tirerproba_bouton" ImageSource="/Images/Boutons/BoutonTirerProba.png" />
+        <ImageBrush x:Key="standproba_bouton" ImageSource="/Images/Boutons/BoutonResterProba.png" />
+        <ImageBrush x:Key="splitproba_bouton" ImageSource="/Images/Boutons/BoutonSplitProba.png" />
+        <ImageBrush x:Key="doubleproba_bouton" ImageSource="/Images/Boutons/BoutonDoubleProba.png" />
         <ImageBrush x:Key="jeton5" ImageSource="/Images/Jetons/Jeton5.png" />
         <ImageBrush x:Key="jeton10" ImageSource="/Images/Jetons/Jeton10.png" />
         <ImageBrush x:Key="jeton50" ImageSource="/Images/Jetons/Jeton50.png" />
@@ -82,6 +86,9 @@
                                 <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}" />
                                 <Setter Property="Opacity" TargetName="border" Value="0.5" />
                             </Trigger>
+                            <Trigger Property="IsCancel"  Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource tirerproba_bouton}" />
+                            </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
@@ -125,6 +132,9 @@
                                 <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}" />
                                 <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}" />
                                 <Setter Property="Opacity" TargetName="border" Value="0.5" />
+                            </Trigger>
+                            <Trigger Property="IsCancel"  Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource standproba_bouton}" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -170,6 +180,9 @@
                                 <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}" />
                                 <Setter Property="Opacity" TargetName="border" Value="0.5" />
                             </Trigger>
+                            <Trigger Property="IsCancel"  Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource splitproba_bouton}" />
+                            </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
@@ -213,6 +226,9 @@
                                 <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}" />
                                 <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}" />
                                 <Setter Property="Opacity" TargetName="border" Value="0.5" />
+                            </Trigger>
+                            <Trigger Property="IsCancel"  Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource doubleproba_bouton}" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -620,22 +636,22 @@
         <StackPanel VerticalAlignment="Bottom">
             <Grid>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="30,15,0,0">
-                    <Button x:Name="BoutonTirerN" Height="100" Width="100" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="15,0,5,0" Style="{DynamicResource BoutonHit}" Click="BoutonTirer" IsEnabled="{Binding IsTirerEnable}">
+                    <Button x:Name="BoutonTirerN" Height="100" Width="100" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="15,0,5,0" Style="{DynamicResource BoutonHit}" Click="BoutonTirer" IsEnabled="{Binding IsTirerEnable}" IsCancel="{Binding IsTirerProba}">
                         <Button.Background>
                             <ImageBrush ImageSource="/Images/Boutons/BoutonTirer.png" />
                         </Button.Background>
                     </Button>
-                    <Button x:Name="BoutonResterN" Height="100" Width="100" BorderBrush="{x:Null}" Margin="15,0,5,0" Style="{DynamicResource BoutonStand}" Click="BoutonStand" IsEnabled="{Binding IsResterEnable}">
+                    <Button x:Name="BoutonResterN" Height="100" Width="100" BorderBrush="{x:Null}" Margin="15,0,5,0" Style="{DynamicResource BoutonStand}" Click="BoutonStand" IsEnabled="{Binding IsResterEnable}" IsCancel="{Binding IsResterProba}">
                         <Button.Background>
                             <ImageBrush ImageSource="/Images/Boutons/BoutonRester.png" />
                         </Button.Background>
                     </Button>
-                    <Button x:Name="BoutonSplitN" Height="100" Width="100" BorderBrush="{x:Null}" Margin="15,0,5,0" Style="{DynamicResource BoutonSplit}" IsEnabled="{Binding IsSplitEnable}" Click="BoutonSplit">
+                    <Button x:Name="BoutonSplitN" Height="100" Width="100" BorderBrush="{x:Null}" Margin="15,0,5,0" Style="{DynamicResource BoutonSplit}" IsEnabled="{Binding IsSplitEnable}" Click="BoutonSplit" IsCancel="{Binding IsSplitProba}">
                         <Button.Background>
                             <ImageBrush ImageSource="/Images/Boutons/BoutonSplit.png" />
                         </Button.Background>
                     </Button>
-                    <Button x:Name="BoutonDoubleN" Height="100" Width="100" BorderBrush="{x:Null}" Margin="15,0,5,0" Style="{DynamicResource BoutonDouble}" IsEnabled="{Binding IsDoubleEnable}" Click="BoutonDouble">
+                    <Button x:Name="BoutonDoubleN" Height="100" Width="100" BorderBrush="{x:Null}" Margin="15,0,5,0" Style="{DynamicResource BoutonDouble}" IsEnabled="{Binding IsDoubleEnable}" Click="BoutonDouble" IsCancel="{Binding IsDoubleProba}">
                         <Button.Background>
                             <ImageBrush ImageSource="/Images/Boutons/BoutonDouble.png" />
                         </Button.Background>

@@ -161,6 +161,66 @@ namespace BlackJack
             }
         }
 
+        private Boolean _isTirerProba;
+
+        public Boolean IsTirerProba
+        {
+            get
+            {
+                return _isTirerProba;
+            }
+            set
+            {
+                _isTirerProba = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        private Boolean _isResterProba;
+
+        public Boolean IsResterProba
+        {
+            get
+            {
+                return _isResterProba;
+            }
+            set
+            {
+                _isResterProba = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        private Boolean _isSplitProba;
+
+        public Boolean IsSplitProba
+        {
+            get
+            {
+                return _isSplitProba;
+            }
+            set
+            {
+                _isSplitProba = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        private Boolean _isDoubleProba;
+
+        public Boolean IsDoubleProba
+        {
+            get
+            {
+                return _isDoubleProba;
+            }
+            set
+            {
+                _isDoubleProba = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         private Boolean _is5Enable;
 
         public Boolean Is5Enable
@@ -305,6 +365,7 @@ namespace BlackJack
             IsDoubleEnable = false;
             IsEnableConnecter = false;
             IsEnableDeconnecter = true;
+            ResetProba();
 
             Is5Enable = true;
             Is10Enable = true;
@@ -342,6 +403,7 @@ namespace BlackJack
 
         private void BoutonPlayGame(object sender, EventArgs e)
         {
+            ResetProba();
             FinishDeck1 = false;
             if (MiseActuelle != 0)
             {
@@ -358,7 +420,6 @@ namespace BlackJack
                     IsDoubleEnable = true;
                     IsSplitEnable = true;
                 }
-                    
 
                 Is5Enable = false;
                 Is10Enable = false;
@@ -402,6 +463,7 @@ namespace BlackJack
 
         private void BoutonTirer(object sender, EventArgs e)
         {
+            ResetProba();
             if (RectangleJoueur2.Visibility == Visibility.Visible) // Joueur a SPLIT
             {
                 if (!FinishDeck1) // Je suis sur le deck 1
@@ -480,6 +542,7 @@ namespace BlackJack
 
         private void BoutonStand(object sender, EventArgs e)
         {
+            ResetProba();
             if (RectangleJoueur2.Visibility == Visibility.Visible)
             {
                 if (!FinishDeck1) // Je suis sur le deck 1
@@ -531,6 +594,7 @@ namespace BlackJack
 
         private void BoutonDouble(object sender, EventArgs e)
         {
+            ResetProba();
             Lobby.Joueur.Solde -= MiseActuelle;
             MiseActuelle += MiseActuelle;
             Lobby.DonneCarteJoueur();
@@ -819,6 +883,14 @@ namespace BlackJack
             FinDuGame();
         }
 
+        private void ResetProba()
+        {
+            IsTirerProba = false;
+            IsResterProba = false;
+            IsSplitProba = false;
+            IsDoubleProba = false;
+        }
+
         private void EnregistrementGame(Game g)
         {
             Console.WriteLine("ENREGISTREMENT GAME");
@@ -946,18 +1018,39 @@ namespace BlackJack
             {
                 if (RectangleJoueur2.BorderBrush == new SolidColorBrush(Colors.Blue))
                 {
-                    Console.WriteLine("Probabilité : "+ Proba.GetProbDeck2().ToString());
+                    if (Proba.GetProbDeck2().ToString().Equals("Tirer"))
+                        IsTirerProba = true;
+                    else if (Proba.GetProbDeck2().ToString().Equals("Rester"))
+                        IsResterProba = true;
+                    else if (Proba.GetProbDeck2().ToString().Equals("Split"))
+                        IsSplitProba = true;
+                    else
+                        IsDoubleProba = true;
                 }
                 else if (RectangleJoueur.BorderBrush == new SolidColorBrush(Colors.Blue))
                 {
-                    Console.WriteLine("Probabilité : " + Proba.GetProbDeck2().ToString());
+                    if (Proba.GetProbDeck2().ToString().Equals("Tirer"))
+                        IsTirerProba = true;
+                    else if (Proba.GetProbDeck2().ToString().Equals("Stand"))
+                        IsResterProba = true;
+                    else if (Proba.GetProbDeck2().ToString().Equals("Split"))
+                        IsSplitProba = true;
+                    else
+                        IsDoubleProba = true;
                 }
             }
             else
             {
                 if (Lobby.ValeurDeckJoueur() > 0)
                 {
-                    Console.WriteLine("Probabilité : " + Proba.GetProb().ToString());
+                    if (Proba.GetProb().ToString().Equals("Tirer"))
+                        IsTirerProba = true;
+                    else if (Proba.GetProb().ToString().Equals("Stand"))
+                        IsResterProba = true;
+                    else if (Proba.GetProb().ToString().Equals("Split"))
+                        IsSplitProba = true;
+                    else
+                        IsDoubleProba = true;
                 }
             }
         }

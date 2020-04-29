@@ -25,7 +25,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.3.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -409,6 +409,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Historique\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Boutons\BoutonDoubleProba.png" />
+    <Resource Include="Images\Boutons\BoutonSplitProba.png" />
+    <Resource Include="Images\Boutons\BoutonTirerProba.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Boutons\BoutonResterProba.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
