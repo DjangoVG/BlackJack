@@ -2,18 +2,17 @@
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Xml;
-using System.Xml.Linq;
 
 namespace BlackJack
 {
     public partial class FenetreHistorique : Window, INotifyPropertyChanged
     {
         private ObservableCollection<Game> _listgames;
-        public ObservableCollection<Game> ListGame 
+
+        public ObservableCollection<Game> ListGame
         {
             get
             {
@@ -25,6 +24,7 @@ namespace BlackJack
                 NotifyPropertyChanged();
             }
         }
+
         public FenetreHistorique(Joueur j)
         {
             InitializeComponent();
@@ -41,7 +41,6 @@ namespace BlackJack
             int mainjoueur = 0;
             string gain = null;
             string perte = null;
-
 
             foreach (XmlNode node in nodes.ChildNodes)
             {

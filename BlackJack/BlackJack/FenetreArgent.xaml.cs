@@ -1,23 +1,13 @@
 ﻿using BlackJackLibrairie;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace BlackJack
 {
     public partial class FenetreArgent : Window
     {
         private string _soldeactuel;
+
         public string SoldeActuel
         {
             set
@@ -72,7 +62,7 @@ namespace BlackJack
             BoxRetrait = "";
         }
 
-        private void Click_Confirmer (object sender, EventArgs e)
+        private void Click_Confirmer(object sender, EventArgs e)
         {
             if (BoxDepot.Length > 0 && BoxRetrait.Length > 0)
                 MessageBox.Show("Une opération à la fois !", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -82,7 +72,7 @@ namespace BlackJack
                 {
                     try
                     {
-                        if (Convert.ToInt32(BoxDepot) > 0 && Convert.ToInt32(BoxDepot) < 100000)
+                        if (Convert.ToInt32(BoxDepot) > 0 && Convert.ToInt32(BoxDepot) <= 100000)
                         {
                             joueur.Solde += Convert.ToDouble(BoxDepot);
                             MessageBox.Show("Depot effectué !", "Validé", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -95,8 +85,6 @@ namespace BlackJack
                     {
                         MessageBox.Show("Caracteres invalides !", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
-
-
                 }
                 else if (BoxRetrait.Length > 0)
                 {
@@ -122,7 +110,7 @@ namespace BlackJack
             }
         }
 
-        private void Click_Annuler (object sender, EventArgs e)
+        private void Click_Annuler(object sender, EventArgs e)
         {
             this.Close();
         }

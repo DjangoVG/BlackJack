@@ -91,7 +91,7 @@ namespace BlackJack
             }
         }
 
-        private void BoutonQuitterJeu (object sender, RoutedEventArgs e)
+        private void BoutonQuitterJeu(object sender, RoutedEventArgs e)
         {
             Environment.Exit(0);
         }

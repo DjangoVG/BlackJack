@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BlackJackLibrairie
 {
-    class CartesComparer : IComparer<Carte> // AS A LA FIN
+    internal class CartesComparer : IComparer<Carte> // AS A LA FIN
     {
         public int Compare(Carte x, Carte y)
         {

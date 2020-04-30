@@ -53,7 +53,6 @@
     <Compile Include="Probabilités.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sabot.cs" />
-    <Compile Include="ThreadDate.cs" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Cartes\10CarreauRouge.png" />

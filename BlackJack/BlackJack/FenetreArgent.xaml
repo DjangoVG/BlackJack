@@ -8,21 +8,21 @@
         Title="FenetreArgent" Height="450" Width="800">
     <StackPanel>
         <StackPanel.Background>
-            <ImageBrush ImageSource="/Images/Autres/FondArgent.jpeg" Opacity="0.5"/>
+            <ImageBrush ImageSource="/Images/Autres/FondArgent.jpeg" Opacity="0.5" />
         </StackPanel.Background>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0,25,0,0" VerticalAlignment="Center">
             <StackPanel.Background>
                 <SolidColorBrush Color="AliceBlue" Opacity="0.7"></SolidColorBrush>
             </StackPanel.Background>
             <Label HorizontalAlignment="Center" FontSize="27" Foreground="DarkSlateBlue"  FontWeight="Bold" FontFamily="Eras ITC" Margin="10,10,10,0">
-                Retrait/Depôt d'argent 
+                Retrait/Depôt d'argent
             </Label>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Label Foreground="DarkSlateBlue" FontSize="15" FontFamily="Eras ITC" Width="170">
-                    Solde de votre compte : 
+                    Solde de votre compte :
                 </Label>
-                <Label x:Name="Soldeac" Content="{Binding SoldeActuel}" Foreground="DarkSlateBlue" FontSize="15" FontFamily="Eras ITC" Width="Auto" Margin="5,0,0,0"/>
-                <Label Content="euros" Foreground="DarkSlateBlue" FontSize="15" FontFamily="Eras ITC" Width="50"/>
+                <Label x:Name="Soldeac" Content="{Binding SoldeActuel}" Foreground="DarkSlateBlue" FontSize="15" FontFamily="Eras ITC" Width="Auto" Margin="5,0,0,0" />
+                <Label Content="euros" Foreground="DarkSlateBlue" FontSize="15" FontFamily="Eras ITC" Width="50" />
             </StackPanel>
 
             <StackPanel x:Name="StackPanelLogin" HorizontalAlignment="Center" Margin="0,0,0,10">
@@ -39,10 +39,9 @@
                     <TextBox x:Name="BoxRet" Text="{Binding BoxRetrait}" Width="200" VerticalContentAlignment="Center" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5,5,0">
-                    <Button Height="25" Width="95" Click="Click_Confirmer" VerticalAlignment="Center" Content="Confirmer" Margin="0,0,10,0"/>
-                    <Button Height="25" Width="95" Click="Click_Annuler" Content="Annuler"/>
+                    <Button Height="25" Width="95" Click="Click_Confirmer" VerticalAlignment="Center" Content="Confirmer" Margin="0,0,10,0" />
+                    <Button Height="25" Width="95" Click="Click_Annuler" Content="Annuler" />
                 </StackPanel>
-
             </StackPanel>
         </StackPanel>
     </StackPanel>

@@ -78,6 +78,23 @@ namespace BlackJackLibrairie
             }
         }
 
+        public bool MemeValeurCarte()
+        {
+            int Valeur1, Valeur2;
+
+            Valeur1 = Convert.ToInt32(CartesJoueur[0].ValeurCarte);
+            Valeur2 = Convert.ToInt32(CartesJoueur[1].ValeurCarte);
+            if (Valeur1 > 10 && Valeur1 < 14)
+                Valeur1 = 10;
+            if (Valeur2 > 10 && Valeur2 < 14)
+                Valeur2 = 10;
+
+            if (Valeur1 == Valeur2)
+                return true;
+            else
+                return false;
+        }
+
         public void DonneCarteJoueur()
         {
             CartesJoueur.Add(Sabot.SabotJeu[0]);
@@ -106,7 +123,6 @@ namespace BlackJackLibrairie
 
             CartesComparer cc = new CartesComparer();
             listCroupier.Sort(cc);
-
 
             foreach (Carte c in listCroupier)
             {
@@ -143,10 +159,20 @@ namespace BlackJackLibrairie
                     ValeurDeck += 10;
                 else if (c.ValeurCarte == ValeurCarte.As)
                 {
-                    if (ValeurDeck + 11 <= 21)
-                        ValeurDeck += 11;
+                    if (listJoueur.Count > 2)
+                    {
+                        if (ValeurDeck + 11 >= 22 && ValeurDeck <= 33)
+                            ValeurDeck += 1;
+                        else
+                            ValeurDeck += 11;
+                    }
                     else
-                        ValeurDeck += 1;
+                    {
+                        if (ValeurDeck + 11 <= 21)
+                            ValeurDeck += 11;
+                        else
+                            ValeurDeck += 1;
+                    }
                 }
                 else
                     ValeurDeck += Convert.ToInt32(c.ValeurCarte);

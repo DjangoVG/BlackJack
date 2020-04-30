@@ -561,8 +561,8 @@
                     <MenuItem Header="Quitter l'application" Click="MenuExitClick" />
                 </MenuItem>
                 <MenuItem Header="Options">
-                    <MenuItem Header="Historique" Click="BoutonHistorique"/>
-                    <MenuItem Header="Format de la date"/>
+                    <MenuItem Header="Historique" Click="BoutonHistorique" />
+                    <MenuItem Header="Format de la date" />
                 </MenuItem>
                 <MenuItem Header="Probabilités" Click="BoutonProbabilités">
                 </MenuItem>
@@ -595,7 +595,7 @@
                     <Label x:Name="ValeurJoueur" FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa" Margin="5,0,0,0"></Label>
                 </StackPanel>
 
-                <ScrollViewer x:Name="Scroll" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden" >
+                <ScrollViewer x:Name="Scroll" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
                     <Grid x:Name="GridJoueur">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*" />
@@ -715,7 +715,7 @@
                     <Label Content="€" Height="46"  FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa"></Label>
                 </StackPanel>
                 <StackPanel x:Name="SPDate" HorizontalAlignment="Right" Orientation="Horizontal">
-                    <Label Content="{Binding Date}" FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa" />
+                    <Label x:Name="test" Content="{Binding Date}" FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa" />
                 </StackPanel>
             </Grid>
         </StackPanel>

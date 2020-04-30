@@ -4,20 +4,17 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Threading;
 using System.Xml;
-using System.Xml.Serialization;
-using System.Xml.XPath;
-using Excel = Microsoft.Office.Interop.Excel;
 
 namespace BlackJack
 {
     public partial class FenetreBlackJack : Window, INotifyPropertyChanged
     {
         #region PROPRIETES
+
         public Lobby Lobby { get; set; } = new Lobby();
         private int _mise;
         private Probabilités Proba { get; set; }
@@ -35,9 +32,23 @@ namespace BlackJack
             }
         }
 
-        public string Date { get; set; }
+        public string _date;
+
+        public string Date
+        {
+            set
+            {
+                _date = value;
+                NotifyPropertyChanged();
+            }
+            get
+            {
+                return _date;
+            }
+        }
 
         private ObservableCollection<Carte> _carte1;
+
         public ObservableCollection<Carte> Carte1
         {
             set
@@ -52,6 +63,7 @@ namespace BlackJack
         }
 
         private ObservableCollection<Carte> _Carte2;
+
         public ObservableCollection<Carte> Carte2
         {
             set
@@ -67,7 +79,7 @@ namespace BlackJack
 
         private Boolean FinishDeck1;
 
-        #endregion
+        #endregion PROPRIETES
 
         #region Boolean ENABLE
 
@@ -333,9 +345,9 @@ namespace BlackJack
         public FenetreBlackJack(Joueur joueur)
         {
             InitializeComponent();
-            Application.Current.MainWindow.WindowState = WindowState.Maximized;
 
             #region DataContext
+
             SoldeN.DataContext = Lobby;
             SPCroupier.DataContext = Lobby;
             SPJoueur.DataContext = Lobby;
@@ -376,10 +388,10 @@ namespace BlackJack
             FinishDeck1 = false;
 
             // DATE
-            Date = DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss");
-            ThreadDate threadDate = new ThreadDate(Date); // Démarrage thread Date
-            Thread LetsgoDate = new Thread(threadDate.DemarrageDate);
-            LetsgoDate.Start(); //Démarrage du thread
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += timer_Tick;
+            timer.Start();
 
             Lobby.Joueur = joueur;
             CheckJetonSolde();
@@ -395,11 +407,14 @@ namespace BlackJack
                 xml.Flush();
                 xml.Close();
             }
-
-            Proba = new Probabilités(Lobby, Carte2);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            Date = DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss");
+        }
 
         private void BoutonPlayGame(object sender, EventArgs e)
         {
@@ -409,17 +424,6 @@ namespace BlackJack
             {
                 if (RectangleJoueur2.Visibility == Visibility.Visible)
                     ResetFrontEnd();
-
-                if (MiseActuelle > Lobby.Joueur.Solde)
-                {
-                    IsDoubleEnable = false;
-                    IsSplitEnable = false;
-                }
-                else
-                {
-                    IsDoubleEnable = true;
-                    IsSplitEnable = true;
-                }
 
                 Is5Enable = false;
                 Is10Enable = false;
@@ -431,7 +435,19 @@ namespace BlackJack
                 Lobby.StartGame();
                 GetValeur(); // Affichage de la valeur de la main du croupier/joueur
 
-                // CHECKER ICI SI MEME CARTE POUR SPLIT
+                if (MiseActuelle <= Lobby.Joueur.Solde)
+                {
+                    IsDoubleEnable = true;
+                    if (Lobby.MemeValeurCarte())
+                        IsSplitEnable = true;
+                    else
+                        IsSplitEnable = false;
+                }
+                else
+                {
+                    IsDoubleEnable = false;
+                    IsSplitEnable = false;
+                }
 
                 if (Lobby.ValeurDeckJoueur() == 21)
                 {
@@ -464,6 +480,7 @@ namespace BlackJack
         private void BoutonTirer(object sender, EventArgs e)
         {
             ResetProba();
+            IsDoubleEnable = false;
             if (RectangleJoueur2.Visibility == Visibility.Visible) // Joueur a SPLIT
             {
                 if (!FinishDeck1) // Je suis sur le deck 1
@@ -476,7 +493,7 @@ namespace BlackJack
                         RectangleJoueur2.BorderBrush = new SolidColorBrush(Colors.Blue);
                         FinishDeck1 = true;
                         GetValeurDeck2();
-                    }  
+                    }
                     else if (Lobby.ValeurDeckJoueur() == 21)
                     {
                         FinishDeck1 = true;
@@ -582,14 +599,12 @@ namespace BlackJack
             {
                 while (Lobby.ValeurDeckCroupier() < 17)
                 {
-                
                     Lobby.DonneCarteCroupier();
                     GetValeur();
                     /* PAUSE */
                 }
                 VerifGagnant();
             }
-           
         }
 
         private void BoutonDouble(object sender, EventArgs e)
@@ -621,6 +636,7 @@ namespace BlackJack
 
         private void BoutonSplit(object sender, EventArgs e)
         {
+            ResetProba();
             IsSplitEnable = false;
             IsDoubleEnable = false;
             Lobby.Joueur.Solde -= MiseActuelle;
@@ -631,7 +647,6 @@ namespace BlackJack
             RectangleJoueur.Margin = new Thickness(0, 0, 10, 0);
             RectangleJoueur2.Visibility = Visibility.Visible;
 
-            
             Carte2 = new ObservableCollection<Carte>();
             Carte2.Add(Lobby.CartesJoueur[1]);
             Lobby.CartesJoueur.RemoveAt(1);
@@ -664,15 +679,6 @@ namespace BlackJack
             {
                 RectangleJoueur.BorderBrush = new SolidColorBrush(Colors.Blue);
                 GetValeur();
-                if (Lobby.ValeurDeckJoueur2(Carte2) == 21)
-                {
-                    while (Lobby.ValeurDeckCroupier() < 17)
-                    {
-                        Lobby.DonneCarteCroupier();
-                        GetValeur();
-                    }
-                    VerifGagnant();
-                }
             }
         }
 
@@ -680,6 +686,7 @@ namespace BlackJack
         {
             var fen = new FenetreArgent(Lobby.Joueur);
             fen.ShowDialog();
+            CheckJetonSolde();
         }
 
         private void ClickBoutonSeDeco(object sender, EventArgs e)
@@ -760,6 +767,7 @@ namespace BlackJack
         }
 
         #region BOUTONS JETONS
+
         private void Ajout5euros(object sender, EventArgs e)
         {
             MiseActuelle += 5;
@@ -805,13 +813,14 @@ namespace BlackJack
             IsResetEnable = true;
         }
 
-        #endregion
+        #endregion BOUTONS JETONS
 
         private void GetValeur()
         {
             ValeurCroupier.Content = Lobby.ValeurDeckCroupier();
             ValeurJoueur.Content = Lobby.ValeurDeckJoueur();
         }
+
         private void GetValeurDeck2()
         {
             ValeurJoueur.Content = Lobby.ValeurDeckJoueur2(Carte2);
@@ -890,10 +899,7 @@ namespace BlackJack
                 else // 2 ROUGES OU 1 ORANGE/ 1 ROUGE -> CROUPIER GAGNE
                     this.RectangleCroupier.BorderBrush = new SolidColorBrush(Colors.Green);
 
-
                 CheckDoubleWin();
-
-
             }
             FinDuGame();
         }
@@ -1017,7 +1023,7 @@ namespace BlackJack
         {
             JoueurManager jm = new JoueurManager();
             jm.SaveRegistrySolde(Lobby.Joueur.Email, Lobby.Joueur.Solde);
-            
+
             Environment.Exit(0);
         }
 
@@ -1029,29 +1035,23 @@ namespace BlackJack
 
         private void BoutonProbabilités(object sender, RoutedEventArgs e)
         {
+            ResetProba();
+            Proba = new Probabilités(Lobby, Carte2);
             if (RectangleJoueur2.Visibility == Visibility.Visible)
             {
-                if (RectangleJoueur2.BorderBrush == new SolidColorBrush(Colors.Blue))
-                {
-                    if (Proba.GetProbDeck2().ToString().Equals("Tirer"))
-                        IsTirerProba = true;
-                    else if (Proba.GetProbDeck2().ToString().Equals("Rester"))
-                        IsResterProba = true;
-                    else if (Proba.GetProbDeck2().ToString().Equals("Split"))
-                        IsSplitProba = true;
-                    else
-                        IsDoubleProba = true;
-                }
-                else if (RectangleJoueur.BorderBrush == new SolidColorBrush(Colors.Blue))
+                if (RectangleJoueur2.BorderBrush.ToString() == new SolidColorBrush(Colors.Blue).ToString())
                 {
                     if (Proba.GetProbDeck2().ToString().Equals("Tirer"))
                         IsTirerProba = true;
                     else if (Proba.GetProbDeck2().ToString().Equals("Stand"))
                         IsResterProba = true;
-                    else if (Proba.GetProbDeck2().ToString().Equals("Split"))
-                        IsSplitProba = true;
-                    else
-                        IsDoubleProba = true;
+                }
+                else
+                {
+                    if (Proba.GetProb().ToString().Equals("Tirer"))
+                        IsTirerProba = true;
+                    else if (Proba.GetProb().ToString().Equals("Stand"))
+                        IsResterProba = true;
                 }
             }
             else

@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 
@@ -113,7 +111,7 @@ namespace BlackJackLibrairie
             Perte = null;
         }
 
-        public Game (string d, String Mise, int mainCroupier, int mainJoueur, string gain, string perte)
+        public Game(string d, String Mise, int mainCroupier, int mainJoueur, string gain, string perte)
         {
             DateGame = d;
             MiseActuelle = Mise;

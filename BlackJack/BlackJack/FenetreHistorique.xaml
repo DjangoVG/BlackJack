@@ -7,28 +7,30 @@
         mc:Ignorable="d"
         Title="FenetreHistorique" Height="450" Width="800">
 
-        <Grid>
-            <ScrollViewer VerticalScrollBarVisibility="Auto" CanContentScroll="True">
-            <DataGrid x:Name="HistoriqueJeuxData" ItemsSource="{Binding ListGame}" Background="WhiteSmoke"  CanUserAddRows="False" CanUserDeleteRows="False" CanUserSortColumns="False" AutoGenerateColumns="false" CanUserReorderColumns="false" >
-                <DataGrid.Resources>
-                    <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
-                        <Setter Property="Background" Value="DarkBlue"/>
-                        <Setter Property="Foreground" Value="White"></Setter>
-                        <Setter Property="BorderBrush" Value="White"></Setter>
-                        <Setter Property="BorderThickness" Value="1"></Setter>
-                        <Setter Property="Padding" Value="2"></Setter>
-                    </Style>
-                </DataGrid.Resources>
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Date de la game" Binding="{Binding DateGame}" IsReadOnly="True" Width="Auto"/>
-                    <DataGridTextColumn Header="Mise de la game" Binding="{Binding MiseActuelle}" IsReadOnly="True" Width="Auto"/>
-                    <DataGridTextColumn Header="Main du croupier" Binding="{Binding MainCroupier}" IsReadOnly="True" Width="Auto"/>
-                    <DataGridTextColumn Header="Main du joueur" Binding="{Binding MainJoueur}" IsReadOnly="True" Width="Auto"/>
-                    <DataGridTextColumn Header="Gain" Binding="{Binding Gain}" IsReadOnly="True" Width="Auto"/>
-                    <DataGridTextColumn Header="Perte" Binding="{Binding Perte}" IsReadOnly="True" Width="Auto"/>
-                </DataGrid.Columns>
-            </DataGrid>
-        </ScrollViewer>
-        <Button VerticalAlignment="Bottom" Content="Quitter" Click="BoutonValider"/>
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" CanContentScroll="True">
+                <DataGrid x:Name="HistoriqueJeuxData" ItemsSource="{Binding ListGame}" Background="WhiteSmoke"  CanUserAddRows="False" CanUserDeleteRows="False" CanUserSortColumns="False" AutoGenerateColumns="false" CanUserReorderColumns="false" Margin="0,0,0,20">
+                    <DataGrid.Resources>
+                        <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="Background" Value="DarkBlue" />
+                            <Setter Property="Foreground" Value="White"></Setter>
+                            <Setter Property="BorderBrush" Value="White"></Setter>
+                            <Setter Property="BorderThickness" Value="1"></Setter>
+                            <Setter Property="Padding" Value="2"></Setter>
+                        </Style>
+                    </DataGrid.Resources>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Date de la game" Binding="{Binding DateGame}" IsReadOnly="True" Width="Auto" />
+                        <DataGridTextColumn Header="Mise de la game" Binding="{Binding MiseActuelle}" IsReadOnly="True" Width="Auto" />
+                        <DataGridTextColumn Header="Main du croupier" Binding="{Binding MainCroupier}" IsReadOnly="True" Width="Auto" />
+                        <DataGridTextColumn Header="Main du joueur" Binding="{Binding MainJoueur}" IsReadOnly="True" Width="Auto" />
+                        <DataGridTextColumn Header="Gain" Binding="{Binding Gain}" IsReadOnly="True" Width="Auto" />
+                        <DataGridTextColumn Header="Perte" Binding="{Binding Perte}" IsReadOnly="True" Width="Auto" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </ScrollViewer>
+            <StackPanel VerticalAlignment="Bottom">
+            <Button VerticalAlignment="Bottom" Content="Quitter" Click="BoutonValider" Height="20" />
+        </StackPanel>
     </Grid>
 </Window>
