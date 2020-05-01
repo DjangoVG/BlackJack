@@ -574,7 +574,7 @@
                     <Label x:Name="ValeurCroupier" FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa" Margin="5,0,0,0"></Label>
                 </StackPanel>
                 <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
-                    <ItemsControl x:Name="RectangleCroupier" ItemsSource="{Binding CartesCroupier}" BorderBrush="White" BorderThickness="2.5" MinHeight="175" Height="275">
+                    <ItemsControl x:Name="RectangleCroupier" ItemsSource="{Binding CartesCroupier}" BorderBrush="White" BorderThickness="2.5" MinHeight="50" Height="275">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Image Source="{Binding ImageCarte}" Height="Auto" Margin="5" />
@@ -604,7 +604,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1*" />
                         </Grid.RowDefinitions>
-                        <ItemsControl x:Name="RectangleJoueur" ItemsSource="{Binding CartesJoueur}" BorderBrush="White" BorderThickness="2.5" MinHeight="175" Height="275" Grid.Column="0">
+                        <ItemsControl x:Name="RectangleJoueur" ItemsSource="{Binding CartesJoueur}" BorderBrush="White" BorderThickness="2.5" MinHeight="50" Height="275" Grid.Column="0">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <Image Source="{Binding ImageCarte}" Height="Auto" Margin="5" />
@@ -616,7 +616,7 @@
                                 </ItemsPanelTemplate>
                             </ItemsControl.ItemsPanel>
                         </ItemsControl>
-                        <ItemsControl x:Name="RectangleJoueur2" ItemsSource="{Binding Carte2}" BorderBrush="White" BorderThickness="2.5" MinHeight="175" Height="275" MinWidth="675" Grid.Column="1" Margin="10,0,0,0" Visibility="Hidden">
+                        <ItemsControl x:Name="RectangleJoueur2" ItemsSource="{Binding Carte2}" BorderBrush="White" BorderThickness="2.5" MinHeight="50" Height="275" MinWidth="675" Grid.Column="1" Margin="10,0,0,0" Visibility="Hidden">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <Image Source="{Binding ImageCarte}" Height="Auto" Margin="5" />
