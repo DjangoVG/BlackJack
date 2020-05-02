@@ -114,6 +114,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DataConverter.cs" />
     <Compile Include="FenetreArgent.xaml.cs">
       <DependentUpon>FenetreArgent.xaml</DependentUpon>
     </Compile>

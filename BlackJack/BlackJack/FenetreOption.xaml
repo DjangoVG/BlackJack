@@ -6,12 +6,14 @@
         xmlns:local="clr-namespace:BlackJack"
         mc:Ignorable="d"
         Title="FenetreOption" Height="245" Width="800" MinHeight="260" MinWidth="260">
+    <Window.Resources>
+        <local:DataConverter x:Key="DataConverter"/>
+    </Window.Resources>
     <StackPanel Orientation="Vertical">
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <RadioButton x:Name="RBFullscreen" Content="Plein écran"  Margin="20" Checked="RBFullscreen_Checked"></RadioButton>
             <RadioButton x:Name="RBWindowed" Content="Fenêtré" Margin="20" Checked="RBWindowed_Checked"></RadioButton>
         </StackPanel>
-
         <Label Margin="20,0,20,0" HorizontalAlignment="Center">Modifier la couleur de fond</Label>
         <Rectangle x:Name="RectangleFond"  Width="Auto" Height="100px" Margin="20,0,20,0" DataContext="{Binding CouleurFond}">
             <Rectangle.Stroke>

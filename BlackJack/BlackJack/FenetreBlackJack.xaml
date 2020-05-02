@@ -9,7 +9,7 @@
         WindowStyle="None"
         Title="FenetreBlackJack" Height="1030" Width="1200" MinHeight="1030" MinWidth="1200">
     <Window.Resources>
-
+        <local:DataConverter x:Key="DataConverter"/>
         <!-- Ajout des images pour le mouse hover -->
         <ImageBrush x:Key="tirer_bouton" ImageSource="/Images/Boutons/BoutonTirer.png" />
         <ImageBrush x:Key="stand_bouton" ImageSource="/Images/Boutons/BoutonRester.png" />
@@ -591,7 +591,7 @@
 
             <StackPanel x:Name="SPJoueur"  Margin="10">
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="{Binding Joueur.Pseudo}" FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa"></Label>
+                    <Label Content="{Binding Joueur.Pseudo, Converter={StaticResource DataConverter}}" FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa"></Label>
                     <Label x:Name="ValeurJoueur" FontSize="25px" Foreground="White" FontFamily="Microsoft PhagsPa" Margin="5,0,0,0"></Label>
                 </StackPanel>
 

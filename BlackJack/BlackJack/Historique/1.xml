@@ -3960,4 +3960,20 @@
     <Gain>0€</Gain>
     <Perte>- 200€</Perte>
   </Game>
+  <Game>
+    <DateGame>02-05-2020 09:24:53</DateGame>
+    <MiseActuelle>60</MiseActuelle>
+    <MainCroupier>11</MainCroupier>
+    <MainJoueur>23</MainJoueur>
+    <Gain>0€</Gain>
+    <Perte>- 60€</Perte>
+  </Game>
+  <Game>
+    <DateGame>02-05-2020 09:24:53</DateGame>
+    <MiseActuelle>60</MiseActuelle>
+    <MainCroupier>11</MainCroupier>
+    <MainJoueur>23</MainJoueur>
+    <Gain>0€</Gain>
+    <Perte>- 60€</Perte>
+  </Game>
 </HistoriqueJeux>
