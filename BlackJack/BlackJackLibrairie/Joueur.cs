@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 
 namespace BlackJackLibrairie
 {
-    public class Joueur : INotifyPropertyChanged
+    public class Joueur : INotifyPropertyChanged, IEtatActuel
     {
         private string _email;
         private string _nom;
@@ -120,6 +120,11 @@ namespace BlackJackLibrairie
             {
                 handler(this, new PropertyChangedEventArgs(propertyName));
             }
+        }
+
+        bool IEtatActuel.ABust()
+        {
+            return ABust;
         }
     }
 }

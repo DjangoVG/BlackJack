@@ -74,6 +74,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -125,12 +126,19 @@
     <Compile Include="FenetreLogin.xaml.cs">
       <DependentUpon>FenetreLogin.xaml</DependentUpon>
     </Compile>
+    <Page Include="FenetreOption.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FenetrePseudo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FenetreOption.xaml.cs">
+      <DependentUpon>FenetreOption.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FenetrePseudo.xaml.cs">
       <DependentUpon>FenetrePseudo.xaml</DependentUpon>
     </Compile>
@@ -417,6 +425,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Boutons\BoutonResterProba.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Autres\FondBleu.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -6,6 +6,7 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using System.Xml;
 
@@ -340,6 +341,8 @@ namespace BlackJack
 
         public StreamWriter fstream { get; private set; }
 
+        public bool CouleurFond { get; set; }
+
         #endregion Boolean ENABLE
 
         public FenetreBlackJack(Joueur joueur)
@@ -392,6 +395,8 @@ namespace BlackJack
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timer_Tick;
             timer.Start();
+
+            CouleurFond = true;
 
             Lobby.Joueur = joueur;
             CheckJetonSolde();
@@ -517,7 +522,6 @@ namespace BlackJack
                             {
                                 Lobby.DonneCarteCroupier();
                                 GetValeur();
-                                /* PAUSE */
                             }
                         }
                         VerifGagnant();
@@ -528,7 +532,6 @@ namespace BlackJack
                         {
                             Lobby.DonneCarteCroupier();
                             GetValeur();
-                            /* PAUSE */
                         }
                         VerifGagnant();
                     }
@@ -573,7 +576,6 @@ namespace BlackJack
                         {
                             Lobby.DonneCarteCroupier();
                             GetValeur();
-                            /* PAUSE */
                         }
                         VerifGagnant();
                     }
@@ -590,7 +592,6 @@ namespace BlackJack
                     {
                         Lobby.DonneCarteCroupier();
                         GetValeur();
-                        /* PAUSE */
                     }
                     VerifGagnant();
                 }
@@ -601,7 +602,6 @@ namespace BlackJack
                 {
                     Lobby.DonneCarteCroupier();
                     GetValeur();
-                    /* PAUSE */
                 }
                 VerifGagnant();
             }
@@ -1068,6 +1068,42 @@ namespace BlackJack
                         IsDoubleProba = true;
                 }
             }
+        }
+
+        private void BoutonDate(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BoutonOption(object sender, RoutedEventArgs e)
+        {
+            var Option = new FenetreOption();
+            Option.Owner = this;
+            Option.Show();
+
+            Option.OptionsEvent += OptionsApplyClick;
+        }
+
+        private void OptionsApplyClick(FenetreOption fen)
+        {
+            if (fen.RectangleFond.Fill.ToString() == new SolidColorBrush(Colors.DarkGreen).ToString())
+            {
+                BitmapImage glowIcon = new BitmapImage();
+                glowIcon.BeginInit();
+                glowIcon.UriSource = new Uri("../../Images/Autres/FondVert.jpeg", UriKind.Relative);
+                glowIcon.EndInit();
+                FondSP.ImageSource = glowIcon;
+            }
+
+            else
+            {
+                BitmapImage glowIcon = new BitmapImage();
+                glowIcon.BeginInit();
+                glowIcon.UriSource = new Uri("../../Images/Autres/FondBleu.jpg", UriKind.Relative);
+                glowIcon.EndInit();
+                FondSP.ImageSource = glowIcon;
+            }
+                
         }
     }
 }

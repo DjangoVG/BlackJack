@@ -548,7 +548,7 @@
     <Grid>
         <StackPanel>
             <StackPanel.Background>
-                <ImageBrush ImageSource="/Images/Autres/FondVert.jpeg" />
+                <ImageBrush x:Name="FondSP" ImageSource="/Images/Autres/FondVert.jpeg" />
             </StackPanel.Background>
             <Menu x:Name="MenuJoueur" Height="20" Background="DarkGray">
                 <MenuItem Header="Profil">
@@ -562,7 +562,8 @@
                 </MenuItem>
                 <MenuItem Header="Options">
                     <MenuItem Header="Historique" Click="BoutonHistorique" />
-                    <MenuItem Header="Format de la date" />
+                    <MenuItem Header="Format de la date" Click="BoutonDate"/>
+                    <MenuItem Header="Options" Click="BoutonOption"/>
                 </MenuItem>
                 <MenuItem Header="Probabilités" Click="BoutonProbabilités">
                 </MenuItem>

@@ -2,7 +2,7 @@
 
 namespace BlackJackLibrairie
 {
-    public class Croupier
+    public class Croupier : IEtatActuel
     {
         public string Pseudo { get; } = "Croupier";
         private Boolean _abust;
@@ -22,6 +22,11 @@ namespace BlackJackLibrairie
         public Croupier()
         {
             ABust = false;
+        }
+
+        bool IEtatActuel.ABust()
+        {
+            return ABust;
         }
     }
 }

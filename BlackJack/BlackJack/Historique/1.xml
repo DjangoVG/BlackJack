@@ -3848,4 +3848,36 @@
     <Gain>0€</Gain>
     <Perte>- 11200€</Perte>
   </Game>
+  <Game>
+    <DateGame>01-05-2020 10:45:00</DateGame>
+    <MiseActuelle>60</MiseActuelle>
+    <MainCroupier>24</MainCroupier>
+    <MainJoueur>19</MainJoueur>
+    <Gain>+ 60€</Gain>
+    <Perte>0€</Perte>
+  </Game>
+  <Game>
+    <DateGame>01-05-2020 10:45:01</DateGame>
+    <MiseActuelle>60</MiseActuelle>
+    <MainCroupier>24</MainCroupier>
+    <MainJoueur>15</MainJoueur>
+    <Gain>+ 60€</Gain>
+    <Perte>0€</Perte>
+  </Game>
+  <Game>
+    <DateGame>01-05-2020 10:45:07</DateGame>
+    <MiseActuelle>2600</MiseActuelle>
+    <MainCroupier>20</MainCroupier>
+    <MainJoueur>21</MainJoueur>
+    <Gain>(BJ) + 6500€</Gain>
+    <Perte>0€</Perte>
+  </Game>
+  <Game>
+    <DateGame>01-05-2020 10:45:13</DateGame>
+    <MiseActuelle>2000</MiseActuelle>
+    <MainCroupier>20</MainCroupier>
+    <MainJoueur>16</MainJoueur>
+    <Gain>0€</Gain>
+    <Perte>- 2000€</Perte>
+  </Game>
 </HistoriqueJeux>
