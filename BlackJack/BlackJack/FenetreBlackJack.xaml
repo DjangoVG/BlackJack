@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         WindowState="Maximized"
         WindowStyle="None"
-        Title="FenetreBlackJack" Height="990" Width="1400">
+        Title="FenetreBlackJack" Height="1030" Width="1200" MinHeight="1030" MinWidth="1200">
     <Window.Resources>
 
         <!-- Ajout des images pour le mouse hover -->
@@ -562,8 +562,7 @@
                 </MenuItem>
                 <MenuItem Header="Options">
                     <MenuItem Header="Historique" Click="BoutonHistorique" />
-                    <MenuItem Header="Format de la date" Click="BoutonDate"/>
-                    <MenuItem Header="Options" Click="BoutonOption"/>
+                    <MenuItem Header="Options" Click="BoutonOption" />
                 </MenuItem>
                 <MenuItem Header="Probabilités" Click="BoutonProbabilités">
                 </MenuItem>

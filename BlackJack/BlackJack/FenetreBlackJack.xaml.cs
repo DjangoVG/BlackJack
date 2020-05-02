@@ -1072,7 +1072,6 @@ namespace BlackJack
 
         private void BoutonDate(object sender, RoutedEventArgs e)
         {
-
         }
 
         private void BoutonOption(object sender, RoutedEventArgs e)
@@ -1082,6 +1081,7 @@ namespace BlackJack
             Option.Show();
 
             Option.OptionsEvent += OptionsApplyClick;
+            Option.OptionsEventWindow += OptionsWindows;
         }
 
         private void OptionsApplyClick(FenetreOption fen)
@@ -1094,7 +1094,6 @@ namespace BlackJack
                 glowIcon.EndInit();
                 FondSP.ImageSource = glowIcon;
             }
-
             else
             {
                 BitmapImage glowIcon = new BitmapImage();
@@ -1103,7 +1102,20 @@ namespace BlackJack
                 glowIcon.EndInit();
                 FondSP.ImageSource = glowIcon;
             }
-                
+        }
+
+        private void OptionsWindows(FenetreOption fen)
+        {
+            if (fen.RBFullscreen.IsChecked == true)
+            {
+                this.WindowState = WindowState.Maximized;
+                this.WindowStyle = WindowStyle.None;
+            }
+            else
+            {
+                this.WindowState = WindowState.Normal;
+                this.WindowStyle = WindowStyle.ThreeDBorderWindow;
+            }
         }
     }
 }

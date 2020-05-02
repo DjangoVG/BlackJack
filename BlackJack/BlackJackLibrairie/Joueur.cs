@@ -1,8 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
-using System.IO;
 using System.Runtime.CompilerServices;
-using System.Xml.Serialization;
 
 namespace BlackJackLibrairie
 {
@@ -94,24 +92,6 @@ namespace BlackJackLibrairie
         }
 
         #endregion CONSTRUCTEURS
-
-        #region METHODES
-
-        public void SaveXML(string path)
-        {
-            XmlSerializer xmlformat = new XmlSerializer(typeof(Joueur));
-            StreamWriter fstream = new StreamWriter(path, false);
-            xmlformat.Serialize(fstream, this);
-        }
-
-        public static Joueur OpenXML(string path)
-        {
-            XmlSerializer xmlFormat = new XmlSerializer(typeof(Joueur));
-            Stream fStream = File.OpenRead(path);
-            return xmlFormat.Deserialize(fStream) as Joueur;
-        }
-
-        #endregion METHODES
 
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = null)
         {

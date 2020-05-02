@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BlackJack"
         mc:Ignorable="d"
-        Title="FenetreArgent" Height="450" Width="800">
+        Title="FenetreArgent" Height="450" Width="800" MinHeight="300" MinWidth="420">
     <StackPanel>
         <StackPanel.Background>
             <ImageBrush ImageSource="/Images/Autres/FondArgent.jpeg" Opacity="0.5" />

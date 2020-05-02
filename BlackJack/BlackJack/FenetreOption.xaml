@@ -5,22 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BlackJack"
         mc:Ignorable="d"
-        Title="FenetreOption" Height="245" Width="800" MinHeight="245" MinWidth="245">
+        Title="FenetreOption" Height="245" Width="800" MinHeight="260" MinWidth="260">
     <StackPanel Orientation="Vertical">
-        <Label Margin="20" HorizontalAlignment="Center">Modifier la couleur de fond</Label>
-        <Rectangle x:Name="RectangleFond"  Width="Auto" Height="100px" Margin="10,0,10,0" DataContext="{Binding CouleurFond}">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <RadioButton x:Name="RBFullscreen" Content="Plein écran"  Margin="20" Checked="RBFullscreen_Checked"></RadioButton>
+            <RadioButton x:Name="RBWindowed" Content="Fenêtré" Margin="20" Checked="RBWindowed_Checked"></RadioButton>
+        </StackPanel>
+
+        <Label Margin="20,0,20,0" HorizontalAlignment="Center">Modifier la couleur de fond</Label>
+        <Rectangle x:Name="RectangleFond"  Width="Auto" Height="100px" Margin="20,0,20,0" DataContext="{Binding CouleurFond}">
             <Rectangle.Stroke>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF570000" Offset="0"/>
-                    <GradientStop Color="Black" Offset="1"/>
+                    <GradientStop Color="Red" Offset="0" />
+                    <GradientStop Color="Black" Offset="1" />
                 </LinearGradientBrush>
             </Rectangle.Stroke>
-
         </Rectangle>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Margin="10" HorizontalAlignment="Center" Padding="5" Click="BoutonFond">Modifier la couleur de fond</Button>
-            <Button Margin="10" HorizontalAlignment="Center" Padding="5" Click="BoutonAnnuler">Annuler les changements</Button>
+            <Button Margin="10" HorizontalAlignment="Center" Padding="5" Click="BoutonAnnuler">Quitter les options</Button>
         </StackPanel>
-        
     </StackPanel>
 </Window>
