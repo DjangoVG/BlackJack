@@ -3976,4 +3976,188 @@
     <Gain>0€</Gain>
     <Perte>- 60€</Perte>
   </Game>
+  <Game>
+    <DateGame>03-05-2020 12:33:18</DateGame>
+    <MiseActuelle>10</MiseActuelle>
+    <MainCroupier>10</MainCroupier>
+    <MainJoueur>21</MainJoueur>
+    <Gain>(BJ) + 25€</Gain>
+    <Perte>0€</Perte>
+  </Game>
+  <Game>
+    <DateGame>03-05-2020 04:32:21</DateGame>
+    <MiseActuelle>100</MiseActuelle>
+    <MainCroupier>18</MainCroupier>
+    <MainJoueur>16</MainJoueur>
+    <Gain>0€</Gain>
+    <Perte>- 100€</Perte>
+  </Game>
+  <Game>
+    <DateGame>03-05-2020 04:32:21</DateGame>
+    <MiseActuelle>100</MiseActuelle>
+    <MainCroupier>18</MainCroupier>
+    <MainJoueur>16</MainJoueur>
+    <Gain>0€</Gain>
+    <Perte>- 100€</Perte>
+  </Game>
+  <Game>
+    <DateGame>03-05-2020 04:32:25</DateGame>
+    <MiseActuelle>60</MiseActuelle>
+    <MainCroupier>10</MainCroupier>
+    <MainJoueur>26</MainJoueur>
+    <Gain>0€</Gain>
+    <Perte>- 60€</Perte>
+  </Game>
+  <Game>
+    <DateGame>03-05-2020 04:32:28</DateGame>
+    <MiseActuelle>100</MiseActuelle>
+    <MainCroupier>21</MainCroupier>
+    <MainJoueur>18</MainJoueur>
+    <Gain>0€</Gain>
+    <Perte>- 100€</Perte>
+  </Game>
+  <Game>
+    <DateGame>03-05-2020 04:32:31</DateGame>
+    <MiseActuelle>100</MiseActuelle>
+    <MainCroupier>10</MainCroupier>
+    <MainJoueur>23</MainJoueur>
+    <Gain>0€</Gain>
+    <Perte>- 100€</Perte>
+  </Game>
+  <Game>
+    <DateGame>03-05-2020 04:32:34</DateGame>
+    <MiseActuelle>100</MiseActuelle>
+    <MainCroupier>24</MainCroupier>
+    <MainJoueur>19</MainJoueur>
+    <Gain>+ 100€</Gain>
+    <Perte>0€</Perte>
+  </Game>
+  <Game>
+    <DateGame>03-05-2020 04:32:37</DateGame>
+    <MiseActuelle>200</MiseActuelle>
+    <MainCroupier>20</MainCroupier>
+    <MainJoueur>15</MainJoueur>
+    <Gain>0€</Gain>
+    <Perte>- 200€</Perte>
+  </Game>
+  <Game>
+    <DateGame>03-05-2020 04:32:41</DateGame>
+    <MiseActuelle>200</MiseActuelle>
+    <MainCroupier>25</MainCroupier>
+    <MainJoueur>21</MainJoueur>
+    <Gain>+ 200€</Gain>
+    <Perte>0€</Perte>
+  </Game>
+  <Game>
+    <DateGame>03-05-2020 04:32:45</DateGame>
+    <MiseActuelle>300</MiseActuelle>
+    <MainCroupier>19</MainCroupier>
+    <MainJoueur>18</MainJoueur>
+    <Gain>0€</Gain>
+    <Perte>- 300€</Perte>
+  </Game>
+  <Game>
+    <DateGame>03-05-2020 04:32:50</DateGame>
+    <MiseActuelle>300</MiseActuelle>
+    <MainCroupier>19</MainCroupier>
+    <MainJoueur>15</MainJoueur>
+    <Gain>0€</Gain>
+    <Perte>- 300€</Perte>
+  </Game>
+  <Game>
+    <DateGame>03-05-2020 04:32:50</DateGame>
+    <MiseActuelle>300</MiseActuelle>
+    <MainCroupier>19</MainCroupier>
+    <MainJoueur>15</MainJoueur>
+    <Gain>0€</Gain>
+    <Perte>- 300€</Perte>
+  </Game>
+  <Game>
+    <DateGame>03-05-2020 04:32:57</DateGame>
+    <MiseActuelle>200</MiseActuelle>
+    <MainCroupier>21</MainCroupier>
+    <MainJoueur>13</MainJoueur>
+    <Gain>0€</Gain>
+    <Perte>- 200€</Perte>
+  </Game>
+  <Game>
+    <DateGame>03-05-2020 04:33:10</DateGame>
+    <MiseActuelle>200</MiseActuelle>
+    <MainCroupier>21</MainCroupier>
+    <MainJoueur>19</MainJoueur>
+    <Gain>0€</Gain>
+    <Perte>- 200€</Perte>
+  </Game>
+  <Game>
+    <DateGame>03-05-2020 04:33:14</DateGame>
+    <MiseActuelle>310</MiseActuelle>
+    <MainCroupier>8</MainCroupier>
+    <MainJoueur>25</MainJoueur>
+    <Gain>0€</Gain>
+    <Perte>- 310€</Perte>
+  </Game>
+  <Game>
+    <DateGame>03-05-2020 04:33:15</DateGame>
+    <MiseActuelle>200</MiseActuelle>
+    <MainCroupier>20</MainCroupier>
+    <MainJoueur>21</MainJoueur>
+    <Gain>(BJ) + 500€</Gain>
+    <Perte>0€</Perte>
+  </Game>
+  <Game>
+    <DateGame>04-05-2020 01:03:19</DateGame>
+    <MiseActuelle>65</MiseActuelle>
+    <MainCroupier>21</MainCroupier>
+    <MainJoueur>19</MainJoueur>
+    <Gain>0€</Gain>
+    <Perte>- 65€</Perte>
+  </Game>
+  <Game>
+    <DateGame>04-05-2020 01:03:24</DateGame>
+    <MiseActuelle>160</MiseActuelle>
+    <MainCroupier>7</MainCroupier>
+    <MainJoueur>23</MainJoueur>
+    <Gain>0€</Gain>
+    <Perte>- 160€</Perte>
+  </Game>
+  <Game>
+    <DateGame>04-05-2020 01:03:28</DateGame>
+    <MiseActuelle>160</MiseActuelle>
+    <MainCroupier>7</MainCroupier>
+    <MainJoueur>23</MainJoueur>
+    <Gain>0€</Gain>
+    <Perte>- 160€</Perte>
+  </Game>
+  <Game>
+    <DateGame>04-05-2020 01:03:39</DateGame>
+    <MiseActuelle>160</MiseActuelle>
+    <MainCroupier>19</MainCroupier>
+    <MainJoueur>19</MainJoueur>
+    <Gain>0€</Gain>
+    <Perte>0€</Perte>
+  </Game>
+  <Game>
+    <DateGame>04-05-2020 01:03:39</DateGame>
+    <MiseActuelle>160</MiseActuelle>
+    <MainCroupier>19</MainCroupier>
+    <MainJoueur>17</MainJoueur>
+    <Gain>0€</Gain>
+    <Perte>- 160€</Perte>
+  </Game>
+  <Game>
+    <DateGame>04-05-2020 01:03:57</DateGame>
+    <MiseActuelle>160</MiseActuelle>
+    <MainCroupier>22</MainCroupier>
+    <MainJoueur>19</MainJoueur>
+    <Gain>+ 160€</Gain>
+    <Perte>0€</Perte>
+  </Game>
+  <Game>
+    <DateGame>04-05-2020 01:04:20</DateGame>
+    <MiseActuelle>320</MiseActuelle>
+    <MainCroupier>19</MainCroupier>
+    <MainJoueur>12</MainJoueur>
+    <Gain>0€</Gain>
+    <Perte>- 320€</Perte>
+  </Game>
 </HistoriqueJeux>

@@ -1,6 +1,8 @@
 # Jeu de casino (BlackJack) réalisé par Régis Evrard (2201)
 
-![FenêtreBlackJack](https://i.imgur.com/XBCETKg.png)
+![FenêtreBlackJack](https://i.imgur.com/norBRFp.png)
+
+![FenêtreBlackJackSplit](https://i.imgur.com/W7qV0Wq.png)
 
 ### Quelles sont les règles ?
 
@@ -11,5 +13,12 @@
 ### Je veux jouer ! Dites-moi comment faire !
 
 * Pour jouer, il suffit d'entrer votre adresse mail et le mot de passe correspondant pour "load" votre profil. Le solde de votre compte est désormais disponible. Pour miser de l'argent, vous devez cliquer sur les jetons correspondants à la mise souhaitée. (Ex : cliquer 1x sur le "Jeton 5e" et une deuxième fois sur le "Jeton 50e", votre mise actuelle sera donc de 55 euros) Pour réinitialiser la mise, vous devez cliquer sur le bouton "Reset Mise". 
-
 * Pour démarrer la partie contre notre célèbre croupier Luc, vous devez cliquer sur le bouton "Miser". Si la mise est supérieur au solde de votre compte, vous devrez aller dans le menu pour y déposer de l'argent, aussinon, "Rien ne va plus, bonne chance !"
+
+### Une fenêtre contenant l'historique des games !
+
+![FenêtreHistorique](https://i.imgur.com/ZZjLiQ3.png)
+
+### Une fenêtre pour recharger son compte !
+
+![FenêtreArgent](https://i.imgur.com/a5nXVmn.png)

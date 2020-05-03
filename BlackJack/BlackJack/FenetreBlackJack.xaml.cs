@@ -1090,7 +1090,7 @@ namespace BlackJack
             {
                 BitmapImage glowIcon = new BitmapImage();
                 glowIcon.BeginInit();
-                glowIcon.UriSource = new Uri("../../Images/Autres/FondVert.jpeg", UriKind.Relative);
+                glowIcon.UriSource = new Uri(@"C:\Users\Regis\Bureau\RegisServer\1. Info. de Gestion\2ème Année\C#\Laboratoire\labo-phase-3-DjangoVG\BlackJack\BlackJack\Images\Autres\FondVert.jpeg", UriKind.Relative);
                 glowIcon.EndInit();
                 FondSP.ImageSource = glowIcon;
             }
@@ -1098,7 +1098,7 @@ namespace BlackJack
             {
                 BitmapImage glowIcon = new BitmapImage();
                 glowIcon.BeginInit();
-                glowIcon.UriSource = new Uri("../../Images/Autres/FondBleu.jpg", UriKind.Relative);
+                glowIcon.UriSource = new Uri(@"C:\Users\Regis\Bureau\RegisServer\1. Info. de Gestion\2ème Année\C#\Laboratoire\labo-phase-3-DjangoVG\BlackJack\BlackJack\Images\Autres\FondBleu.jpg", UriKind.Relative);
                 glowIcon.EndInit();
                 FondSP.ImageSource = glowIcon;
             }
