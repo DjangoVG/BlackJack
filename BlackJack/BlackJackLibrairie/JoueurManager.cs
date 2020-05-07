@@ -81,11 +81,11 @@ namespace BlackJackLibrairie
             rk.SetValue("solde", solde);
         }
 
-        private bool VerifSubkey(RegistryKey rk, string subname)
+        private bool VerifSubkey(RegistryKey blackjack, string mail)
         {
-            foreach (string tmp in rk.GetSubKeyNames())
+            foreach (string tmp in blackjack.GetSubKeyNames())
             {
-                if (tmp == subname)
+                if (tmp == mail)
                 {
                     return true;
                 }

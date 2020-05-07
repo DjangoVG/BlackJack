@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HistoriqueJeux>
+  <Game>
+    <DateGame>07-05-2020 06:53:15</DateGame>
+    <MiseActuelle>600</MiseActuelle>
+    <MainCroupier>18</MainCroupier>
+    <MainJoueur>15</MainJoueur>
+    <Gain>0€</Gain>
+    <Perte>- 600€</Perte>
+  </Game>
+</HistoriqueJeux>

@@ -28,15 +28,6 @@
         <ImageBrush x:Key="reset_bouton" ImageSource="/Images/Autres/BoutonReset.png" />
         <!-- fin ajout -->
 
-        <Style x:Key="FocusVisual">
-            <Setter Property="Control.Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2" />
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
         <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD" />
         <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070" />
         <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD" />
@@ -48,7 +39,6 @@
         <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383" />
 
         <Style x:Key="BoutonHit" TargetType="{x:Type Button}">
-            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
             <Setter Property="Background" Value="{StaticResource Button.Static.Background}" />
             <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}" />
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
@@ -95,7 +85,6 @@
             </Setter>
         </Style>
         <Style x:Key="BoutonStand" TargetType="{x:Type Button}">
-            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
             <Setter Property="Background" Value="{StaticResource Button.Static.Background}" />
             <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}" />
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
@@ -142,7 +131,6 @@
             </Setter>
         </Style>
         <Style x:Key="BoutonSplit" TargetType="{x:Type Button}">
-            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
             <Setter Property="Background" Value="{StaticResource Button.Static.Background}" />
             <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}" />
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
@@ -189,7 +177,6 @@
             </Setter>
         </Style>
         <Style x:Key="BoutonDouble" TargetType="{x:Type Button}">
-            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
             <Setter Property="Background" Value="{StaticResource Button.Static.Background}" />
             <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}" />
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
@@ -236,7 +223,6 @@
             </Setter>
         </Style>
         <Style x:Key="Bouton5" TargetType="{x:Type Button}">
-            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
             <Setter Property="Background" Value="{StaticResource Button.Static.Background}" />
             <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}" />
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
@@ -280,7 +266,6 @@
             </Setter>
         </Style>
         <Style x:Key="Bouton10" TargetType="{x:Type Button}">
-            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
             <Setter Property="Background" Value="{StaticResource Button.Static.Background}" />
             <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}" />
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
@@ -324,7 +309,6 @@
             </Setter>
         </Style>
         <Style x:Key="Bouton50" TargetType="{x:Type Button}">
-            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
             <Setter Property="Background" Value="{StaticResource Button.Static.Background}" />
             <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}" />
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
@@ -368,7 +352,6 @@
             </Setter>
         </Style>
         <Style x:Key="Bouton100" TargetType="{x:Type Button}">
-            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
             <Setter Property="Background" Value="{StaticResource Button.Static.Background}" />
             <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}" />
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
@@ -412,7 +395,6 @@
             </Setter>
         </Style>
         <Style x:Key="Bouton200" TargetType="{x:Type Button}">
-            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
             <Setter Property="Background" Value="{StaticResource Button.Static.Background}" />
             <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}" />
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
@@ -456,7 +438,6 @@
             </Setter>
         </Style>
         <Style x:Key="BoutonMiser" TargetType="{x:Type Button}">
-            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
             <Setter Property="Background" Value="{StaticResource Button.Static.Background}" />
             <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}" />
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
@@ -500,7 +481,6 @@
             </Setter>
         </Style>
         <Style x:Key="BoutonReset" TargetType="{x:Type Button}">
-            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
             <Setter Property="Background" Value="{StaticResource Button.Static.Background}" />
             <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}" />
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
