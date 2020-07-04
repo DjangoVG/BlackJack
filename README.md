@@ -1,4 +1,4 @@
-# Jeu de casino (BlackJack) réalisé par Régis Evrard (2201)
+# Jeu de casino (BlackJack) réalisé par Régis Evrard
 
 ![FenêtreBlackJack](https://i.imgur.com/norBRFp.png)
 
